@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Hoodie</title>
+  <link rel="stylesheet" href="/CSS/styles1.css">
+  <link rel="website icon" href="/Logo/Logo.png">
+</head>
+<body>
+  <header>
+    <h1>212 CLOTHING</h1>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/Hoodies/Hoodies.html">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="image-box">
+      <div class="main-image">
+        <img id="mainProductImage" src="Hoodie6².jpg" alt="Classic Biker T-Shirt">
+      </div>
+      <div class="thumbnails">
+        <img src="Hoodie6².jpg" alt="Front" class="active" onclick="changeImage(this)">
+        <img src="Hoodie6.jpg" alt="Back"  onclick="changeImage(this)">
+      </div>
+    </div>
+    <div class="details">
+      <h2>Driver Hoodie</h2>
+      <p>Stay warm and stylish with our premium driver hoodie. Designed for comfort and durability, it’s the perfect fit for all drivers on the road.</p>
+      <p class="price">$39.99</p>
+      <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+      <p><strong>Colors:</strong> Gray, Black, Blue</p>
+      <button class="button"  onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/mtb-hoodie-2024?product=227&variation=6083', '_blank')">Buy Now</button>
+    </div>
+  </main>
+  <footer class="footer" id="contact">
+    <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+      </a>
+    </div>
+  </footer>
+  <script>
+    function changeImage(thumb) {
+      const mainImage = document.getElementById("mainProductImage");
+      mainImage.src = thumb.src;
+
+      document.querySelectorAll(".thumbnails img").forEach(img => img.classList.remove("active"));
+      thumb.classList.add("active");
+    }
+  </script>
+</body>
+</html>
