@@ -298,3 +298,33 @@ button:active {
   opacity: 1;
   transform: rotate(360deg) scale(1.2); /* Spin effect on hover */
 }
+
+.color-options {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  background-color: var(--color-value); /* This will be set dynamically */
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+  border-color: var(--neon-orange);
+}
+
+.color-swatch.active {
+  border-color: var(--neon-orange);
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+  transform: scale(1.1);
+}

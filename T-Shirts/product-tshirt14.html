@@ -16,23 +16,28 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-  <main class="container">
+  <main class="container">  
     <div class="image-box">
       <div class="main-image">
-        <img id="mainProductImage" src="T-Shirt14.jpg" alt="Classic Biker T-Shirt">
+    <img id="mainProductImage" src="" alt="Driver Hoodie">
       </div>
       <div class="thumbnails">
-        <img src="T-Shirt14.jpg" alt="Front" class="active" onclick="changeImage(this)">
-        <img src="T-Shirt14².jpg" alt="Back"  onclick="changeImage(this)">
+      <img id="thumbnailFront" src="T-shirt14.jpg" alt="Front" class="active" onclick="changeView('front')">
+      <img id="thumbnailBack" src="T-Shirt14².jpg" alt="Back"  onclick="changeView('back')">
       </div>
     </div>
     <div class="details">
-      <h2>Classic Biker T-Shirt</h2>
-      <p>This T-shirt is made for real bikers. Crafted from breathable cotton, with a bold print design to showcase your style on and off the road.</p>
-      <p class="price">$24.99</p>
-      <p><strong>Sizes:</strong> S, M, L, XL</p>
-      <p><strong>Colors:</strong> Black, White, Red</p>
-      <button class="button">Buy Now</button>
+      <h2>Driver Hoodie</h2>
+      <p>Stay warm and stylish with our premium driver hoodie. Designed for comfort and durability, it’s the perfect fit for all drivers on the road.</p>
+      <p class="price">$39.99</p>
+      <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+      <div class="color-options">
+        <strong>Colors:</strong>
+        <button class="color-swatch active" style="background-color: rgb(0, 0, 0);" data-color="gray" onclick="selectColor('gray')"></button>
+        <button class="color-swatch" style="background-color: rgb(128, 128, 128);" data-color="black" onclick="selectColor('black')"></button>
+        <button class="color-swatch" style="background-color: blue;" data-color="blue" onclick="selectColor('blue')"></button>
+      </div>
+      <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
     </div>
   </main>
   <footer class="footer" id="contact">
@@ -50,6 +55,16 @@
 
       document.querySelectorAll(".thumbnails img").forEach(img => img.classList.remove("active"));
       thumb.classList.add("active");
+    }
+
+    function changeView(view) {
+      const mainImage = document.getElementById("mainProductImage");
+      if (view === 'front') {
+        mainImage.src = document.getElementById("thumbnailFront").src;
+      } else if (view === 'back') {
+        mainImage.src = document.getElementById("thumbnailBack").src;
+      }
+      changeImage(event.target);
     }
   </script>
 </body>
