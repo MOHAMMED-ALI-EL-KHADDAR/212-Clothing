@@ -18,30 +18,30 @@
   </header>
   <main class="container">  
     <div class="image-box">
-      <div class="main-image">
-      <img id="mainProductImage" src="/Slides/Slide.jpg" alt="Biker Slides">
-      </div>
-      <div class="thumbnails">
-        <img id="thumbnailFront" src="/Slides/Slide.jpg" alt="Front" class="active" onclick="changeView('front')">
-        <img id="thumbnailBack" src="/Slides/Slide².jpg" alt="Back"  onclick="changeView('back')">
-        <img id="thumbnailside" src="/Slides/Slide²².jpg" alt="Side"  onclick="changeView('side')">
-      </div>
-    </div>
-    <div class="details">
-      <h2>Biker Slides</h2>
-      <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
-      <p class="price">$39.99</p>
-      <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
-      <div class="color-options">
-        <strong>Colors:</strong>
-        <button class="color-swatch active" style="background-color: green;" data-color="gray" onclick="selectColor('gray')"></button>
-        <button class="color-swatch" style="background-color: gray;" data-color="black" onclick="selectColor('black')"></button>
-        <button class="color-swatch" style="background-color: blue;" data-color="blue" onclick="selectColor('blue')"></button>
-        <button class="color-swatch" style="background-color: red;" data-color="red" onclick="selectColor('red')"></button>
-        <button class="color-swatch" style="background-color: orange;" data-color="orange" onclick="selectColor('orange')"></button>
-      </div>
-      <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
-    </div>
+  <div class="main-image">
+  <img id="mainProductImage" src="/Slides/Slide.jpg" alt="Biker Slides">
+  </div>
+  <div class="thumbnails">
+    <img id="thumbnailFront" src="/Slides/Slide.jpg" alt="Front" class="active" onclick="changeView('front')">
+    <img id="thumbnailBack" src="/Slides/Slide².jpg" alt="Back"  onclick="changeView('back')">
+    <img id="thumbnailSide" src="/Slides/Slide²².jpg" alt="Side"  onclick="changeView('side')">
+  </div>
+</div>
+<div class="details">
+  <h2>Biker Slides</h2>
+  <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
+  <p class="price">$39.99</p>
+  <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+  <div class="color-options">
+    <strong>Colors:</strong>
+    <button class="color-swatch active" style="background-color: green;" data-color="green" onclick="selectColor('green')"></button>
+    <button class="color-swatch" style="background-color: gray;" data-color="gray" onclick="selectColor('gray')"></button>
+    <button class="color-swatch" style="background-color: yellow;" data-color="yellow" onclick="selectColor('yellow')"></button>
+    <button class="color-swatch" style="background-color: red;" data-color="red" onclick="selectColor('red')"></button>
+    <button class="color-swatch" style="background-color: orange;" data-color="orange" onclick="selectColor('orange')"></button>
+  </div>
+  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
+</div>
   </main>
   <footer class="footer">
     <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
@@ -52,17 +52,15 @@
     </div>  
   </footer>
   <script>
-  // Define your product images. Adjust paths and colors as needed.
-  // IMPORTANT: Ensure these image files exist in your project structure.
   const productImages = {
     'Slide': {
       'green': {
-        'front': '/Slides/Slide.jpg', // Example: You need to create these images
-        'back': '/Slides/Slide².jpg',   // Example: You need to create these images
-        'side': '/Slides/Slide²².jpg'   // Example: You need to create these images
+        'front': '/Slides/Slide.jpg',
+        'back': '/Slides/Slide².jpg',
+        'side': '/Slides/Slide²².jpg'
       },
       'yellow': {
-        'front': '/Slides/Slide²²².jpg', 
+        'front': '/Slides/Slide²²².jpg',
         'back': '/Slides/Slide²²²².jpg',
         'side': '/Slides/Slide²²²²².jpg'
       },
@@ -84,41 +82,41 @@
     },
   };
 
-  let currentProductType = 'Slide'; // Set the current product type (e.g., 'hoodie', 'tshirt')
-  let selectedColor = 'gray'; // Default selected color
+  let currentProductType = 'Slide'; // Corrected to match the productImages key
+  let selectedColor = 'green'; // Corrected to match the initially active swatch
   let selectedView = 'front'; // Default selected view
 
-  // Function to update the main product image and thumbnails
   function updateProductImage() {
     const mainImage = document.getElementById('mainProductImage');
     const thumbnailFront = document.getElementById('thumbnailFront');
     const thumbnailBack = document.getElementById('thumbnailBack');
+    const thumbnailSide = document.getElementById('thumbnailSide'); // Get the side thumbnail
 
     if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
       mainImage.src = productImages[currentProductType][selectedColor][selectedView];
       thumbnailFront.src = productImages[currentProductType][selectedColor]['front'];
       thumbnailBack.src = productImages[currentProductType][selectedColor]['back'];
+      thumbnailSide.src = productImages[currentProductType][selectedColor]['side']; // Update side thumbnail
     } else {
       console.error(`Images not found for ${currentProductType}, color ${selectedColor}`);
-      // Optionally set a placeholder image or handle error visually
     }
 
     // Update active class for thumbnails
     document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
     if (selectedView === 'front') {
       thumbnailFront.classList.add('active');
-    } else {
+    } else if (selectedView === 'back') {
       thumbnailBack.classList.add('active');
+    } else if (selectedView === 'side') {
+      thumbnailSide.classList.add('active');
     }
   }
 
-  // Function to handle color selection
   function selectColor(color) {
     selectedColor = color;
     updateProductImage();
 
-    // Update active class for color swatches
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
+    document.querySelectorAll(".color-swatch").forEach(swatch => {
       if (swatch.dataset.color === color) {
         swatch.classList.add('active');
       } else {
@@ -127,21 +125,15 @@
     });
   }
 
-  // Function to handle view selection (front/back)
   function changeView(view) {
     selectedView = view;
     updateProductImage();
   }
 
-  // Initialize the product image and color selection when the page loads
   document.addEventListener('DOMContentLoaded', () => {
-    // Set initial product type based on the page (you might need a more robust way to determine this)
-    // For example, if it's a hoodie page, set currentProductType = 'hoodie';
-    // If it's a t-shirt page, set currentProductType = 'tshirt';
-    // For this example, we'll assume it's a hoodie page.
-    currentProductType = 'hoodie'; // Adjust this based on the actual product page
+    currentProductType = 'Slide'; // Ensure this matches the key in productImages
+    selectedColor = 'green'; // Set initial color to match the active swatch in HTML
 
-    // Set the initial active color swatch (e.g., 'gray' for hoodie)
     const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
     if (initialColorSwatch) {
       initialColorSwatch.classList.add('active');
