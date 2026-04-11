@@ -17,24 +17,31 @@
     </nav>
   </header>
   <main class="container">
-    <div class="image-box">
-      <div class="main-image">
-        <img id="mainProductImage" src="/Slides/Slide1.jpg" alt="Biker Slide">
-      </div>
-      <div class="thumbnails">
-        <img src="/Slides/Slide1.jpg" alt="Front" class="active" onclick="changeImage(this)">
-        <img src="/Slides/Slide1².jpg" alt="Back"  onclick="changeImage(this)">
-        <img src="/Slides/Slide1²².jpg" alt="side"  onclick="changeImage(this)">
-      </div>
-    </div>
-    <div class="details">
-      <h2>Classic Biker T-Shirt</h2>
-      <p>This T-shirt is made for real bikers. Crafted from breathable cotton, with a bold print design to showcase your style on and off the road.</p>
-      <p class="price">$24.99</p>
-      <p><strong>Sizes:</strong> S, M, L, XL</p>
-      <p><strong>Colors:</strong> Black, White, Red</p>
-      <button class="button"  onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/biker-s-slides?product=1895', '_blank')">Buy Now</button>
-    </div>
+     <div class="image-box">
+  <div class="main-image">
+  <img id="mainProductImage" src="/Slides/Slide.jpg" alt="Biker Slides">
+  </div>
+  <div class="thumbnails">
+    <img id="thumbnailFront" src="/Slides/Slide.jpg" alt="Front" class="active" onclick="changeView('front')">
+    <img id="thumbnailBack" src="/Slides/Slide².jpg" alt="Back"  onclick="changeView('back')">
+    <img id="thumbnailSide" src="/Slides/Slide²².jpg" alt="Side"  onclick="changeView('side')">
+  </div>
+</div>
+<div class="details">
+  <h2>Biker Slides</h2>
+  <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
+  <p class="price">$39.99</p>
+  <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+  <div class="color-options">
+    <strong>Colors:</strong>
+    <button class="color-swatch active" style="background-color: green;" data-color="green" onclick="selectColor('green')"></button>
+    <button class="color-swatch" style="background-color: white;" data-color="gray" onclick="selectColor('white')"></button>
+    <button class="color-swatch" style="background-color: yellow;" data-color="yellow" onclick="selectColor('yellow')"></button>
+    <button class="color-swatch" style="background-color: grey;" data-color="red" onclick="selectColor('grey')"></button>
+    <button class="color-swatch" style="background-color: orange;" data-color="orange" onclick="selectColor('orange')"></button>
+  </div>
+  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
+</div>
   </main>
   <footer class="footer">
     <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
@@ -42,16 +49,104 @@
       <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
       </a>
+      <a href="https://www.facebook.com/share/1CXrF7MTsS/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+      <a href="https://www.tiktok.com/@212clothing.ma?_r=1&_t=ZS-95SiawBc43A" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      </a>
     </div>  
   </footer>
   <script>
-    function changeImage(thumb) {
-      const mainImage = document.getElementById("mainProductImage");
-      mainImage.src = thumb.src;
+  const productImages = {
+    'Slide': {
+      'green': {
+        'front': '/Slides/Slide1.jpg',
+        'back': '/Slides/Slide1².jpg',
+        'side': '/Slides/Slide1²².jpg'
+      },
+      'white': {
+        'front': '/Slides/Slide1-white.jpg',
+        'back': '/Slides/Slide1-white1.jpg',
+        'side': '/Slides/Slide1-white2.jpg'
+      },
+      'yellow': {
+        'front': '/Slides/Slide1-yellow.jpg',
+        'back': '/Slides/Slide1-yellow1.jpg',
+        'side': '/Slides/Slide1-yellow2.jpg'
+      },
+      'grey': {
+        'front': '/Slides/Slide1-grey.jpg',
+        'back': '/Slides/Slide1-grey1.jpg',
+        'side': '/Slides/Slide1-grey2.jpg'
+      },
+      'orange': {
+        'front': '/Slides/Slide1-Orange.jpg',
+        'back': '/Slides/Slide1-Orange1.jpg',
+        'side': '/Slides/Slide1-Orange2.jpg'
+      }
+    },
+  };
 
-      document.querySelectorAll(".thumbnails img").forEach(img => img.classList.remove("active"));
-      thumb.classList.add("active");
+  let currentProductType = 'Slide'; // Corrected to match the productImages key
+  let selectedColor = 'green'; // Corrected to match the initially active swatch
+  let selectedView = 'front'; // Default selected view
+
+  function updateProductImage() {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnailFront = document.getElementById('thumbnailFront');
+    const thumbnailBack = document.getElementById('thumbnailBack');
+    const thumbnailSide = document.getElementById('thumbnailSide'); // Get the side thumbnail
+
+    if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
+      mainImage.src = productImages[currentProductType][selectedColor][selectedView];
+      thumbnailFront.src = productImages[currentProductType][selectedColor]['front'];
+      thumbnailBack.src = productImages[currentProductType][selectedColor]['back'];
+      thumbnailSide.src = productImages[currentProductType][selectedColor]['side']; // Update side thumbnail
+    } else {
+      console.error(`Images not found for ${currentProductType}, color ${selectedColor}`);
     }
-  </script>
+
+    // Update active class for thumbnails
+    document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+    if (selectedView === 'front') {
+      thumbnailFront.classList.add('active');
+    } else if (selectedView === 'back') {
+      thumbnailBack.classList.add('active');
+    } else if (selectedView === 'side') {
+      thumbnailSide.classList.add('active');
+    }
+  }
+
+  function selectColor(color) {
+    selectedColor = color;
+    updateProductImage();
+
+    document.querySelectorAll(".color-swatch").forEach(swatch => {
+      if (swatch.dataset.color === color) {
+        swatch.classList.add('active');
+      } else {
+        swatch.classList.remove('active');
+      }
+    });
+  }
+
+  function changeView(view) {
+    selectedView = view;
+    updateProductImage();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    currentProductType = 'Slide'; // Ensure this matches the key in productImages
+    selectedColor = 'green'; // Set initial color to match the active swatch in HTML
+
+    const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+    if (initialColorSwatch) {
+      initialColorSwatch.classList.add('active');
+    }
+
+    updateProductImage();
+  });
+</script>
 </body>
 </html>
