@@ -102,8 +102,6 @@
       thumbnailFront.classList.add('active');
     } else if (selectedView === 'back') {
       thumbnailBack.classList.add('active');
-    } else if (selectedView === 'side') {
-      thumbnailSide.classList.add('active');
     }
   }
 
@@ -126,8 +124,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    currentProductType = 'Slide'; // Ensure this matches the key in productImages
-    selectedColor = 'green'; // Set initial color to match the active swatch in HTML
+    currentProductType = 'Cap'; // Ensure this matches the key in productImages
+    selectedColor = 'black'; // Set initial color to match the active swatch in HTML
 
     const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
     if (initialColorSwatch) {
@@ -136,7 +134,6 @@
 
     updateProductImage();
   });
-</script>
-</body>
+  </script>
+ </body>
 </html>
-
