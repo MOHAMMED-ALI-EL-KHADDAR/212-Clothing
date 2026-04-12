@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biker Cap</title>
+  <title>Biker Caps</title>
   <link rel="stylesheet" href="/CSS/styles1.css">
   <link rel="website icon" href="/Logo/logo.png">
 </head>
@@ -18,22 +18,28 @@
   </header>
   <main class="container">
     <div class="image-box">
-      <div class="main-image">
-        <img id="mainProductImage" src="/Caps/Cap2.jpg" alt="Biker Cap">
-      </div>
-      <div class="thumbnails">
-        <img src="/Caps/Cap2.jpg" alt="Front" class="active" onclick="changeImage(this)">
-        <img src="/Caps/Cap2².jpg" alt="Back"  onclick="changeImage(this)">
-      </div>
-    </div>
-    <div class="details">
-      <h2>Biker Cap</h2>
-      <p>Top off your biker look with this sleek and adjustable cap. Lightweight and rugged, perfect for sunny days on or off the road.</p>
-      <p class="price">$14.99</p>
-      <p><strong>Sizes:</strong> Adjustable</p>
-      <p><strong>Colors:</strong> Black, Navy, Olive</p>
-      <button class="button"  onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/born-for-speed-hat?product=2173&variation=106060', '_blank')">Buy Now</button>
-    </div>
+  <div class="main-image">
+  <img id="mainProductImage" src="/Caps/Cap2.jpg" alt="Biker Slides">
+  </div>
+  <div class="thumbnails">
+    <img id="thumbnailFront" src="/Caps/Cap2.jpg" alt="Front" class="active" onclick="changeView('front')">
+    <img id="thumbnailBack" src="/Caps/Cap².jpg" alt="Back"  onclick="changeView('back')">
+  </div>
+</div>
+<div class="details">
+  <h2>Biker Cap</h2>
+  <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
+  <p class="price">$39.99</p>
+  <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+  <div class="color-options">
+    <strong>Colors:</strong>
+    <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
+    <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
+    <button class="color-swatch" style="background-color: navy;" data-color="navy" onclick="selectColor('navy')"></button>
+    <button class="color-swatch" style="background-color: gainsboro;" data-color="olive" onclick="selectColor('gainsboro')"></button>
+  </div>
+  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
+</div>
   </main>
   <footer class="footer">
     <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
@@ -50,14 +56,87 @@
     </div>
   </footer>
   <script>
-    function changeImage(thumb) {
-      const mainImage = document.getElementById("mainProductImage");
-      mainImage.src = thumb.src;
+  const productImages = {
+    'Caps': {
+      'black': {
+        'front': '/Caps/Cap2.jpg',
+        'back': '/Caps/Cap2².jpg'
+      },
+      'white': {
+        'front': '/Caps/Cap2-white.jpg',
+        'back': '/Caps/Cap2²-white.jpg'
+      },
+      'navy': {
+        'front': '/Caps/Cap2-navy.jpg',
+        'back': '/Caps/Cap2²-navy.jpg'
+      },
+      'gainsboro': {
+        'front': '/Caps/Cap2-gainsboro.jpg',
+        'back': '/Caps/Cap2²-gainsboro.jpg'
+      },
+    },
+  };
 
-      document.querySelectorAll(".thumbnails img").forEach(img => img.classList.remove("active"));
-      thumb.classList.add("active");
+  let currentProductType = 'Caps'; // Corrected to match the productImages key
+  let selectedColor = 'black'; // Corrected to match the initially active swatch
+  let selectedView = 'front'; // Default selected view
+
+  function updateProductImage() {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnailFront = document.getElementById('thumbnailFront');
+    const thumbnailBack = document.getElementById('thumbnailBack');
+    const thumbnailSide = document.getElementById('thumbnailSide'); // Get the side thumbnail
+
+    if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
+      mainImage.src = productImages[currentProductType][selectedColor][selectedView];
+      thumbnailFront.src = productImages[currentProductType][selectedColor]['front'];
+      thumbnailBack.src = productImages[currentProductType][selectedColor]['back'];
+      thumbnailSide.src = productImages[currentProductType][selectedColor]['side']; // Update side thumbnail
+    } else {
+      console.error(`Images not found for ${currentProductType}, color ${selectedColor}`);
     }
-  </script>
+
+    // Update active class for thumbnails
+    document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+    if (selectedView === 'front') {
+      thumbnailFront.classList.add('active');
+    } else if (selectedView === 'back') {
+      thumbnailBack.classList.add('active');
+    } else if (selectedView === 'side') {
+      thumbnailSide.classList.add('active');
+    }
+  }
+
+  function selectColor(color) {
+    selectedColor = color;
+    updateProductImage();
+
+    document.querySelectorAll(".color-swatch").forEach(swatch => {
+      if (swatch.dataset.color === color) {
+        swatch.classList.add('active');
+      } else {
+        swatch.classList.remove('active');
+      }
+    });
+  }
+
+  function changeView(view) {
+    selectedView = view;
+    updateProductImage();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    currentProductType = 'Slide'; // Ensure this matches the key in productImages
+    selectedColor = 'green'; // Set initial color to match the active swatch in HTML
+
+    const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+    if (initialColorSwatch) {
+      initialColorSwatch.classList.add('active');
+    }
+
+    updateProductImage();
+  });
+</script>
 </body>
 </html>
 
