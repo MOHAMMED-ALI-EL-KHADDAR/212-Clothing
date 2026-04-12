@@ -13,7 +13,7 @@
     <nav>
       <a href="/index.html">Home</a>
       <a href="/Caps/caps.html">Products</a>
-      <a href="/index.html">Contact</a>
+      <a href="/Contact.html">Contact</a>
     </nav>
   </header>
   <main class="container">
@@ -36,9 +36,9 @@
     <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
     <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
     <button class="color-swatch" style="background-color: navy;" data-color="navy" onclick="selectColor('navy')"></button>
-    <button class="color-swatch" style="background-color: gainsboro;" data-color="olive" onclick="selectColor('gainsboro')"></button>
+    <button class="color-swatch" style="background-color: gainsboro;" data-color="gainsboro" onclick="selectColor('gainsboro')"></button>
   </div>
-  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/spirit-of-the-ride?product=212&variation=5819', '_blank')">Buy Now</button>
+  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/born-for-speed-hat?product=2173&variation=106060', '_blank')">Buy Now</button>
 </div>
   </main>
   <footer class="footer">
@@ -56,42 +56,42 @@
     </div>
   </footer>
   <script>
+  // Updated paths to /Caps/ and removed the 'side' views
   const productImages = {
-    'Caps': {
+    'Cap': {
       'black': {
         'front': '/Caps/Cap2.jpg',
-        'back': '/Caps/Cap2².jpg'
+        'back': '/Caps/Cap2².jpg',
       },
       'white': {
         'front': '/Caps/Cap2-white.jpg',
-        'back': '/Caps/Cap2²-white.jpg'
+        'back': '/Caps/Cap2²-white.jpg',
       },
       'navy': {
         'front': '/Caps/Cap2-navy.jpg',
-        'back': '/Caps/Cap2²-navy.jpg'
+        'back': '/Caps/Cap2²-navy.jpg',
       },
       'gainsboro': {
         'front': '/Caps/Cap2-gainsboro.jpg',
-        'back': '/Caps/Cap2²-gainsboro.jpg'
+        'back': '/Caps/Cap2²-gainsboro.jpg',
       },
     },
   };
 
-  let currentProductType = 'Caps'; // Corrected to match the productImages key
-  let selectedColor = 'black'; // Corrected to match the initially active swatch
-  let selectedView = 'front'; // Default selected view
+  let currentProductType = 'Cap'; // Changed to 'Cap' to match dictionary
+  let selectedColor = 'black'; // Fixed default color
+  let selectedView = 'front';
 
   function updateProductImage() {
     const mainImage = document.getElementById('mainProductImage');
     const thumbnailFront = document.getElementById('thumbnailFront');
     const thumbnailBack = document.getElementById('thumbnailBack');
-    const thumbnailSide = document.getElementById('thumbnailSide'); // Get the side thumbnail
+    // Removed thumbnailSide entirely since it doesn't exist in the Caps HTML
 
     if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
       mainImage.src = productImages[currentProductType][selectedColor][selectedView];
       thumbnailFront.src = productImages[currentProductType][selectedColor]['front'];
       thumbnailBack.src = productImages[currentProductType][selectedColor]['back'];
-      thumbnailSide.src = productImages[currentProductType][selectedColor]['side']; // Update side thumbnail
     } else {
       console.error(`Images not found for ${currentProductType}, color ${selectedColor}`);
     }
@@ -124,9 +124,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    currentProductType = 'Cap'; // Ensure this matches the key in productImages
-    selectedColor = 'black'; // Set initial color to match the active swatch in HTML
-
+    // Removed the hardcoded reset to 'green' that was breaking the page
     const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
     if (initialColorSwatch) {
       initialColorSwatch.classList.add('active');
@@ -134,6 +132,6 @@
 
     updateProductImage();
   });
-  </script>
- </body>
+</script>
+</body>
 </html>

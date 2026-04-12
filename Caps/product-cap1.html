@@ -13,26 +13,31 @@
     <nav>
       <a href="/index.html">Home</a>
       <a href="/Caps/caps.html">Products</a>
-      <a href="/index.html">Contact</a>
+      <a href="/Contact.html">Contact</a>
     </nav>
   </header>
   <main class="container">
     <div class="image-box">
       <div class="main-image">
-        <img id="mainProductImage" src="/Caps/Cap1.jpg" alt="Biker Cap">
+        <img id="mainProductImage" src="/Caps/Cap1.jpg" alt="Biker Slides">
       </div>
       <div class="thumbnails">
-        <img src="/Caps/Cap1.jpg" alt="Front" class="active" onclick="changeImage(this)">
-        <img src="/Caps/Cap1².jpg" alt="Back"  onclick="changeImage(this)">
-      </div>
+        <img id="thumbnailFront" src="/Caps/Cap1.jpg" alt="Front" class="active" onclick="changeView('front')">
+        <img id="thumbnailBack" src="/Caps/Cap1².jpg" alt="Back"  onclick="changeView('back')">
+       </div>
     </div>
     <div class="details">
       <h2>Biker Cap</h2>
-      <p>Top off your biker look with this sleek and adjustable cap. Lightweight and rugged, perfect for sunny days on or off the road.</p>
-      <p class="price">$14.99</p>
-      <p><strong>Sizes:</strong> Adjustable</p>
-      <p><strong>Colors:</strong> Black, Navy, Olive</p>
-      <button class="button"  onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/fox-hat-september-2024?product=2171&variation=106054', '_blank')">Buy Now</button>
+      <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
+      <p class="price">$39.99</p>
+      <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+      <div class="color-options">
+        <strong>Colors:</strong>
+        <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
+        <button class="color-swatch" style="background-color: khaki;" data-color="khaki" onclick="selectColor('khaki')"></button>
+        <button class="color-swatch" style="background-color: grey;" data-color="grey" onclick="selectColor('grey')"></button>
+      </div>
+      <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/fox-hat-september-2024?product=2171&variation=106054', '_blank')">Buy Now</button>
     </div>
   </main>
   <footer class="footer">
@@ -50,14 +55,79 @@
     </div>
   </footer>
   <script>
-    function changeImage(thumb) {
-      const mainImage = document.getElementById("mainProductImage");
-      mainImage.src = thumb.src;
+  // Updated paths to /Caps/ and removed the 'side' views
+  const productImages = {
+    'Cap': {
+      'black': {
+        'front': '/Caps/Cap1.jpg',
+        'back': '/Caps/Cap1².jpg',
+      },
+      'khaki': {
+        'front': '/Caps/Cap1-khaki.jpg',
+        'back': '/Caps/Cap1²-khaki.jpg',
+      },
+      'grey': {
+        'front': '/Caps/Cap1-grey.jpg',
+        'back': '/Caps/Cap1²-grey.jpg',
+      },
+    },
+  };
 
-      document.querySelectorAll(".thumbnails img").forEach(img => img.classList.remove("active"));
-      thumb.classList.add("active");
+  let currentProductType = 'Cap'; // Changed to 'Cap' to match dictionary
+  let selectedColor = 'black'; // Fixed default color
+  let selectedView = 'front';
+
+  function updateProductImage() {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnailFront = document.getElementById('thumbnailFront');
+    const thumbnailBack = document.getElementById('thumbnailBack');
+    // Removed thumbnailSide entirely since it doesn't exist in the Caps HTML
+
+    if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
+      mainImage.src = productImages[currentProductType][selectedColor][selectedView];
+      thumbnailFront.src = productImages[currentProductType][selectedColor]['front'];
+      thumbnailBack.src = productImages[currentProductType][selectedColor]['back'];
+    } else {
+      console.error(`Images not found for ${currentProductType}, color ${selectedColor}`);
     }
-  </script>
+
+    // Update active class for thumbnails
+    document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+    if (selectedView === 'front') {
+      thumbnailFront.classList.add('active');
+    } else if (selectedView === 'back') {
+      thumbnailBack.classList.add('active');
+    }
+  }
+
+  function selectColor(color) {
+    selectedColor = color;
+    updateProductImage();
+
+    document.querySelectorAll(".color-swatch").forEach(swatch => {
+      if (swatch.dataset.color === color) {
+        swatch.classList.add('active');
+      } else {
+        swatch.classList.remove('active');
+      }
+    });
+  }
+
+  function changeView(view) {
+    selectedView = view;
+    updateProductImage();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Removed the hardcoded reset to 'green' that was breaking the page
+    const initialColorSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+    if (initialColorSwatch) {
+      initialColorSwatch.classList.add('active');
+    }
+
+    updateProductImage();
+  });
+</script>
 </body>
 </html>
 
