@@ -13,7 +13,11 @@
     <nav>
       <a href="/index.html">Home</a>
       <a href="/Slides/Slides.html">Products</a>
-      <a href="/index.html">Contact</a>
+      <a href="/Contact.html">Contact</a>
+      <a href="#" id="cartIcon" style="position: relative;">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" style="width: 24px;">
+        <span id="cartItemCount" style="position: absolute; top: -10px; right: -10px; background: red; color: rgb(255, 255, 255); border-radius: 50%; padding: 2px 6px; font-size: 12px; display: none;">0</span>
+      </a>
     </nav>
   </header>
   <main class="container">  
@@ -28,10 +32,18 @@
   </div>
 </div>
 <div class="details">
-  <h2>Biker Slides</h2>
-  <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
-  <p class="price">$39.99</p>
-  <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+  <h2 id="productName">Biker Cap</h2> 
+  <p>Stay warm and stylish with our premium biker gear. Designed for comfort and durability.</p>
+  <p class="price">$<span id="productPrice">39.99</span></p>
+  <p><strong>Sizes:</strong>
+    <select id="productSize" style="padding: 5px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
+  </p>
   <div class="color-options">
     <strong>Colors:</strong>
     <button class="color-swatch active" style="background-color: green;" data-color="green" onclick="selectColor('green')"></button>
@@ -40,7 +52,8 @@
     <button class="color-swatch" style="background-color: red;" data-color="red" onclick="selectColor('red')"></button>
     <button class="color-swatch" style="background-color: orange;" data-color="orange" onclick="selectColor('orange')"></button>
   </div>
-  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/slides-biker-s?product=1895&variation=105485', '_blank')">Buy Now</button>
+  <button class="button" id="addToCartButton" style="margin-bottom: 10px;">Add to Cart</button>
+  <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/slides-biker-s?product=1895&variation=105485', '_blank')">Buy Now (Direct)</button>
 </div>
   </main>
   <footer class="footer">
@@ -148,5 +161,18 @@
     updateProductImage();
   });
 </script>
+<script src="/CSS/cart.js"></script>
+<div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="button" id="checkoutButton">Proceed to Checkout</button>
+      <button class="button clear-cart-button" id="clearCartButton">Clear Cart</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
