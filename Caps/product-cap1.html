@@ -14,6 +14,10 @@
       <a href="/index.html">Home</a>
       <a href="/Caps/caps.html">Products</a>
       <a href="/Contact.html">Contact</a>
+      <a href="#" id="cartIcon" class="nav-cart-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
+        <span id="cartItemCount" class="cart-badge">0</span>
+      </a>
     </nav>
   </header>
   <main class="container">
@@ -27,17 +31,26 @@
        </div>
     </div>
     <div class="details">
-      <h2>Biker Cap</h2>
+      <h2 id="productName">Biker Cap</h2>
       <p>Stay warm and stylish with our premium biker slides. Designed for comfort and durability, they’re the perfect fit for all riders on the road.</p>
-      <p class="price">$39.99</p>
-      <p><strong>Sizes:</strong> S, M, L, XL, XXL</p>
+      <p class="price">$<span id="productPrice">39.99</span></p>
+     <p><strong>Sizes:</strong>
+    <select id="productSize" style="padding: 5px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
+  </p>
       <div class="color-options">
         <strong>Colors:</strong>
         <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
         <button class="color-swatch" style="background-color: khaki;" data-color="khaki" onclick="selectColor('khaki')"></button>
         <button class="color-swatch" style="background-color: grey;" data-color="grey" onclick="selectColor('grey')"></button>
       </div>
-      <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/fox-hat-september-2024?product=2171&variation=106054', '_blank')">Buy Now</button>
+       <button class="button" id="addToCartButton" style="margin-bottom: 10px;">Add to Cart</button>
+      <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/fox-hat-september-2024?product=2171&variation=106054', '_blank')">Buy Now (Direct)</button>
     </div>
   </main>
   <footer class="footer">
@@ -128,6 +141,19 @@
     updateProductImage();
   });
 </script>
+<script src="/CSS/cart.js"></script>
+<div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="button" id="checkoutButton">Proceed to Checkout</button>
+      <button class="button clear-cart-button" id="clearCartButton">Clear Cart</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
