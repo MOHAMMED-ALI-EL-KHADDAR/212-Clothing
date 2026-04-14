@@ -16,6 +16,10 @@
       <a href="/T-Shirts/tshirts.html">T-Shirts</a>
       <a href="/Slides/Slides.html">Slides</a>
       <a href="/index.html">Contact</a>
+      <a href="#" id="cartIcon" class="nav-cart-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
+        <span id="cartItemCount" class="cart-badge">0</span>
+      </a>
     </nav>
   </header>
   <section class="products" id="products">
@@ -29,7 +33,7 @@
     </div>
      <div class="product">
       <a href="product-hoodie20.html">
-        <img src="Hoodie20.jpg" alt="Hoodie">
+        <img src="Hoodie20².jpg" alt="Hoodie">
         <h3>Driver Hoodie 3</h3>
         <p>Description goes here.</p>
         <p><strong>Price: $00.00</strong></p>
@@ -202,5 +206,18 @@
       </a>
     </div>
   </footer>
+  <div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="button" id="checkoutButton">Buy Now</button>
+      <button class="button clear-cart-button" id="clearCartButton">Clear Cart</button>
+    </div>
+  </div>
+  </div>
+  <script src="/CSS/cart.js"></script>
 </body>
 </html>
