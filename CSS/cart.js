@@ -1,4 +1,3 @@
-// --- Shopping Cart Logic ---
 let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
 function saveCart() {
@@ -193,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
       if (cart.length > 0) {
-        alert('Proceeding to checkout with ' + cart.length + ' total items.');
+        window.location.href = '/checkout.html';
       } else {
         alert('Your cart is empty.');
       }

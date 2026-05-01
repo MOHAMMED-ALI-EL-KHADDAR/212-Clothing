@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - 212 Clothing</title>
+  <link rel="stylesheet" href="/CSS/styles1.css">
+  <link rel="website icon" href="/Logo/Logo.png">
+  <style>
+    .checkout-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 768px) {
+      .checkout-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .order-summary {
+      background: #141414;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .order-summary h2 {
+      color: #ff4500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .checkout-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .checkout-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .checkout-item-info h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+    .checkout-item-info p {
+      margin: 5px 0 0;
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .checkout-total {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    .checkout-total span {
+      color: #ff4500;
+    }
+    .contact-form {
+      background: #141414;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .contact-form h2 {
+      color: #ff4500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: #080808;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #ff4500;
+    }
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+      color: #fff;
+      padding: 15px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .submit-btn:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>212 CLOTHING</h1>
+    <nav>
+      <a href="/Index.html">Home</a>
+      <a href="/T-Shirts/tshirts.html">Products</a>
+      <a href="/Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="checkout-container">
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <div id="checkoutItems">
+        <!-- Items will be loaded here via JS -->
+      </div>
+      <div class="checkout-total">
+        Total: $<span id="checkoutTotal">0.00</span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Your Information</h2>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number (WhatsApp)</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. +212 600 000 000" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Shipping Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Enter your full address" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="notes">Additional Notes (Optional)</label>
+          <textarea id="notes" name="notes" rows="2" placeholder="Any special requests?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Confirm Order via WhatsApp</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
+  </footer>
+
+  <script>
+    // Load cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+    function renderCheckout() {
+      const container = document.getElementById('checkoutItems');
+      const totalSpan = document.getElementById('checkoutTotal');
+      
+      if (cart.length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        window.location.href = '/Index.html'; // Redirect if empty
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = '';
+      
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        const div = document.createElement('div');
+        div.classList.add('checkout-item');
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="checkout-item-info">
+            <h4>${item.name}</h4>
+            <p>Color: ${item.color}, Size: ${item.size}, Qty: ${item.quantity}</p>
+            <p>Price: $${itemTotal.toFixed(2)}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+      
+      totalSpan.textContent = total.toFixed(2);
+    }
+
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const notes = document.getElementById('notes').value;
+      
+      // Format the WhatsApp message
+      let message = `*New Order from 212 Clothing*%0A%0A`;
+      message += `*Customer Info:*%0A`;
+      message += `- Name: ${name}%0A`;
+      message += `- Phone: ${phone}%0A`;
+      message += `- Address: ${address}%0A`;
+      if (notes) message += `- Notes: ${notes}%0A`;
+      
+      message += `%0A*Order Details:*%0A`;
+      cart.forEach(item => {
+        message += `- ${item.name} (${item.color}, ${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
+      });
+      
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += `%0A*Total Amount: $${total.toFixed(2)}*`;
+      
+      // Replace with your WhatsApp number
+      const whatsappNumber = "212600000000"; // User should change this
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      
+      // Clear cart after order
+      localStorage.removeItem('shoppingCart');
+      
+      // Redirect to WhatsApp
+      window.open(whatsappUrl, '_blank');
+      alert('Thank you for your order! You are being redirected to WhatsApp to complete the purchase.');
+      window.location.href = '/Index.html';
+    });
+
+    renderCheckout();
+  </script>
+</body>
+</html>
