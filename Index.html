@@ -201,15 +201,27 @@
 <script src="/CSS/cart.js"></script>
 <script src="/CSS/crazy_animations.js"></script>
   <script>
-    // Preloader Script
+    // Preloader Script - Show only on first visit
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
-      setTimeout(() => {
+      
+      // Check if user has already visited this session
+      const hasVisited = sessionStorage.getItem('212-clothing-visited');
+      
+      if (hasVisited) {
+        // User has already visited, hide preloader immediately
         preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+      } else {
+        // First visit, show preloader with animation
+        sessionStorage.setItem('212-clothing-visited', 'true');
         setTimeout(() => {
-          preloader.style.visibility = 'hidden';
-        }, 800);
-      }, 1500); // Show for 1.5s for cinematic effect
+          preloader.style.opacity = '0';
+          setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+          }, 800);
+        }, 1500); // Show for 1.5s for cinematic effect
+      }
     });
 
     // Scroll Reveal Script

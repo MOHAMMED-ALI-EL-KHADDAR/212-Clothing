@@ -856,9 +856,10 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: clamp(20px, 4vw, 40px);
-  background: radial-gradient(circle at top, #111 0%, #080808 100%);
+  background: #080808;
   max-width: 1600px;
   margin: 0 auto;
+  will-change: auto;
 }
 
 .product {
@@ -872,6 +873,10 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .product:hover {
@@ -889,6 +894,8 @@ nav a:hover {
   border-radius: 15px;
   margin-bottom: 20px;
   transition: all 0.4s ease;
+  background-color: #1a1a1a;
+  display: block;
 }
 
 .product h3 {
@@ -1079,4 +1086,80 @@ nav a:hover {
 }
 .listing-color-swatch.active {
   box-shadow: 0 0 10px #ff4500;
+}
+
+/* =========================================
+   10. MOBILE RESPONSIVE GRID (2-Column Layout)
+   ========================================= */
+
+/* Mobile phones: 2-column grid layout */
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 3vw, 20px);
+    padding: clamp(15px, 3vw, 30px) 5%;
+  }
+
+  .product {
+    padding: clamp(10px, 2vw, 15px);
+  }
+
+  .product img {
+    margin-bottom: 10px;
+  }
+
+  .product h3 {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin-bottom: 5px;
+  }
+
+  .product p {
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    margin-bottom: 8px;
+  }
+
+  .product p:last-of-type {
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  }
+}
+
+/* Extra small phones: Ensure proper spacing */
+@media (max-width: 480px) {
+  .products {
+    gap: clamp(8px, 2vw, 15px);
+    padding: clamp(10px, 2vw, 20px) 3%;
+  }
+
+  .product {
+    padding: clamp(8px, 1.5vw, 12px);
+    border-radius: 12px;
+  }
+
+  .product img {
+    margin-bottom: 8px;
+    border-radius: 10px;
+  }
+
+  .product h3 {
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    margin-bottom: 3px;
+  }
+
+  .product p {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    margin-bottom: 5px;
+  }
+}
+
+/* Desktop: Preserve original multi-column layout */
+@media (min-width: 769px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(20px, 4vw, 40px);
+    padding: clamp(20px, 5vw, 60px) 5%;
+  }
+
+  .product {
+    padding: clamp(15px, 3vw, 25px);
+  }
 }

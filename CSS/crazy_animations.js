@@ -1,15 +1,19 @@
 // 1. Vanta.js NET Effect - The "Crazy" Background
 // This creates a futuristic, interactive digital net that reacts to your mouse.
 function initVanta() {
+    // Disable Vanta on mobile devices to prevent flashing
+    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) return;
+    
     VANTA.NET({
         el: "body", // Target the entire page background
         mouseControls: true,
-        touchControls: true,
+        touchControls: false,
         gyroControls: false,
         minHeight: 200.00,
         minWidth: 200.00,
         scale: 1.00,
-        scaleMobile: 1.00,
+        scaleMobile: 0.5,
         color: 0xff4500, // Orange color to match your theme
         backgroundColor: 0x0, // Black background
         points: 15.00,
