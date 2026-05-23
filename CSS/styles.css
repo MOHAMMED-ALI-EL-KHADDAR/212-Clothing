@@ -1080,12 +1080,19 @@ nav a:hover {
   cursor: pointer;
   transition: 0.3s;
 }
-.listing-color-swatch:hover, .listing-color-swatch.active {
+/* Only truly-selected swatch gets orange ring */
+.listing-color-swatch.active {
   border-color: #ff4500;
   transform: scale(1.2);
-}
-.listing-color-swatch.active {
   box-shadow: 0 0 10px #ff4500;
+}
+
+/* Hover only on real pointer devices (not touch screens) */
+@media (hover: hover) {
+  .listing-color-swatch:hover {
+    border-color: #ff4500;
+    transform: scale(1.2);
+  }
 }
 
 /* =========================================

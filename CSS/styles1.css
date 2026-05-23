@@ -1,4 +1,3 @@
-
 /* =========================================
    1. ANIMATION KEYFRAMES (The Magic)
    ========================================= */
@@ -1025,5 +1024,19 @@ select, .button {
     flex-wrap: wrap; /* Allows links to drop to a new line instead of stretching the screen */
     justify-content: center; /* Centers the links under the logo */
     width: 100%;
+  }
+}
+/* =========================================
+   FIX: Sticky hover on touch devices
+   On phones, :hover stays stuck after a tap.
+   This causes the previously-tapped swatch
+   to keep its orange border even after a new
+   one is selected. Reset hover on touch screens.
+   ========================================= */
+@media (hover: none) {
+  .color-swatch:hover {
+    transform: scale(1) !important;
+    border-color: #555 !important;
+    box-shadow: none !important;
   }
 }
