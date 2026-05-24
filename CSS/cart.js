@@ -1,10 +1,10 @@
 let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-
+ 
 function saveCart() {
   localStorage.setItem('shoppingCart', JSON.stringify(cart));
   updateCartUI();
 }
-
+ 
 function updateCartUI() {
   const cartItemCount = document.getElementById('cartItemCount');
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -17,14 +17,14 @@ function updateCartUI() {
   renderCartItems();
   updateCartTotal();
 }
-
+ 
 function addToCart(product) {
   const existingItemIndex = cart.findIndex(item =>
     item.id === product.id &&
     item.color === product.color &&
     item.size === product.size
   );
-
+ 
   if (existingItemIndex > -1) {
     // If it's already in the cart, just add 1 more
     cart[existingItemIndex].quantity += 1;
@@ -37,7 +37,7 @@ function addToCart(product) {
   // Automatically open the cart so they can see it and adjust quantity
   showCartModal(); 
 }
-
+ 
 // NEW FUNCTION: Updates quantity when user changes the number inside the cart
 function updateCartItemQuantity(productId, color, size, newQuantity) {
   const item = cart.find(i => i.id === productId && i.color === color && i.size === size);
@@ -51,18 +51,18 @@ function updateCartItemQuantity(productId, color, size, newQuantity) {
     }
   }
 }
-
+ 
 function removeFromCart(productId, color, size) {
   cart = cart.filter(item => !(item.id === productId && item.color === color && item.size === size));
   saveCart();
 }
-
+ 
 function clearCart() {
   cart = [];
   saveCart();
   hideCartModal();
 }
-
+ 
 function renderCartItems() {
   const cartItemsContainer = document.getElementById('cartItems');
   if (!cartItemsContainer) return;
@@ -94,7 +94,7 @@ function renderCartItems() {
     `;
     cartItemsContainer.appendChild(cartItemDiv);
   });
-
+ 
   // Listen for clicks on the Remove (X) button
   document.querySelectorAll('.remove-item-button').forEach(button => {
     button.addEventListener('click', (event) => {
@@ -104,7 +104,7 @@ function renderCartItems() {
       removeFromCart(productId, color, size);
     });
   });
-
+ 
   // Listen for changes in the Quantity input boxes
   document.querySelectorAll('.cart-qty-input').forEach(input => {
     input.addEventListener('change', (event) => {
@@ -116,7 +116,7 @@ function renderCartItems() {
     });
   });
 }
-
+ 
 function updateCartTotal() {
   const cartTotalSpan = document.getElementById('cartTotal');
   if (!cartTotalSpan) return;
@@ -124,7 +124,7 @@ function updateCartTotal() {
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   cartTotalSpan.textContent = total.toFixed(2);
 }
-
+ 
 function showCartModal() {
   const cartModal = document.getElementById('cartModal');
   if (cartModal) {
@@ -133,14 +133,14 @@ function showCartModal() {
     updateCartTotal();
   }
 }
-
+ 
 function hideCartModal() {
   const cartModal = document.getElementById('cartModal');
   if (cartModal) {
     cartModal.style.display = 'none';
   }
 }
-
+ 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   const cartIcon = document.getElementById('cartIcon');
@@ -150,19 +150,19 @@ document.addEventListener('DOMContentLoaded', () => {
       showCartModal();
     });
   }
-
+ 
   const closeButton = document.querySelector('#cartModal .close-button');
   if (closeButton) {
     closeButton.addEventListener('click', hideCartModal);
   }
-
+ 
   window.addEventListener('click', (event) => {
     const cartModal = document.getElementById('cartModal');
     if (event.target === cartModal) {
       hideCartModal();
     }
   });
-
+ 
   // Add to Cart Button Click
   const addToCartButton = document.getElementById('addToCartButton');
   if (addToCartButton) {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
       addToCart(product);
     });
   }
-
+ 
   const checkoutButton = document.getElementById('checkoutButton');
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
@@ -198,28 +198,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
+ 
   const clearCartButton = document.getElementById('clearCartButton');
   if (clearCartButton) {
     clearCartButton.addEventListener('click', clearCart);
   }
-
+ 
   updateCartUI();
 });
-
+ 
 /**
  * 212 CLOTHING - ULTIMATE COLOR SWITCHER
  * This script imports colors from product pages and handles image switching.
  */
 const ColorSwitcher = {
     cache: {},
-
+ 
     async init() {
         // Check if running on file:// protocol
         if (window.location.protocol === 'file:') {
             console.warn("COLOR SWITCHER: You are running on file://. Fetch is blocked by browsers. Please use a local server (Live Server).");
         }
-
+ 
         const cards = document.querySelectorAll('.product');
         for (let card of cards) {
             const link = card.querySelector('a');
@@ -229,7 +229,7 @@ const ColorSwitcher = {
             }
         }
     },
-
+ 
     async setupCard(card, url) {
         try {
             // Resolve absolute URL for fetching
@@ -246,7 +246,7 @@ const ColorSwitcher = {
                     label: (s.dataset.color || s.getAttribute('data-color') || ""),
                     css: s.style.backgroundColor || "#ccc"
                 })).filter(c => c.name);
-
+ 
                 // 2. Extract Images (Handles nested objects and unquoted keys)
                 const imgData = {};
                 const scriptMatch = html.match(/const productImages = (\{[\s\S]*?\});/);
@@ -262,18 +262,60 @@ const ColorSwitcher = {
                         if (f || bk) imgData[key] = { front: f?.[1], back: bk?.[1] };
                     }
                 }
-
+ 
+                // 3. Extract real title from #productName
+                const titleEl = doc.getElementById('productName');
+                const realTitle = titleEl ? titleEl.textContent.trim() : null;
+ 
+                // 4. Extract real price from #productPrice
+                const priceEl = doc.getElementById('productPrice');
+                const realPrice = priceEl ? parseFloat(priceEl.textContent.trim()) : null;
+ 
                 this.cache[absoluteUrl] = { 
                     colors, 
                     imgData, 
-                    base: absoluteUrl.substring(0, absoluteUrl.lastIndexOf('/') + 1) 
+                    base: absoluteUrl.substring(0, absoluteUrl.lastIndexOf('/') + 1),
+                    realTitle,
+                    realPrice,
                 };
             }
-
-            const { colors, imgData, base } = this.cache[absoluteUrl];
+ 
+            const { colors, imgData, base, realTitle, realPrice } = this.cache[absoluteUrl];
+ 
+            // ── Inject real title into card <h3> ──
+            if (realTitle) {
+                const h3 = card.querySelector('h3');
+                if (h3 && h3.textContent.trim() !== realTitle) {
+                    h3.textContent = realTitle;
+                }
+            }
+ 
+            // ── Inject real price into card price <p> ──
+            if (realPrice !== null && !isNaN(realPrice)) {
+                const pTags2 = card.querySelectorAll('p strong');
+                const priceStrong = Array.from(pTags2).find(el =>
+                    el.textContent.replace(/\s/g,'').match(/Price:/i)
+                );
+                if (priceStrong) {
+                    // Store USD base so currency.js can convert it
+                    priceStrong.parentElement.dataset.priceScanned = '1';
+                    priceStrong.innerHTML =
+                        `Price: <span class="converted-price" data-usd="${realPrice}">$${realPrice.toFixed(2)}</span>`;
+ 
+                    // If currency.js is already active and not USD, convert immediately
+                    if (typeof window.getActiveCurrencyConfig === 'function') {
+                        const cfg = window.getActiveCurrencyConfig();
+                        const span = priceStrong.querySelector('.converted-price');
+                        if (span && cfg.label !== 'USD') {
+                            span.textContent = cfg.symbol + (realPrice * cfg.rate).toFixed(2);
+                        }
+                    }
+                }
+            }
+ 
             if (colors.length === 0) return;
-
-            // 3. Replace Description with Swatches
+ 
+            // ── Replace Description placeholder with colour swatches ──
             const pTags = card.querySelectorAll('p');
             let targetP = Array.from(pTags).find(p => p.textContent.toLowerCase().includes('description'));
             
@@ -319,10 +361,11 @@ const ColorSwitcher = {
         }
     }
 };
-
+ 
 // Auto-run
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => ColorSwitcher.init());
 } else {
     ColorSwitcher.init();
 }
+ 
