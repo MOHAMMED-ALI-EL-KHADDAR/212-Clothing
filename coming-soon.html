@@ -64,7 +64,10 @@
       animation: fadeDown 1s ease both;
     }
     .logo-wrap img {
-      height: clamp(36px, 5vw, 52px);
+     height: clamp(50px, 6vw, 70px); /* Slightly larger so the circle stands out */
+      width: clamp(50px, 6vw, 70px); /* Forces the width to match the height */
+      object-fit: cover; /* Prevents the image from stretching */
+      border-radius: 50%; /* Makes it a perfect circle */
       filter: drop-shadow(0 0 12px var(--orange-glow));
     }
     .status-pill {
