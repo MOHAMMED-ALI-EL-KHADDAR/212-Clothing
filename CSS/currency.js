@@ -240,12 +240,13 @@ function convertAllPrices() {
       productPriceSpan.classList.remove('price-converting');
     }, 100);
 
-    // Also fix the $ symbol before it
+    // Fix the currency symbol text node before #productPrice
+    // Must match ANY symbol (not just $) so repeated switching works
     const parent = productPriceSpan.parentElement;
     if (parent) {
       parent.childNodes.forEach(node => {
-        if (node.nodeType === 3 && node.textContent.includes('$')) {
-          node.textContent = node.textContent.replace(/\$|€|MAD\s*/g, cfg.symbol);
+        if (node.nodeType === 3 && /[\$€]|MAD/.test(node.textContent)) {
+          node.textContent = node.textContent.replace(/MAD\s*|\$|€/g, cfg.symbol);
         }
       });
     }
