@@ -178,11 +178,14 @@
 
       let total = 0;
       container.innerHTML = '';
-      
+
+      const cfg = typeof window.getActiveCurrencyConfig === 'function'
+        ? window.getActiveCurrencyConfig() : { symbol: '$', rate: 1 };
+
       cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
-        
+
         const div = document.createElement('div');
         div.classList.add('checkout-item');
         div.innerHTML = `
@@ -190,13 +193,21 @@
           <div class="checkout-item-info">
             <h4>${item.name}</h4>
             <p>Color: ${item.color}, Size: ${item.size}, Qty: ${item.quantity}</p>
-            <p>Price: $${itemTotal.toFixed(2)}</p>
+            <p data-price-scanned="1">Price: <span class="converted-price" data-usd="${itemTotal.toFixed(2)}">${cfg.symbol}${(itemTotal * cfg.rate).toFixed(2)}</span></p>
           </div>
         `;
         container.appendChild(div);
       });
-      
-      totalSpan.textContent = total.toFixed(2);
+
+      totalSpan.textContent = (total * cfg.rate).toFixed(2);
+      const totalParent = totalSpan.parentElement;
+      if (totalParent) {
+        totalParent.childNodes.forEach(node => {
+          if (node.nodeType === 3 && /[\$€]|MAD/.test(node.textContent)) {
+            node.textContent = node.textContent.replace(/MAD\s*|\$|€/g, cfg.symbol);
+          }
+        });
+      }
     }
 
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
@@ -217,7 +228,7 @@
       
       message += `%0A*Order Details:*%0A`;
       cart.forEach(item => {
-        message += `- ${item.name} (${item.color}, ${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
+        message += `- ${item.name} (${item.color}, ${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)} USD%0A`;
       });
       
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -238,5 +249,6 @@
 
     renderCheckout();
   </script>
-<script src="/CSS/currency.js"></script>`n</body>
+<script src="/CSS/currency.js"></script>
+</body>
 </html>
