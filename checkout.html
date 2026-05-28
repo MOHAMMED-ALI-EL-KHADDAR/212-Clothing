@@ -122,7 +122,7 @@
       <a href="/Contact.html">Contact</a>
     </nav>
   </header>
-
+ 
   <main class="checkout-container">
     <div class="order-summary">
       <h2>Order Summary</h2>
@@ -130,10 +130,10 @@
         <!-- Items will be loaded here via JS -->
       </div>
       <div class="checkout-total">
-        Total: $<span id="checkoutTotal">0.00</span>
+        Total: <span id="checkoutTotalSymbol">$</span><span id="checkoutTotal">0.00</span>
       </div>
     </div>
-
+ 
     <div class="contact-form">
       <h2>Your Information</h2>
       <form id="checkoutForm">
@@ -157,15 +157,15 @@
       </form>
     </div>
   </main>
-
+ 
   <footer class="footer">
     <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
   </footer>
-
+ 
   <script>
     // Load cart from localStorage
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-
+ 
     function renderCheckout() {
       const container = document.getElementById('checkoutItems');
       const totalSpan = document.getElementById('checkoutTotal');
@@ -175,17 +175,17 @@
         window.location.href = '/Index.html'; // Redirect if empty
         return;
       }
-
+ 
       let total = 0;
       container.innerHTML = '';
-
+ 
       const cfg = typeof window.getActiveCurrencyConfig === 'function'
         ? window.getActiveCurrencyConfig() : { symbol: '$', rate: 1 };
-
+ 
       cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
-
+ 
         const div = document.createElement('div');
         div.classList.add('checkout-item');
         div.innerHTML = `
@@ -198,18 +198,12 @@
         `;
         container.appendChild(div);
       });
-
+ 
       totalSpan.textContent = (total * cfg.rate).toFixed(2);
-      const totalParent = totalSpan.parentElement;
-      if (totalParent) {
-        totalParent.childNodes.forEach(node => {
-          if (node.nodeType === 3 && /[\$€]|MAD/.test(node.textContent)) {
-            node.textContent = node.textContent.replace(/MAD\s*|\$|€/g, cfg.symbol);
-          }
-        });
-      }
+      const symbolSpan = document.getElementById('checkoutTotalSymbol');
+      if (symbolSpan) symbolSpan.textContent = cfg.symbol;
     }
-
+ 
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -246,7 +240,7 @@
       alert('Thank you for your order! You are being redirected to WhatsApp to complete the purchase.');
       window.location.href = '/Index.html';
     });
-
+ 
     renderCheckout();
   </script>
 <script src="/CSS/currency.js"></script>

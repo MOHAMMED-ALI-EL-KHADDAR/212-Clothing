@@ -8,43 +8,44 @@ function saveCart() {
 function updateCartUI() {
   const cartItemCount = document.getElementById('cartItemCount');
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  
   if (cartItemCount) {
     cartItemCount.textContent = totalItems;
     cartItemCount.style.display = totalItems > 0 ? 'inline-block' : 'none';
   }
-  
   renderCartItems();
   updateCartTotal();
 }
  
 function addToCart(product) {
+  // BUG FIX: Always store the raw USD price, not the converted display value.
+  // If currency.js is active and not USD, #productPrice shows the converted amount.
+  // We read data-usd from the span if available; fall back to the raw textContent.
+  const priceSpan = document.getElementById('productPrice');
+  if (priceSpan) {
+    const usdBase = parseFloat(priceSpan.dataset.usd);
+    if (!isNaN(usdBase)) product.price = usdBase;
+  }
+ 
   const existingItemIndex = cart.findIndex(item =>
     item.id === product.id &&
     item.color === product.color &&
     item.size === product.size
   );
- 
   if (existingItemIndex > -1) {
-    // If it's already in the cart, just add 1 more
     cart[existingItemIndex].quantity += 1;
   } else {
-    // Otherwise, add the new product
     cart.push(product);
   }
-  
   saveCart();
-  // Automatically open the cart so they can see it and adjust quantity
-  showCartModal(); 
+  showCartModal();
 }
  
-// NEW FUNCTION: Updates quantity when user changes the number inside the cart
 function updateCartItemQuantity(productId, color, size, newQuantity) {
   const item = cart.find(i => i.id === productId && i.color === color && i.size === size);
   if (item) {
     const qty = parseInt(newQuantity);
-    if (qty <= 0) {
-      removeFromCart(productId, color, size); // Remove if they set it to 0
+    if (isNaN(qty) || qty <= 0) {
+      removeFromCart(productId, color, size);
     } else {
       item.quantity = qty;
       saveCart();
@@ -66,53 +67,94 @@ function clearCart() {
 function renderCartItems() {
   const cartItemsContainer = document.getElementById('cartItems');
   if (!cartItemsContainer) return;
-  
+ 
   cartItemsContainer.innerHTML = '';
-  
+ 
   if (cart.length === 0) {
-    cartItemsContainer.innerHTML = '<p style="text-align: center; color: #aaa;">Your cart is empty.</p>';
+    cartItemsContainer.innerHTML = '<p style="text-align:center;color:#aaa;">Your cart is empty.</p>';
     return;
   }
-  
-  cart.forEach(item => {
+ 
+  // Get active currency for display
+  const cfg = typeof window.getActiveCurrencyConfig === 'function'
+    ? window.getActiveCurrencyConfig()
+    : { symbol: '$', rate: 1 };
+ 
+  cart.forEach((item, index) => {
+    const displayPrice = (item.price * item.quantity * cfg.rate).toFixed(2);
     const cartItemDiv = document.createElement('div');
     cartItemDiv.classList.add('cart-item');
-    
-    // Notice the new <input> tag replacing the static quantity text
     cartItemDiv.innerHTML = `
       <img src="${item.image}" alt="${item.name}">
       <div class="cart-item-details">
         <h4>${item.name}</h4>
         <p>Color: ${item.color}, Size: ${item.size}</p>
         <div class="cart-quantity-control">
-          <label>Qty:</label>
-          <input type="number" class="cart-qty-input" data-product-id="${item.id}" data-color="${item.color}" data-size="${item.size}" value="${item.quantity}" min="1">
+          <button class="qty-btn qty-minus" data-index="${index}">−</button>
+          <input type="number" class="cart-qty-input" data-index="${index}"
+            value="${item.quantity}" min="1">
+          <button class="qty-btn qty-plus" data-index="${index}">+</button>
         </div>
       </div>
-      <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
-      <button class="remove-item-button" data-product-id="${item.id}" data-color="${item.color}" data-size="${item.size}">X</button>
+      <span class="cart-item-price" data-usd="${(item.price * item.quantity).toFixed(2)}">
+        ${cfg.symbol}${displayPrice}
+      </span>
+      <button class="remove-item-button" data-index="${index}">✕</button>
     `;
     cartItemsContainer.appendChild(cartItemDiv);
   });
  
-  // Listen for clicks on the Remove (X) button
-  document.querySelectorAll('.remove-item-button').forEach(button => {
-    button.addEventListener('click', (event) => {
-      const productId = event.target.dataset.productId;
-      const color = event.target.dataset.color;
-      const size = event.target.dataset.size;
-      removeFromCart(productId, color, size);
+  // Remove buttons — use index, never breaks with special chars in product name
+  cartItemsContainer.querySelectorAll('.remove-item-button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const idx = parseInt(e.currentTarget.dataset.index);
+      if (!isNaN(idx)) {
+        cart.splice(idx, 1);
+        saveCart();
+      }
     });
   });
  
-  // Listen for changes in the Quantity input boxes
-  document.querySelectorAll('.cart-qty-input').forEach(input => {
-    input.addEventListener('change', (event) => {
-      const id = event.target.dataset.productId;
-      const color = event.target.dataset.color;
-      const size = event.target.dataset.size;
-      const newQty = event.target.value;
-      updateCartItemQuantity(id, color, size, newQty);
+  // + button
+  cartItemsContainer.querySelectorAll('.qty-plus').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const idx = parseInt(e.currentTarget.dataset.index);
+      if (!isNaN(idx) && cart[idx]) {
+        cart[idx].quantity += 1;
+        saveCart();
+      }
+    });
+  });
+ 
+  // − button
+  cartItemsContainer.querySelectorAll('.qty-minus').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const idx = parseInt(e.currentTarget.dataset.index);
+      if (!isNaN(idx) && cart[idx]) {
+        if (cart[idx].quantity <= 1) {
+          cart.splice(idx, 1);
+        } else {
+          cart[idx].quantity -= 1;
+        }
+        saveCart();
+      }
+    });
+  });
+ 
+  // Typing in the input
+  cartItemsContainer.querySelectorAll('.cart-qty-input').forEach(input => {
+    input.addEventListener('input', e => {
+      const idx = parseInt(e.target.dataset.index);
+      const qty = parseInt(e.target.value);
+      if (!isNaN(idx) && cart[idx]) {
+        if (isNaN(qty) || qty <= 0) {
+          cart.splice(idx, 1);
+          saveCart();
+        } else {
+          cart[idx].quantity = qty;
+          saveCart();
+        }
+      }
     });
   });
 }
@@ -120,9 +162,21 @@ function renderCartItems() {
 function updateCartTotal() {
   const cartTotalSpan = document.getElementById('cartTotal');
   if (!cartTotalSpan) return;
-  
+  const cfg = typeof window.getActiveCurrencyConfig === 'function'
+    ? window.getActiveCurrencyConfig()
+    : { symbol: '$', rate: 1 };
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  cartTotalSpan.textContent = total.toFixed(2);
+  cartTotalSpan.textContent = (total * cfg.rate).toFixed(2);
+ 
+  // Fix the symbol text node before #cartTotal
+  const parent = cartTotalSpan.parentElement;
+  if (parent) {
+    parent.childNodes.forEach(node => {
+      if (node.nodeType === 3 && /[\$€]|MAD/.test(node.textContent)) {
+        node.textContent = node.textContent.replace(/MAD\s*|\$|€/g, cfg.symbol);
+      }
+    });
+  }
 }
  
 function showCartModal() {
@@ -136,54 +190,44 @@ function showCartModal() {
  
 function hideCartModal() {
   const cartModal = document.getElementById('cartModal');
-  if (cartModal) {
-    cartModal.style.display = 'none';
-  }
+  if (cartModal) cartModal.style.display = 'none';
 }
  
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   const cartIcon = document.getElementById('cartIcon');
   if (cartIcon) {
-    cartIcon.addEventListener('click', (event) => {
-      event.preventDefault();
-      showCartModal();
-    });
+    cartIcon.addEventListener('click', e => { e.preventDefault(); showCartModal(); });
   }
  
   const closeButton = document.querySelector('#cartModal .close-button');
-  if (closeButton) {
-    closeButton.addEventListener('click', hideCartModal);
-  }
+  if (closeButton) closeButton.addEventListener('click', hideCartModal);
  
-  window.addEventListener('click', (event) => {
+  window.addEventListener('click', e => {
     const cartModal = document.getElementById('cartModal');
-    if (event.target === cartModal) {
-      hideCartModal();
-    }
+    if (e.target === cartModal) hideCartModal();
   });
  
-  // Add to Cart Button Click
   const addToCartButton = document.getElementById('addToCartButton');
   if (addToCartButton) {
     addToCartButton.addEventListener('click', () => {
       const productName = document.getElementById('productName').textContent;
-      const productPrice = parseFloat(document.getElementById('productPrice').textContent);
+      const productPriceEl = document.getElementById('productPrice');
+      // Read USD base if available (set by currency.js), else raw text
+      const productPrice = parseFloat(productPriceEl.dataset.usd || productPriceEl.textContent);
       const sizeElement = document.getElementById('productSize');
       const productSize = sizeElement ? sizeElement.value : 'One Size';
       const productImage = document.getElementById('mainProductImage').src;
-      
+ 
       const product = {
-        id: productName.replace(/\s/g, '').toLowerCase(),
+        id: productName.replace(/[^a-z0-9]/gi, '').toLowerCase(),
         name: productName,
         price: productPrice,
         size: productSize,
-        // UPDATE THIS LINE: It checks if selectedColor exists. If not, it says 'Standard'
-        color: typeof selectedColor !== 'undefined' ? selectedColor : 'Standard', 
+        color: typeof selectedColor !== 'undefined' ? selectedColor : 'Standard',
         image: productImage,
         quantity: 1
       };
-      
       addToCart(product);
     });
   }
@@ -191,165 +235,154 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkoutButton = document.getElementById('checkoutButton');
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
-      if (cart.length > 0) {
-        window.location.href = '/checkout.html';
-      } else {
-        alert('Your cart is empty.');
-      }
+      if (cart.length > 0) window.location.href = '/checkout.html';
+      else alert('Your cart is empty.');
     });
   }
  
   const clearCartButton = document.getElementById('clearCartButton');
-  if (clearCartButton) {
-    clearCartButton.addEventListener('click', clearCart);
-  }
+  if (clearCartButton) clearCartButton.addEventListener('click', clearCart);
  
   updateCartUI();
 });
  
+// Inject +/− button styles
+(function() {
+  const s = document.createElement('style');
+  s.textContent = `
+    .cart-quantity-control { display:flex; align-items:center; gap:6px; margin-top:6px; }
+    .qty-btn {
+      width:28px; height:28px; border-radius:50%;
+      background:#1a1a1a; border:1px solid #ff4500;
+      color:#ff4500; font-size:18px; line-height:1;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+      padding:0;
+    }
+    .qty-btn:hover { background:#ff4500; color:#fff; }
+    .cart-qty-input {
+      width:44px; text-align:center;
+      background:#111; border:1px solid #333; border-radius:6px;
+      color:#fff; font-size:14px; padding:4px;
+    }
+    .cart-qty-input::-webkit-inner-spin-button,
+    .cart-qty-input::-webkit-outer-spin-button { opacity:1; }
+  `;
+  document.head.appendChild(s);
+})();
+ 
 /**
- * 212 CLOTHING - ULTIMATE COLOR SWITCHER
- * This script imports colors from product pages and handles image switching.
+ * COLOR SWITCHER
  */
 const ColorSwitcher = {
     cache: {},
  
     async init() {
-        // Check if running on file:// protocol
         if (window.location.protocol === 'file:') {
-            console.warn("COLOR SWITCHER: You are running on file://. Fetch is blocked by browsers. Please use a local server (Live Server).");
+            console.warn("COLOR SWITCHER: Running on file://. Use a local server.");
         }
- 
         const cards = document.querySelectorAll('.product');
         for (let card of cards) {
             const link = card.querySelector('a');
-            if (link) {
-                const url = link.getAttribute('href');
-                this.setupCard(card, url);
-            }
+            if (link) this.setupCard(card, link.getAttribute('href'));
         }
     },
  
     async setupCard(card, url) {
         try {
-            // Resolve absolute URL for fetching
             const absoluteUrl = new URL(url, window.location.href).href;
-            
+ 
             if (!this.cache[absoluteUrl]) {
                 const resp = await fetch(absoluteUrl);
                 const html = await resp.text();
                 const doc = new DOMParser().parseFromString(html, 'text/html');
-                
-                // 1. Extract Colors from swatches
+ 
                 const colors = Array.from(doc.querySelectorAll('.color-swatch')).map(s => ({
-                    name: (s.dataset.color || s.getAttribute('data-color') || "").trim().toLowerCase(),
-                    label: (s.dataset.color || s.getAttribute('data-color') || ""),
-                    css: s.style.backgroundColor || "#ccc"
+                    name: (s.dataset.color || '').trim().toLowerCase(),
+                    label: (s.dataset.color || ''),
+                    css: s.style.backgroundColor || '#ccc'
                 })).filter(c => c.name);
  
-                // 2. Extract Images (Handles nested objects and unquoted keys)
                 const imgData = {};
                 const scriptMatch = html.match(/const productImages = (\{[\s\S]*?\});/);
                 if (scriptMatch) {
                     const content = scriptMatch[1];
-                    // Regex to find any block that contains "front"
                     const blocks = content.matchAll(/([a-zA-Z0-9_-]+|['"][^'"]+['"])\s*:\s*\{([^{}]*?['"]?front['"]?[^{}]*?)\}/g);
                     for (const b of blocks) {
-                        const key = b[1].replace(/['"]/g, "").trim().toLowerCase();
-                        const blockContent = b[2];
-                        const f = blockContent.match(/['"]?front['"]?\s*:\s*['"]([^'"]+)['"]/);
-                        const bk = blockContent.match(/['"]?back['"]?\s*:\s*['"]([^'"]+)['"]/);
+                        const key = b[1].replace(/['"]/g, '').trim().toLowerCase();
+                        const f = b[2].match(/['"]?front['"]?\s*:\s*['"]([^'"]+)['"]/);
+                        const bk = b[2].match(/['"]?back['"]?\s*:\s*['"]([^'"]+)['"]/);
                         if (f || bk) imgData[key] = { front: f?.[1], back: bk?.[1] };
                     }
                 }
  
-                // 3. Extract real title from #productName
                 const titleEl = doc.getElementById('productName');
                 const realTitle = titleEl ? titleEl.textContent.trim() : null;
  
-                // 4. Extract real price from #productPrice
                 const priceEl = doc.getElementById('productPrice');
-                const realPrice = priceEl ? parseFloat(priceEl.textContent.trim()) : null;
+                // Always read the data-usd if present (raw USD), else textContent
+                const rawPrice = priceEl
+                    ? parseFloat(priceEl.dataset.usd || priceEl.textContent.trim())
+                    : null;
  
-                this.cache[absoluteUrl] = { 
-                    colors, 
-                    imgData, 
+                this.cache[absoluteUrl] = {
+                    colors, imgData,
                     base: absoluteUrl.substring(0, absoluteUrl.lastIndexOf('/') + 1),
                     realTitle,
-                    realPrice,
+                    realPrice: rawPrice,
                 };
             }
  
             const { colors, imgData, base, realTitle, realPrice } = this.cache[absoluteUrl];
  
-            // ── Inject real title into card <h3> ──
             if (realTitle) {
                 const h3 = card.querySelector('h3');
-                if (h3 && h3.textContent.trim() !== realTitle) {
-                    h3.textContent = realTitle;
-                }
+                if (h3 && h3.textContent.trim() !== realTitle) h3.textContent = realTitle;
             }
  
-            // ── Inject real price into card price <p> ──
             if (realPrice !== null && !isNaN(realPrice)) {
-                const pTags2 = card.querySelectorAll('p strong');
-                const priceStrong = Array.from(pTags2).find(el =>
-                    el.textContent.replace(/\s/g,'').match(/Price:/i)
-                );
+                const priceStrong = Array.from(card.querySelectorAll('p strong'))
+                    .find(el => el.textContent.match(/Price:/i));
                 if (priceStrong) {
-                    // Store USD base so currency.js can convert it
                     priceStrong.parentElement.dataset.priceScanned = '1';
+                    const cfg = typeof window.getActiveCurrencyConfig === 'function'
+                        ? window.getActiveCurrencyConfig()
+                        : { symbol: '$', rate: 1 };
+                    const displayPrice = (realPrice * cfg.rate).toFixed(2);
                     priceStrong.innerHTML =
-                        `Price: <span class="converted-price" data-usd="${realPrice}">$${realPrice.toFixed(2)}</span>`;
- 
-                    // If currency.js is already active and not USD, convert immediately
-                    if (typeof window.getActiveCurrencyConfig === 'function') {
-                        const cfg = window.getActiveCurrencyConfig();
-                        const span = priceStrong.querySelector('.converted-price');
-                        if (span && cfg.label !== 'USD') {
-                            span.textContent = cfg.symbol + (realPrice * cfg.rate).toFixed(2);
-                        }
-                    }
+                        `Price: <span class="converted-price" data-usd="${realPrice}">${cfg.symbol}${displayPrice}</span>`;
                 }
             }
  
             if (colors.length === 0) return;
  
-            // ── Replace Description placeholder with colour swatches ──
             const pTags = card.querySelectorAll('p');
             let targetP = Array.from(pTags).find(p => p.textContent.toLowerCase().includes('description'));
-            
+ 
             if (targetP) {
                 const container = document.createElement('div');
                 container.className = 'product-card-colors';
-                container.style.cssText = "display:flex; justify-content:center; gap:8px; padding:12px 0; border-top:1px solid rgba(255,255,255,0.1); margin-top:10px;";
-                
+                container.style.cssText = 'display:flex;justify-content:center;gap:8px;padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);margin-top:10px;';
+ 
                 colors.forEach((c, i) => {
                     const btn = document.createElement('button');
                     btn.className = 'listing-color-swatch' + (i === 0 ? ' active' : '');
-                    btn.style.cssText = `background-color:${c.css}; width:24px; height:24px; border-radius:50%; border:2px solid #444; cursor:pointer; transition:0.3s;`;
+                    btn.style.cssText = `background-color:${c.css};width:24px;height:24px;border-radius:50%;border:2px solid ${i === 0 ? '#ff4500' : '#444'};cursor:pointer;transition:0.3s;`;
                     btn.title = c.label;
-                    
-                    btn.onclick = (e) => {
+ 
+                    btn.onclick = e => {
                         e.preventDefault(); e.stopPropagation();
-                        
-                        // UI Update
                         container.querySelectorAll('button').forEach(b => {
-                            b.style.borderColor = "#444"; b.style.transform = "scale(1)";
+                            b.style.borderColor = '#444'; b.style.transform = 'scale(1)';
                         });
-                        btn.style.borderColor = "#ff4500"; btn.style.transform = "scale(1.2)";
-                        
-                        // Image Update
+                        btn.style.borderColor = '#ff4500'; btn.style.transform = 'scale(1.2)';
+ 
                         const img = card.querySelector('img');
                         const isBack = decodeURIComponent(img.src).includes('²');
                         const data = imgData[c.name];
-                        
                         if (data) {
-                            let newPath = (isBack && data.back) ? data.back : (data.front || data.back);
-                            if (newPath) {
-                                // Fix pathing: if it starts with / it's absolute, otherwise relative to product page
-                                img.src = newPath.startsWith('/') ? newPath : base + newPath;
-                            }
+                            const newPath = (isBack && data.back) ? data.back : (data.front || data.back);
+                            if (newPath) img.src = newPath.startsWith('/') ? newPath : base + newPath;
                         }
                     };
                     container.appendChild(btn);
@@ -357,12 +390,11 @@ const ColorSwitcher = {
                 targetP.replaceWith(container);
             }
         } catch (err) {
-            console.error("ColorSwitcher Error:", url, err);
+            console.error('ColorSwitcher Error:', url, err);
         }
     }
 };
  
-// Auto-run
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => ColorSwitcher.init());
 } else {
