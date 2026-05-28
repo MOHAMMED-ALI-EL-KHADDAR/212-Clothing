@@ -1,4 +1,3 @@
-
 /**
  * 212 CLOTHING — Currency Switcher
  * Supports: USD ($) · EUR (€) · MAD (د.م.)
@@ -225,7 +224,7 @@ function scanPrices() {
  
   /* 3. Cart total label: <p>Total: $<span id="cartTotal">...</span></p>
      We find the "$" text node before #cartTotal and store it. */
-  // Handled inside patchCartRendering()
+  // Handled by updateCartTotalDisplay()
 }
  
 /* ─────────────────────────────────────────────
@@ -268,20 +267,9 @@ function convertAllPrices() {
   /* 3. Cart total */
   updateCartTotalDisplay();
  
-  /* 4. Cart item prices (already rendered in DOM) */
-  document.querySelectorAll('.cart-item-price').forEach(el => {
-    el.classList.add('price-converting');
-    const usd = parseFloat(el.dataset.usd || el.textContent.replace(/[^0-9.]/g, ''));
-    if (!el.dataset.usd) el.dataset.usd = usd;
-    setTimeout(() => {
-      el.textContent = cfg.symbol + convert(usd);
-      el.classList.remove('price-converting');
-    }, 100);
-  });
- 
-  /* 5. Currency label in cart total row */
-  const totalPre = document.getElementById('cartTotalPre');
-  if (totalPre) totalPre.textContent = cfg.symbol;
+  /* 4. Cart items — re-render completely via cart.js which already
+        uses getActiveCurrencyConfig() directly. Clean, no double-convert. */
+  if (typeof renderCartItems === 'function') renderCartItems();
 }
  
 function convert(usdAmount) {
@@ -289,61 +277,7 @@ function convert(usdAmount) {
   return (usdAmount * cfg.rate).toFixed(2);
 }
  
-/* ─────────────────────────────────────────────
-   PATCH cart.js  — override rendering functions
-   so cart items and totals respect active currency
-───────────────────────────────────────────── */
-function patchCartRendering() {
-  /* Wait until cart.js has loaded (it's deferred by DOMContentLoaded) */
-  const applyPatch = () => {
-    /* ── Patch renderCartItems ── */
-    if (typeof renderCartItems === 'function') {
-      const _orig = renderCartItems;
-      window.renderCartItems = function() {
-        _orig(); // run original first
- 
-        const cfg = getConfig();
- 
-        // Fix each item price
-        document.querySelectorAll('.cart-item-price').forEach(el => {
-          const raw = el.textContent.replace(/[^0-9.]/g, '');
-          const usd = parseFloat(raw);
-          if (!isNaN(usd)) {
-            if (!el.dataset.usd) el.dataset.usd = usd;
-            el.textContent = cfg.symbol + (usd * cfg.rate).toFixed(2);
-          }
-        });
- 
-        // Fix total
-        updateCartTotalDisplay();
-      };
-    }
- 
-    /* ── Patch updateCartTotal ── */
-    if (typeof updateCartTotal === 'function') {
-      window.updateCartTotal = function() {
-        const cartTotalSpan = document.getElementById('cartTotal');
-        if (!cartTotalSpan) return;
-        const cfg = getConfig();
-        // cart is a global in cart.js
-        if (typeof cart !== 'undefined') {
-          const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-          cartTotalSpan.textContent = (total * cfg.rate).toFixed(2);
-        }
-        updateCartTotalDisplay();
-      };
-    }
-  };
- 
-  // Apply immediately if possible, else after DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyPatch);
-  } else {
-    // Slight delay to let cart.js finish its own DOMContentLoaded handler
-    setTimeout(applyPatch, 200);
-  }
-}
- 
+
 function updateCartTotalDisplay() {
   const cfg = getConfig();
   const cartData = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
@@ -411,8 +345,6 @@ window.getActiveCurrencySymbol = () => getConfig().symbol;
 ───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   buildWidget();
-  patchCartRendering();
- 
   // Set data-usd on #productPrice IMMEDIATELY — before any conversion.
   // If we wait for the 400ms timeout below, a fast "Add to Cart" click
   // reads the already-converted price as the USD base → double conversion.
@@ -437,4 +369,3 @@ window.addEventListener('currencyRescan', () => {
   scanPrices();
   convertAllPrices();
 });
- 
