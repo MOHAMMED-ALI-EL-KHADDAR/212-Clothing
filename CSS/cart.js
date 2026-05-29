@@ -246,30 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
 });
  
-// Inject +/− button styles
-(function() {
-  const s = document.createElement('style');
-  s.textContent = `
-    .cart-quantity-control { display:flex; align-items:center; gap:6px; margin-top:6px; }
-    .qty-btn {
-      width:28px; height:28px; border-radius:50%;
-      background:#1a1a1a; border:1px solid #ff4500;
-      color:#ff4500; font-size:18px; line-height:1;
-      cursor:pointer; display:flex; align-items:center; justify-content:center;
-      transition:background 0.2s;
-      padding:0;
-    }
-    .qty-btn:hover { background:#ff4500; color:#fff; }
-    .cart-qty-input {
-      width:44px; text-align:center;
-      background:#111; border:1px solid #333; border-radius:6px;
-      color:#fff; font-size:14px; padding:4px;
-    }
-    .cart-qty-input::-webkit-inner-spin-button,
-    .cart-qty-input::-webkit-outer-spin-button { opacity:1; }
-  `;
-  document.head.appendChild(s);
-})();
+// Qty styles are in styles1.css — no dynamic injection needed
  
 /**
  * COLOR SWITCHER
@@ -400,4 +377,3 @@ if (document.readyState === 'loading') {
 } else {
     ColorSwitcher.init();
 }
- 
