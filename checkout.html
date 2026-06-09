@@ -117,7 +117,7 @@
   <header>
     <h1>212 CLOTHING</h1>
     <nav>
-      <a href="/Index.html">Home</a>
+      <a href="/index.html">Home</a>
       <a href="/T-Shirts/tshirts.html">Products</a>
       <a href="/Contact.html">Contact</a>
     </nav>
@@ -172,7 +172,7 @@
       
       if (cart.length === 0) {
         container.innerHTML = '<p>Your cart is empty.</p>';
-        window.location.href = '/Index.html'; // Redirect if empty
+        window.location.href = '/index.html'; // Redirect if empty
         return;
       }
  
@@ -238,7 +238,7 @@
       // Redirect to WhatsApp
       window.open(whatsappUrl, '_blank');
       alert('Thank you for your order! You are being redirected to WhatsApp to complete the purchase.');
-      window.location.href = '/Index.html';
+      window.location.href = '/index.html';
     });
  
     renderCheckout();
