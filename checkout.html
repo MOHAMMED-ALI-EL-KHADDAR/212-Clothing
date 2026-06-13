@@ -146,6 +146,10 @@
           <input type="tel" id="phone" name="phone" placeholder="e.g. +212 600 000 000" required>
         </div>
         <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" placeholder="Enter your city" required>
+        </div>
+        <div class="form-group">
           <label for="address">Shipping Address</label>
           <textarea id="address" name="address" rows="3" placeholder="Enter your full address" required></textarea>
         </div>
@@ -209,28 +213,42 @@
       
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
+      const city = document.getElementById('city').value;
       const address = document.getElementById('address').value;
       const notes = document.getElementById('notes').value;
       
-      // Format the WhatsApp message
-      let message = `*New Order from 212 Clothing*%0A%0A`;
-      message += `*Customer Info:*%0A`;
-      message += `- Name: ${name}%0A`;
-      message += `- Phone: ${phone}%0A`;
-      message += `- Address: ${address}%0A`;
-      if (notes) message += `- Notes: ${notes}%0A`;
-      
-      message += `%0A*Order Details:*%0A`;
+      // Get the currency the customer is currently using
+      const cfg = typeof window.getActiveCurrencyConfig === 'function'
+        ? window.getActiveCurrencyConfig()
+        : { symbol: 'MAD ', rate: 10.0, label: 'MAD' };
+
+      function formatPrice(usdAmount) {
+        const converted = usdAmount * cfg.rate;
+        const isWhole = cfg.label === 'MAD';
+        return cfg.symbol + (isWhole ? Math.round(converted) : converted.toFixed(2));
+      }
+
+      // Build the message as plain text, then encode it all at once
+      let rawMessage = `🚀 New Order from 212 Clothing\n`;
+      rawMessage += `Customer Info:\n\n`;
+      rawMessage += `- Name: ${name}\n`;
+      rawMessage += `- Phone: ${phone}\n`;
+      rawMessage += `- City: ${city}\n`;
+      rawMessage += `- Address: ${address}\n`;
+      if (notes) rawMessage += `- Notes: ${notes}\n`;
+
+      rawMessage += `\nOrder Details:\n\n`;
       cart.forEach(item => {
-        message += `- ${item.name} (${item.color}, ${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)} USD%0A`;
+        rawMessage += `- ${item.name} (${item.color}, ${item.size}) x${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
       });
-      
+
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      message += `%0A*Total Amount: $${total.toFixed(2)}*`;
-      
-      // Replace with your WhatsApp number
-      const whatsappNumber = "212600000000"; // User should change this
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      rawMessage += `\nTotal Amount: ${formatPrice(total)}\n`;
+      rawMessage += `\n(Please hit SEND to confirm your order and reserve your items!)`;
+
+      // Encode the full message once — prevents character corruption in WhatsApp
+      const whatsappNumber = "212651866578";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
       
       // Clear cart after order
       localStorage.removeItem('shoppingCart');
