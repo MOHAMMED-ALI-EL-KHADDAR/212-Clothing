@@ -329,6 +329,9 @@ function switchCurrency(code) {
  
   // Convert everything
   convertAllPrices();
+
+  // Notify other scripts (e.g. checkout) that currency changed
+  window.dispatchEvent(new CustomEvent('currencyChanged'));
 }
  
 /* ─────────────────────────────────────────────

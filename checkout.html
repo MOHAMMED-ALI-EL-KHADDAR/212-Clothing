@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -111,6 +111,38 @@
     .submit-btn:hover {
       transform: scale(1.02);
     }
+    /* Deposit section */
+    .checkout-deposit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      margin-top: 8px;
+      background: rgba(255, 69, 0, 0.08);
+      border: 1px solid rgba(255, 69, 0, 0.25);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ff4500;
+      letter-spacing: 1px;
+    }
+    .deposit-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff4500;
+    }
+    .deposit-note {
+      margin-top: 10px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid #ff4500;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.75rem;
+      color: #666;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+    }
   </style>
 </head>
 <body>
@@ -131,6 +163,14 @@
       </div>
       <div class="checkout-total">
         Total: <span id="checkoutTotalSymbol">$</span><span id="checkoutTotal">0.00</span>
+      </div>
+      <div class="checkout-deposit">
+        <span class="deposit-label">Deposit required (10%)</span>
+        <span id="checkoutDepositSymbol">$</span><span id="checkoutDeposit">0.00</span>
+      </div>
+      <div class="deposit-note">
+        Send this deposit via CIH / Barid Bank / Transfer to confirm your order.
+        The remaining 90% is paid on delivery (COD).
       </div>
     </div>
  
@@ -170,6 +210,8 @@
     // Load cart from localStorage
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
  
+    function _ignore() {} // JSONP callback for saveOrder script tag
+
     function renderCheckout() {
       const container = document.getElementById('checkoutItems');
       const totalSpan = document.getElementById('checkoutTotal');
@@ -206,6 +248,13 @@
       totalSpan.textContent = (total * cfg.rate).toFixed(2);
       const symbolSpan = document.getElementById('checkoutTotalSymbol');
       if (symbolSpan) symbolSpan.textContent = cfg.symbol;
+
+      // Show 10% deposit
+      const deposit = total * 0.1;
+      const depositSpan = document.getElementById('checkoutDeposit');
+      const depositSymbolSpan = document.getElementById('checkoutDepositSymbol');
+      if (depositSpan) depositSpan.textContent = (deposit * cfg.rate).toFixed(2);
+      if (depositSymbolSpan) depositSymbolSpan.textContent = cfg.symbol;
     }
  
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
@@ -244,23 +293,56 @@
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       rawMessage += `\nTotal Amount: ${formatPrice(total)}\n`;
+      rawMessage += `Deposit Required (10%): ${formatPrice(total * 0.1)}\n`;
+      rawMessage += `Remaining on Delivery (90%): ${formatPrice(total * 0.9)}\n`;
       rawMessage += `\n(Please hit SEND to confirm your order and reserve your items!)`;
 
       // Encode the full message once — prevents character corruption in WhatsApp
       const whatsappNumber = "212651866578";
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
-      
+
+      // ── Save order to Google Sheets silently ──────────────
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
+
+      // Build product summary
+      const productSummary = cart.map(item =>
+        item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
+      ).join(' | ');
+
+      // Send as GET params — avoids CORS issues with Apps Script
+      const params = new URLSearchParams({
+        action:  'saveOrder',
+        name:    name,
+        phone:   phone,
+        city:    city,
+        address: address,
+        notes:   notes || '',
+        product: productSummary,
+        total:   formatPrice(total),
+        deposit: formatPrice(total * 0.1)
+      });
+
+      // Script tag injection — zero CORS restrictions on ALL browsers/devices
+      const _s = document.createElement('script');
+      _s.src = SCRIPT_URL + '?' + params.toString() + '&callback=_ignore';
+      _s.onload = () => _s.remove();
+      _s.onerror = () => _s.remove();
+      document.head.appendChild(_s);
+
       // Clear cart after order
       localStorage.removeItem('shoppingCart');
-      
-      // Redirect to WhatsApp
+
+      // Open WhatsApp
       window.open(whatsappUrl, '_blank');
-      alert('Thank you for your order! You are being redirected to WhatsApp to complete the purchase.');
+      alert('Thank you! Redirecting to WhatsApp to confirm your order.');
       window.location.href = '/index.html';
     });
  
-    renderCheckout();
   </script>
 <script src="/CSS/currency.js"></script>
+<script>
+  renderCheckout();
+  window.addEventListener('currencyChanged', renderCheckout);
+</script>
 </body>
 </html>

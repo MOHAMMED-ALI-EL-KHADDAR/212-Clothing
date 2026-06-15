@@ -771,14 +771,40 @@ nav a:hover {
 
 @media (max-width: 768px) {
   header {
-    flex-direction: column; /* Stacks the logo on top of the nav */
-    gap: 15px; /* Adds breathing room between the logo and links */
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px;
   }
-  
+
+  header h1 {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+  }
+
   nav {
-    flex-wrap: wrap; /* Allows links to drop to a new line instead of stretching the screen */
-    justify-content: center; /* Centers the links under the logo */
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2px 8px;
+    width: auto;
+    flex: 1;
+  }
+
+  nav a {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+    padding: 4px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 0.58rem;
+    letter-spacing: 1px;
   }
 }
 

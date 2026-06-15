@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Status - 212 Clothing</title>
+  <link rel="stylesheet" href="/CSS/styles1.css">
+  <link rel="website icon" href="/Logo/Logo.png">
+  <style>
+    .status-container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 24px 80px;
+    }
+
+    .status-container h2 {
+      text-align: center;
+      font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 6px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .status-subtitle {
+      text-align: center;
+      color: #444;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* Search box */
+    .search-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #1e1e1e;
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+    }
+
+    .search-box label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .search-box input::placeholder { color: #333; }
+    .search-box input:focus { border-color: #ff4500; }
+
+    .search-btn {
+      background: linear-gradient(135deg, #ff4500, #e03d00) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 10px !important;
+      padding: 13px 22px !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      margin-top: 0 !important;
+      box-shadow: 0 4px 16px rgba(255,69,0,0.3) !important;
+      transition: opacity 0.2s !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      width: auto !important;
+      height: auto !important;
+      position: static !important;
+      overflow: visible !important;
+      animation: none !important;
+      font-weight: 400 !important;
+    }
+    .search-btn::before { display: none !important; }
+    .search-btn:hover { opacity: 0.88 !important; }
+    .search-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+
+    /* Loading */
+    #status-loading {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: #444;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* No results */
+    #status-empty {
+      display: none;
+      text-align: center;
+      padding: 32px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #1a1a1a;
+      border-radius: 16px;
+      color: #444;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    #status-empty a {
+      color: #ff4500;
+      text-decoration: none;
+    }
+
+    /* Order card */
+    .order-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #1e1e1e;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .order-card:hover { border-color: #2a2a2a; }
+
+    .order-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #141414;
+      gap: 12px;
+    }
+
+    .order-id {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    .order-date {
+      font-size: 0.75rem;
+      color: #333;
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .status-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      display: block;
+    }
+
+    .badge-confirmed  { background: rgba(255,165,0,0.1);  color: #ffa500; border: 1px solid rgba(255,165,0,0.2); }
+    .badge-printing   { background: rgba(33,150,243,0.1); color: #42a5f5; border: 1px solid rgba(33,150,243,0.2); }
+    .badge-shipped    { background: rgba(156,39,176,0.1); color: #ce93d8; border: 1px solid rgba(156,39,176,0.2); }
+    .badge-delivered  { background: rgba(76,175,80,0.1);  color: #66bb6a; border: 1px solid rgba(76,175,80,0.2); }
+    .badge-cancelled  { background: rgba(244,67,54,0.1);  color: #ef5350; border: 1px solid rgba(244,67,54,0.2); }
+    .badge-default    { background: rgba(255,255,255,0.04); color: #555; border: 1px solid #1e1e1e; }
+
+    /* Progress bar */
+    .order-progress {
+      padding: 16px 20px 4px;
+    }
+
+    .progress-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 6px;
+    }
+
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      z-index: 1;
+      transition: background 0.3s;
+    }
+    .step-dot.done { background: #ff4500; border-color: #ff4500; }
+    .step-dot.active { background: #ff4500; border-color: #ff4500; box-shadow: 0 0 8px rgba(255,69,0,0.5); }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 0 -1px;
+      align-self: center;
+      transition: background 0.3s;
+    }
+    .step-line.done { background: #ff4500; }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0 12px;
+    }
+    .progress-label {
+      font-size: 0.6rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #333;
+      text-align: center;
+      flex: 1;
+    }
+    .progress-label.active { color: #ff4500; }
+
+    /* Order body */
+    .order-card-body {
+      padding: 16px 20px;
+    }
+
+    .order-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 7px 0;
+      border-bottom: 1px solid #0f0f0f;
+      gap: 16px;
+    }
+    .order-field:last-child { border-bottom: none; }
+
+    .field-label {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #333;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .field-value {
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: right;
+    }
+    .field-value.highlight { color: #ff4500; font-weight: 600; }
+
+    /* Notes */
+    .order-notes {
+      margin: 12px 20px 16px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid #1e1e1e;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.78rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Contact banner */
+    .status-contact {
+      margin-top: 40px;
+      padding: 24px;
+      background: rgba(255,69,0,0.05);
+      border: 1px solid rgba(255,69,0,0.15);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .status-contact p {
+      color: #555;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      margin: 0 0 14px;
+    }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      padding: 11px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .wa-btn:hover { background: #1ebe5d; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>212 CLOTHING</h1>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/index.html#products">Products</a>
+      <a href="/Contact.html">Contact</a>
+      <a href="/FAQ.html">FAQ</a><a href="/order-status.html">Track Order</a>
+      <a href="#" id="cartIcon" class="nav-cart-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
+        <span id="cartItemCount" class="cart-badge">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="status-container">
+    <h2>Order Status</h2>
+    <p class="status-subtitle">Track your order</p>
+
+    <div class="search-box">
+      <label for="phone-input">Enter your WhatsApp phone number</label>
+      <div class="search-row">
+        <input type="tel" id="phone-input" placeholder="e.g. 0651866578" />
+        <button class="search-btn" onclick="lookupOrder()">Track</button>
+      </div>
+    </div>
+
+    <div id="status-loading">Looking up your order...</div>
+
+    <div id="status-empty">
+      <p>No orders found for this number.<br>
+      Make sure you enter the same number used when ordering.<br><br>
+      <a href="https://wa.me/212651866578" target="_blank">Contact us on WhatsApp</a> if you need help.</p>
+    </div>
+
+    <div id="status-results"></div>
+
+    <div class="status-contact">
+      <p>Questions about your order?</p>
+      <a class="wa-btn" href="https://wa.me/212651866578" target="_blank">WhatsApp Us</a>
+    </div>
+  </main>
+
+  <footer class="footer" id="Contact">
+    <p>Contact us at: support@212clothing.com | &copy; 2026 212 Clothing</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com/share/1CXrF7MTsS/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+      <a href="https://www.tiktok.com/@212clothing.ma?_r=1&_t=ZS-95SiawBc43A" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      </a>
+    </div>
+  </footer>
+
+  <script src="/CSS/cart.js"></script>
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Your Shopping Cart</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary">
+        <p>Total: $<span id="cartTotal">0.00</span></p>
+        <button class="button" id="checkoutButton">Proceed to Checkout</button>
+        <button class="button clear-cart-button" id="clearCartButton">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+  <script src="/CSS/currency.js"></script>
+
+  <script>
+    // ── PASTE YOUR APPS SCRIPT URL HERE ──────────────────────
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
+    // ─────────────────────────────────────────────────────────
+
+    var STATUS_STEPS = ['Confirmed', 'Printing', 'Shipped', 'Delivered'];
+
+    function getBadgeClass(status) {
+      var s = (status || '').toLowerCase();
+      if (s === 'confirmed')  return 'badge-confirmed';
+      if (s === 'printing')   return 'badge-printing';
+      if (s === 'shipped')    return 'badge-shipped';
+      if (s === 'delivered')  return 'badge-delivered';
+      if (s === 'cancelled')  return 'badge-cancelled';
+      return 'badge-default';
+    }
+
+    function getStepIndex(status) {
+      var s = (status || '').toLowerCase();
+      if (s === 'confirmed')  return 0;
+      if (s === 'printing')   return 1;
+      if (s === 'shipped')    return 2;
+      if (s === 'delivered')  return 3;
+      return -1;
+    }
+
+    function buildProgressBar(status) {
+      var active = getStepIndex(status);
+      if (active === -1) return '';
+
+      var dots = '';
+      for (var i = 0; i < STATUS_STEPS.length; i++) {
+        if (i > 0) {
+          dots += '<div class="step-line' + (i <= active ? ' done' : '') + '"></div>';
+        }
+        var cls = i < active ? 'done' : (i === active ? 'active' : '');
+        dots += '<div class="progress-step"><div class="step-dot ' + cls + '"></div></div>';
+      }
+
+      var labels = STATUS_STEPS.map(function(s, i) {
+        return '<span class="progress-label' + (i === active ? ' active' : '') + '">' + s + '</span>';
+      }).join('');
+
+      return '<div class="order-progress">' +
+               '<div class="progress-steps">' + dots + '</div>' +
+               '<div class="progress-labels">' + labels + '</div>' +
+             '</div>';
+    }
+
+    function buildOrderCard(order) {
+      var badgeClass = getBadgeClass(order.status);
+      var progress = buildProgressBar(order.status);
+      var notes = order.notes ? '<div class="order-notes">' + order.notes + '</div>' : '';
+
+      return '<div class="order-card">' +
+        '<div class="order-card-header">' +
+          '<div>' +
+            '<div class="order-id">Order #' + (order.orderId || '???') + '</div>' +
+            '<div class="order-date">' + (order.date || '') + '</div>' +
+          '</div>' +
+          '<span class="status-badge ' + badgeClass + '">' + (order.status || 'Unknown') + '</span>' +
+        '</div>' +
+        progress +
+        '<div class="order-card-body">' +
+          '<div class="order-field"><span class="field-label">Name</span><span class="field-value">' + (order.name || '-') + '</span></div>' +
+          '<div class="order-field"><span class="field-label">City</span><span class="field-value">' + (order.city || '-') + '</span></div>' +
+          '<div class="order-field"><span class="field-label">Address</span><span class="field-value">' + (order.address || '-') + '</span></div>' +
+          '<div class="order-field"><span class="field-label">Product</span><span class="field-value">' + (order.product || '-') + '</span></div>' +
+          '<div class="order-field"><span class="field-label">Total</span><span class="field-value highlight">' + (order.total || '-') + '</span></div>' +
+          '<div class="order-field"><span class="field-label">Deposit paid</span><span class="field-value">' + (order.deposit || '-') + '</span></div>' +
+        '</div>' +
+        notes +
+      '</div>';
+    }
+
+    function lookupOrder() {
+      var phone = document.getElementById('phone-input').value.trim();
+      if (!phone) {
+        document.getElementById('phone-input').focus();
+        return;
+      }
+
+      document.getElementById('status-results').innerHTML = '';
+      document.getElementById('status-empty').style.display = 'none';
+      document.getElementById('status-loading').style.display = 'block';
+      document.querySelector('.search-btn').disabled = true;
+
+      var url = SCRIPT_URL + '?phone=' + encodeURIComponent(phone);
+
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.getElementById('status-loading').style.display = 'none';
+          document.querySelector('.search-btn').disabled = false;
+
+          if (!data.orders || data.orders.length === 0) {
+            document.getElementById('status-empty').style.display = 'block';
+            return;
+          }
+
+          var html = '';
+          data.orders.forEach(function(order) {
+            html += buildOrderCard(order);
+          });
+          document.getElementById('status-results').innerHTML = html;
+        })
+        .catch(function() {
+          document.getElementById('status-loading').style.display = 'none';
+          document.querySelector('.search-btn').disabled = false;
+          document.getElementById('status-results').innerHTML =
+            '<div class="order-card" style="padding:20px;text-align:center;color:#555;font-size:0.85rem;">' +
+            'Connection error. Please try again or <a href="https://wa.me/212651866578" style="color:#ff4500">contact us on WhatsApp</a>.' +
+            '</div>';
+        });
+
+      // Also allow Enter key
+    }
+
+    document.getElementById('phone-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') lookupOrder();
+    });
+  </script>
+</body>
+</html>
