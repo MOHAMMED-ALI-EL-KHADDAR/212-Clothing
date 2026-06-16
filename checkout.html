@@ -301,41 +301,37 @@
       const whatsappNumber = "212651866578";
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
 
-      // ── Save order to Google Sheets silently ──────────────
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
+      // ── Save order to Google Sheets (fire-and-forget, survives navigation) ──
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
 
-      // Build product summary
-      const productSummary = cart.map(item =>
-        item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
-      ).join(' | ');
+const productSummary = cart.map(item =>
+  item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
+).join(' | ');
 
-      // Send as GET params — avoids CORS issues with Apps Script
-      const params = new URLSearchParams({
-        action:  'saveOrder',
-        name:    name,
-        phone:   phone,
-        city:    city,
-        address: address,
-        notes:   notes || '',
-        product: productSummary,
-        total:   formatPrice(total),
-        deposit: formatPrice(total * 0.1)
-      });
+const params = new URLSearchParams({
+  action:  'saveOrder',
+  name:    name,
+  phone:   phone,
+  city:    city,
+  address: address,
+  notes:   notes || '',
+  product: productSummary,
+  total:   formatPrice(total),
+  deposit: formatPrice(total * 0.1)
+});
 
-      // Script tag injection — zero CORS restrictions on ALL browsers/devices
-      const _s = document.createElement('script');
-      _s.src = SCRIPT_URL + '?' + params.toString() + '&callback=_ignore';
-      _s.onload = () => _s.remove();
-      _s.onerror = () => _s.remove();
-      document.head.appendChild(_s);
+// keepalive: true = browser finishes sending this even after the page unloads.
+// mode: 'no-cors' = we don't need to read the response, just deliver it.
+fetch(SCRIPT_URL + '?' + params.toString(), {
+  method: 'GET',
+  mode: 'no-cors',
+  keepalive: true
+}).catch(() => {});
 
-      // Clear cart after order
-      localStorage.removeItem('shoppingCart');
-
-      // Open WhatsApp
-      window.open(whatsappUrl, '_blank');
-      alert('Thank you! Redirecting to WhatsApp to confirm your order.');
-      window.location.href = '/index.html';
+localStorage.removeItem('shoppingCart');
+window.open(whatsappUrl, '_blank');
+alert('Thank you! Redirecting to WhatsApp to confirm your order.');
+window.location.href = '/index.html';
     });
  
   </script>
