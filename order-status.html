@@ -178,6 +178,7 @@
       display: block;
     }
 
+    .badge-pending    { background: rgba(255,202,40,0.1); color: #ffca28; border: 1px solid rgba(255,202,40,0.2); }
     .badge-confirmed  { background: rgba(255,165,0,0.1);  color: #ffa500; border: 1px solid rgba(255,165,0,0.2); }
     .badge-printing   { background: rgba(33,150,243,0.1); color: #42a5f5; border: 1px solid rgba(33,150,243,0.2); }
     .badge-shipped    { background: rgba(156,39,176,0.1); color: #ce93d8; border: 1px solid rgba(156,39,176,0.2); }
@@ -340,7 +341,7 @@
     <div class="search-box">
       <label for="phone-input">Enter your WhatsApp phone number</label>
       <div class="search-row">
-        <input type="tel" id="phone-input" placeholder="e.g. 0651866578" />
+        <input type="tel" id="phone-input" placeholder="e.g. 0612345678" />
         <button class="search-btn" onclick="lookupOrder()">Track</button>
       </div>
     </div>
@@ -396,10 +397,13 @@
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
     // ─────────────────────────────────────────────────────────
 
-    var STATUS_STEPS = ['Confirmed', 'Printing', 'Shipped', 'Delivered'];
+    var STATUS_STEPS  = ['Pending', 'Confirmed', 'Printing', 'Shipped', 'Delivered'];
+    // One color per step, same order as STATUS_STEPS — used for the currently active dot/label
+    var STATUS_COLORS = ['#ffca28', '#ffa500', '#42a5f5', '#ce93d8', '#66bb6a'];
 
     function getBadgeClass(status) {
       var s = (status || '').toLowerCase();
+      if (s === 'pending')    return 'badge-pending';
       if (s === 'confirmed')  return 'badge-confirmed';
       if (s === 'printing')   return 'badge-printing';
       if (s === 'shipped')    return 'badge-shipped';
@@ -410,10 +414,11 @@
 
     function getStepIndex(status) {
       var s = (status || '').toLowerCase();
-      if (s === 'confirmed')  return 0;
-      if (s === 'printing')   return 1;
-      if (s === 'shipped')    return 2;
-      if (s === 'delivered')  return 3;
+      if (s === 'pending')    return 0;
+      if (s === 'confirmed')  return 1;
+      if (s === 'printing')   return 2;
+      if (s === 'shipped')    return 3;
+      if (s === 'delivered')  return 4;
       return -1;
     }
 
@@ -421,17 +426,23 @@
       var active = getStepIndex(status);
       if (active === -1) return '';
 
+      var activeColor = STATUS_COLORS[active];
+
       var dots = '';
       for (var i = 0; i < STATUS_STEPS.length; i++) {
         if (i > 0) {
           dots += '<div class="step-line' + (i <= active ? ' done' : '') + '"></div>';
         }
         var cls = i < active ? 'done' : (i === active ? 'active' : '');
-        dots += '<div class="progress-step"><div class="step-dot ' + cls + '"></div></div>';
+        var style = (i === active)
+          ? ' style="background:' + activeColor + ';border-color:' + activeColor + ';box-shadow:0 0 8px ' + activeColor + '80;"'
+          : '';
+        dots += '<div class="progress-step"><div class="step-dot ' + cls + '"' + style + '></div></div>';
       }
 
       var labels = STATUS_STEPS.map(function(s, i) {
-        return '<span class="progress-label' + (i === active ? ' active' : '') + '">' + s + '</span>';
+        var labelStyle = (i === active) ? ' style="color:' + STATUS_COLORS[i] + ';"' : '';
+        return '<span class="progress-label' + (i === active ? ' active' : '') + '"' + labelStyle + '>' + s + '</span>';
       }).join('');
 
       return '<div class="order-progress">' +
