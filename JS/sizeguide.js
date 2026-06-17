@@ -6,9 +6,9 @@
      /SizeGuides/sizeguide-cap.jpg      (when you have it)
 
    Usage: add to each product page before </body>:
-     T-shirt:  <script src="/CSS/sizeguide.js" data-type="tshirt"></script>
-     Hoodie:   <script src="/CSS/sizeguide.js" data-type="hoodie"></script>
-     Cap:      <script src="/CSS/sizeguide.js" data-type="cap"></script>
+     T-shirt:  <script src="/JS/sizeguide.js" data-type="tshirt"></script>
+     Hoodie:   <script src="/JS/sizeguide.js" data-type="hoodie"></script>
+     Cap:      <script src="/JS/sizeguide.js" data-type="cap"></script>
    ============================================================ */
 
 (function () {

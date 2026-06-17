@@ -915,3 +915,70 @@ nav a:hover {
     padding: clamp(15px, 3vw, 25px);
   }
 }
+/* === Footer upgrade: 3-column layout (brand / quick links / contact) === */
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+.footer-col {
+  flex: 1;
+  min-width: 180px;
+}
+.footer-col h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.footer-col h4 {
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-col p {
+  color: #777;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.footer-col a {
+  display: block;
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+.footer-col a:hover {
+  color: #ff4500;
+}
+.footer-brand .social-icons {
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+.footer-bottom {
+  border-top: 1px solid #222;
+  margin-top: 30px;
+  padding-top: 20px;
+  text-align: center;
+}
+.footer-bottom p {
+  color: #555;
+  font-size: 0.8rem;
+  margin: 0;
+}
+@media (max-width: 700px) {
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-brand .social-icons {
+    justify-content: center;
+  }
+}

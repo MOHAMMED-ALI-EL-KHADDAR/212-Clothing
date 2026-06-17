@@ -26,10 +26,10 @@
  *   (or delete the whole line).
  */
 const STOCK_CONFIG = {
-  tshirt: ['S'],
+  tshirt: [],
   hoodie: ['M', 'L', 'XL', 'XXL','S'],
-  cap:    ['XL', 'S'],
-  slide:  ['M', 'L'],
+  cap:    [],
+  slide:  [],
 };
 
 (function () {

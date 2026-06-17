@@ -4,7 +4,7 @@
  *
  * HOW TO ADD TO ANY PAGE:
  *   Add this ONE line before </body>:
- *   <script src="/CSS/currency.js"></script>
+ *   <script src="/JS/currency.js"></script>
  *
  * HOW IT WORKS:
  *   1. Reads every price on the page and stores its USD base value.
