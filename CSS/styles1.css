@@ -1468,3 +1468,24 @@ select, .button {
     justify-content: center;
   }
 }
+
+/* === Stock indicator: visual treatment for sold-out color swatches === */
+.color-swatch.stock-swatch-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  position: relative;
+}
+.color-swatch.stock-swatch-disabled:hover {
+  transform: none;
+  border-color: #555;
+}
+.color-swatch.stock-swatch-disabled::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15%;
+  right: -15%;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
