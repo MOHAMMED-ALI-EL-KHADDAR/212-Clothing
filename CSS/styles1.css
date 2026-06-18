@@ -1134,6 +1134,32 @@ select, .button {
   box-shadow: 0 0 15px var(--neon-orange);
 }
 
+/* === Contact page WhatsApp CTA === */
+.contact-whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #fff !important;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-whatsapp-link:hover {
+  background: #1ebe5d;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(37, 211, 102, 0.28);
+  text-shadow: none;
+}
+
 /* =========================================
    4. FOOTER
    ========================================= */

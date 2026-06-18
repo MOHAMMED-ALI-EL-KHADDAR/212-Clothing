@@ -1299,3 +1299,147 @@ nav a:hover {
     justify-content: center;
   }
 }
+
+/* === Conversion upgrades: fast hero, clear CTAs, and trust signals === */
+#preloader {
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+.hero {
+  min-height: 420px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(100%, 1100px);
+  padding: 0 20px;
+  text-align: center;
+}
+
+.hero-content h2 {
+  margin: 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 69, 0, 0.55);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(10, 10, 10, 0.72);
+  font-weight: 800;
+  font-size: 0.86rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  color: #ff4500;
+  border-color: #fff;
+}
+
+.hero-btn-primary {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+  border-color: #ff4500;
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 1px;
+  max-width: 1200px;
+  margin: -34px auto 20px;
+  padding: 0 5%;
+  position: relative;
+  z-index: 3;
+}
+
+.trust-item {
+  background: rgba(20, 20, 20, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.trust-item span {
+  display: block;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.trust-item small {
+  display: block;
+  margin-top: 6px;
+  color: #8a8a8a;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+/* Replace the long typewriter intro with a fast fade so CTA buttons stay visible. */
+.hero h2 {
+  width: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  border-right: 0 !important;
+  animation: fadeInUp 0.65s ease-out both !important;
+}
+
+@media (max-width: 900px) {
+  .trust-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 320px;
+    padding: 44px 16px;
+  }
+
+  .hero-content {
+    gap: 18px;
+    padding: 0;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-btn {
+    flex: 1 1 150px;
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .trust-strip {
+    grid-template-columns: 1fr;
+    padding: 0 14px;
+  }
+}

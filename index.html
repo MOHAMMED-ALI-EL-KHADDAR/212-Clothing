@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,7 +35,9 @@
     </nav>
   </header>
   <section class="hero" id="index">
-    <h2>Gear Up with Style – For Bikers , Drivers and enthusiasts!</h2>
+    <div class="hero-content">
+      <h2>Gear Up with Style - For Bikers, Drivers and Enthusiasts!</h2>
+    </div>
   </section>
   <section class="products" id="products">
     <div class="product">
@@ -246,8 +248,8 @@
           preloader.style.opacity = '0';
           setTimeout(() => {
             preloader.style.visibility = 'hidden';
-          }, 800);
-        }, 1500); // Show for 1.5s for cinematic effect
+          }, 250);
+        }, 400); // Keep the intro quick so shoppers see products fast
       }
     });
  
