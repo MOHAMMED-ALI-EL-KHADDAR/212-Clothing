@@ -149,15 +149,20 @@
   <header>
     <h1>212 CLOTHING</h1>
     <nav>
-      <a href="/index.html">Home</a>
-      <a href="/T-Shirts/tshirts.html">Products</a>
-      <a href="/Contact.html">Contact</a>
+      <a href="/index.html" data-i18n="nav.home">Home</a>
+      <a href="/T-Shirts/tshirts.html" data-i18n="nav.products">Products</a>
+      <a href="/Contact.html" data-i18n="nav.contact">Contact</a>
+    <div class="lang-switcher">
+      <button onclick="setLang('en')" data-lang-btn="en">EN</button>
+      <button onclick="setLang('fr')" data-lang-btn="fr">FR</button>
+      <button onclick="setLang('ar')" data-lang-btn="ar">ع</button>
+    </div>
     </nav>
   </header>
  
   <main class="checkout-container">
     <div class="order-summary">
-      <h2>Order Summary</h2>
+      <h2 data-i18n="checkout.summary">Order Summary</h2>
       <div id="checkoutItems">
         <!-- Items will be loaded here via JS -->
       </div>
@@ -175,27 +180,27 @@
     </div>
  
     <div class="contact-form">
-      <h2>Your Information</h2>
+      <h2 data-i18n="checkout.info">Your Information</h2>
       <form id="checkoutForm">
         <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          <label for="name" data-i18n="checkout.name_lbl">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" data-i18n-ph="checkout.name_ph" required>
         </div>
         <div class="form-group">
-          <label for="phone">Phone Number (WhatsApp)</label>
-          <input type="tel" id="phone" name="phone" placeholder="e.g. +212 600 000 000" required>
+          <label for="phone" data-i18n="checkout.phone_lbl">Phone Number (WhatsApp)</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. +212 600 000 000" data-i18n-ph="checkout.phone_ph" required>
         </div>
         <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" placeholder="Enter your city" required>
+          <label for="city" data-i18n="checkout.city_lbl">City</label>
+          <input type="text" id="city" name="city" placeholder="Enter your city" data-i18n-ph="checkout.city_ph" required>
         </div>
         <div class="form-group">
-          <label for="address">Shipping Address</label>
-          <textarea id="address" name="address" rows="3" placeholder="Enter your full address" required></textarea>
+          <label for="address" data-i18n="checkout.address_lbl">Shipping Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Enter your full address" data-i18n-ph="checkout.address_ph" required></textarea>
         </div>
         <div class="form-group">
-          <label for="notes">Additional Notes (Optional)</label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Any special requests?"></textarea>
+          <label for="notes" data-i18n="checkout.notes_lbl">Additional Notes (Optional)</label>
+          <textarea id="notes" name="notes" rows="2" placeholder="Any special requests?" data-i18n-ph="checkout.notes_ph"></textarea>
         </div>
         <button type="submit" class="submit-btn">Confirm Order via WhatsApp</button>
       </form>
@@ -206,7 +211,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <h3>212 CLOTHING</h3>
-        <p>Streetwear inspired by what moves you.</p>
+        <p data-i18n="footer.tagline">Streetwear inspired by what moves you.</p>
         <div class="social-icons">
           <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
@@ -220,28 +225,28 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Shop</h4>
-        <a href="/T-Shirts/tshirts.html">T-Shirts</a>
-        <a href="/Hoodies/Hoodies.html">Hoodies</a>
-        <a href="/Caps/caps.html">Caps</a>
-        <a href="/Slides/Slides.html">Slides</a>
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <a href="/T-Shirts/tshirts.html" data-i18n="footer.tshirts">T-Shirts</a>
+        <a href="/Hoodies/Hoodies.html" data-i18n="footer.hoodies">Hoodies</a>
+        <a href="/Caps/caps.html" data-i18n="footer.caps">Caps</a>
+        <a href="/Slides/Slides.html" data-i18n="footer.slides">Slides</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/index.html">Home</a>
-        <a href="/order-status.html">Track Order</a>
-        <a href="/Contact.html">Contact</a>
-        <a href="/FAQ.html">FAQ</a>
+        <h4 data-i18n="footer.company">Company</h4>
+        <a href="/index.html" data-i18n="nav.home" data-i18n="footer.home">Home</a>
+        <a href="/order-status.html" data-i18n="nav.track" data-i18n="footer.track">Track Order</a>
+        <a href="/Contact.html" data-i18n="nav.contact" data-i18n="footer.contact">Contact</a>
+        <a href="/FAQ.html" data-i18n="nav.faq" data-i18n="footer.faq">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Get in Touch</h4>
-        <a href="https://wa.me/212651866578" target="_blank">WhatsApp Us</a>
+        <h4 data-i18n="footer.touch">Get in Touch</h4>
+        <a href="https://wa.me/212651866578" target="_blank"><span data-i18n="footer.whatsapp">WhatsApp Us</span></a>
         <a href="mailto:support@212clothing.com">support@212clothing.com</a>
-        <p class="footer-location">Tangier, Morocco</p>
+        <p class="footer-location"><span data-i18n="footer.location">Tangier, Morocco</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 212 Clothing. All rights reserved.</p>
+      <p><span data-i18n="footer.rights">© 2026 212 Clothing. All rights reserved.</span></p>
     </div>
   </footer>
  
@@ -379,5 +384,6 @@ window.location.href = '/index.html';
   renderCheckout();
   window.addEventListener('currencyChanged', renderCheckout);
 </script>
+<script src="/JS/i18n.js"></script>
 </body>
 </html>

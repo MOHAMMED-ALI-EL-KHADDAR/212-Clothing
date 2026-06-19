@@ -71,7 +71,7 @@ function renderCartItems() {
   cartItemsContainer.innerHTML = '';
  
   if (cart.length === 0) {
-    cartItemsContainer.innerHTML = '<p style="text-align:center;color:#aaa;">Your cart is empty.</p>';
+    cartItemsContainer.innerHTML = '<p style="text-align:center;color:#aaa;">' + (window.t ? window.t('cart.empty') : 'Your cart is empty.') + '</p>';
     return;
   }
  
@@ -88,7 +88,7 @@ function renderCartItems() {
       <img src="${item.image}" alt="${item.name}">
       <div class="cart-item-details">
         <h4>${item.name}</h4>
-        <p>Color: ${item.color}, Size: ${item.size}</p>
+        <p>${window.t ? window.t('cart.color') : 'Color'}: ${item.color}, ${window.t ? window.t('cart.size') : 'Size'}: ${item.size}</p>
         <div class="cart-quantity-control">
           <button class="qty-btn qty-minus" data-index="${index}">−</button>
           <input type="number" class="cart-qty-input" data-index="${index}"

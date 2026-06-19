@@ -185,82 +185,87 @@
   <header>
     <h1>212 CLOTHING</h1>
     <nav>
-      <a href="/index.html">Home</a>
-      <a href="/index.html#products">Products</a>
+      <a href="/index.html" data-i18n="nav.home">Home</a>
+      <a href="/index.html#products" data-i18n="nav.products">Products</a>
       <a href="#" id="cartIcon" class="nav-cart-link">
         <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
         <span id="cartItemCount" class="cart-badge">0</span>
       </a>
+    <div class="lang-switcher">
+      <button onclick="setLang('en')" data-lang-btn="en">EN</button>
+      <button onclick="setLang('fr')" data-lang-btn="fr">FR</button>
+      <button onclick="setLang('ar')" data-lang-btn="ar">ع</button>
+    </div>
     </nav>
   </header>
 
   <main class="faq-container">
-    <h2>FAQ</h2>
-    <p class="faq-subtitle">Frequently Asked Questions</p>
+    <h2 data-i18n="faq.title">FAQ</h2>
+    <p class="faq-subtitle" data-i18n="faq.subtitle">Frequently Asked Questions</p>
 
     <!-- ORDERS -->
-    <p class="faq-category">Orders</p>
+    <p class="faq-category" data-i18n="faq.orders">Orders</p>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How do I place an order?</span>
+        <span class="q-text" data-i18n="faq.q1">How do I place an order?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Choose your product, select your size and color, then click <strong>Add to Cart</strong>. Go to your cart, click <strong>Proceed to Checkout</strong>, fill in your details and hit Send — your order goes directly to us via WhatsApp and we confirm it immediately.</p>
+        <p data-i18n-html="faq.a1">Choose your product, select your size and color, then click <strong>Add to Cart</strong>. Go to your cart, click <strong>Proceed to Checkout</strong>, fill in your details and hit Send — your order goes directly to us via WhatsApp and we confirm it immediately.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How do I know my order was received?</span>
+        <span class="q-text" data-i18n="faq.q2">How do I know my order was received?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>As soon as you send the WhatsApp message, we reply to confirm your order and give you an estimated delivery date. If you don't hear from us within 2 hours, message us directly at <a href="https://wa.me/212651866578" target="_blank">+212 651 866578</a>.</p>
+        <p data-i18n-html="faq.a2">As soon as you send the WhatsApp message, we reply to confirm your order and give you an estimated delivery date. If you don't hear from us within 2 hours, message us directly at <a href="https://wa.me/212651866578" target="_blank">+212 651 866578</a>.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">Can I modify or cancel my order after sending it?</span>
+        <span class="q-text" data-i18n="faq.q3">Can I modify or cancel my order after sending it?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Yes — but only before we start printing. Contact us on WhatsApp as soon as possible. Once printing has started, the order cannot be changed or cancelled.</p>
+        <p data-i18n-html="faq.a3">Yes — but only before we start printing. Contact us on WhatsApp as soon as possible. Once printing has started, the order cannot be changed or cancelled.</p>
       </div>
     </div>
 
     <!-- SHIPPING -->
-    <p class="faq-category">Shipping &amp; Delivery</p>
+    <p class="faq-category" data-i18n="faq.shipping">Shipping &amp; Delivery</p>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">Which cities do you deliver to?</span>
+        <span class="q-text" data-i18n="faq.q4">Which cities do you deliver to?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>We deliver across all of Morocco — major cities (Casablanca, Rabat, Marrakech, Tangier, Fes) in 24-48 hours, and secondary cities within 3-5 days.</p>
+        <p data-i18n-html="faq.a4">We deliver across all of Morocco — major cities (Casablanca, Rabat, Marrakech, Tangier, Fes) in 24-48 hours, and secondary cities within 3-5 days.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How long does delivery take?</span>
+        <span class="q-text" data-i18n="faq.q5">How long does delivery take?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>After your order is confirmed, we print and prepare your item within 1-2 days. Delivery then takes 1-2 days for major cities and 3-5 days for other areas. Total estimated time: <strong>2-7 days</strong> from order confirmation.</p>
+        <p data-i18n-html="faq.a5">After your order is confirmed, we print and prepare your item within 1-2 days. Delivery then takes 1-2 days for major cities and 3-5 days for other areas. Total estimated time: <strong>2-7 days</strong> from order confirmation.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How do I pay?</span>
+        <span class="q-text" data-i18n="faq.q6">How do I pay?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>We use a <strong>two-step payment system</strong>:</p>
+        <p data-i18n-html="faq.a6">We use a <strong>two-step payment system</strong>:</p>
         <p><strong>1. Deposit (10%)</strong> — After placing your order, you send a small deposit of 10% of your total via CIH Bank, Barid Bank, or bank transfer. This confirms your order and we start printing.</p>
         <p><strong>2. Remaining 90%</strong> — Paid in cash when you receive your package (Cash on Delivery).</p>
         <p>The exact deposit amount is shown on the checkout page before you submit your order.</p>
@@ -269,77 +274,75 @@
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How much does shipping cost?</span>
+        <span class="q-text" data-i18n="faq.q7">How much does shipping cost?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Shipping cost is calculated based on your city and is communicated to you when we confirm your order on WhatsApp.</p>
+        <p data-i18n-html="faq.a7">Shipping cost is calculated based on your city and is communicated to you when we confirm your order on WhatsApp.</p>
       </div>
     </div>
 
     <!-- PRODUCTS -->
-    <p class="faq-category">Products</p>
+    <p class="faq-category" data-i18n="faq.products">Products</p>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How do I know which size to pick?</span>
+        <span class="q-text" data-i18n="faq.q8">How do I know which size to pick?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>A size guide image pops up automatically when you open any product page. It shows exact measurements in cm for each size. When in doubt between two sizes, we recommend going up one size.</p>
+        <p data-i18n-html="faq.a8">A size guide image pops up automatically when you open any product page. It shows exact measurements in cm for each size. When in doubt between two sizes, we recommend going up one size.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">How should I wash my 212 Clothing items?</span>
+        <span class="q-text" data-i18n="faq.q9">How should I wash my 212 Clothing items?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Machine wash cold (30°C max), inside out, gentle cycle. Do not bleach. Tumble dry low or hang dry. Do not iron directly on the print. Following these instructions keeps your print looking sharp for longer.</p>
+        <p data-i18n-html="faq.a9">Machine wash cold (30°C max), inside out, gentle cycle. Do not bleach. Tumble dry low or hang dry. Do not iron directly on the print. Following these instructions keeps your print looking sharp for longer.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">What material are your products made from?</span>
+        <span class="q-text" data-i18n="faq.q10">What material are your products made from?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Our T-shirts and hoodies are made from high-quality 100% cotton or cotton-polyester blends, chosen for comfort, durability, and print quality.</p>
+        <p data-i18n-html="faq.a10">Our T-shirts and hoodies are made from high-quality 100% cotton or cotton-polyester blends, chosen for comfort, durability, and print quality.</p>
       </div>
     </div>
 
     <!-- RETURNS -->
-    <p class="faq-category">Returns &amp; Issues</p>
+    <p class="faq-category" data-i18n="faq.returns">Returns &amp; Issues</p>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">What if I receive the wrong item or size?</span>
+        <span class="q-text" data-i18n="faq.q11">What if I receive the wrong item or size?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Contact us immediately on WhatsApp with a photo of the item received. If the mistake is on our side, we will reprint and reship at no cost to you.</p>
+        <p data-i18n-html="faq.a11">Contact us immediately on WhatsApp with a photo of the item received. If the mistake is on our side, we will reprint and reship at no cost to you.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
-        <span class="q-text">Can I return or exchange an item?</span>
+        <span class="q-text" data-i18n="faq.q12">Can I return or exchange an item?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Because each item is printed on demand specifically for you, we do not accept returns for wrong size choices. However, if the item has a defect or print quality issue, contact us within 48 hours of delivery and we will make it right.</p>
+        <p data-i18n-html="faq.a12">Because each item is printed on demand specifically for you, we do not accept returns for wrong size choices. However, if the item has a defect or print quality issue, contact us within 48 hours of delivery and we will make it right.</p>
       </div>
     </div>
 
     <!-- Still have questions -->
     <div class="faq-contact-banner">
-      <strong>Still have a question?</strong>
-      <p>We usually reply within minutes</p>
-      <a class="faq-wa-btn" href="https://wa.me/212651866578" target="_blank">
-        Message us on WhatsApp
-      </a>
+      <strong data-i18n="faq.still">Still have a question?</strong>
+      <p data-i18n="faq.reply">We usually reply within minutes</p>
+      <a class="faq-wa-btn" href="https://wa.me/212651866578" target="_blank" data-i18n="faq.wa">Message us on WhatsApp</a>
     </div>
 
   </main>
@@ -348,7 +351,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <h3>212 CLOTHING</h3>
-        <p>Streetwear inspired by what moves you.</p>
+        <p data-i18n="footer.tagline">Streetwear inspired by what moves you.</p>
         <div class="social-icons">
           <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
@@ -362,28 +365,28 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Shop</h4>
-        <a href="/T-Shirts/tshirts.html">T-Shirts</a>
-        <a href="/Hoodies/Hoodies.html">Hoodies</a>
-        <a href="/Caps/caps.html">Caps</a>
-        <a href="/Slides/Slides.html">Slides</a>
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <a href="/T-Shirts/tshirts.html" data-i18n="footer.tshirts">T-Shirts</a>
+        <a href="/Hoodies/Hoodies.html" data-i18n="footer.hoodies">Hoodies</a>
+        <a href="/Caps/caps.html" data-i18n="footer.caps">Caps</a>
+        <a href="/Slides/Slides.html" data-i18n="footer.slides">Slides</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/index.html">Home</a>
-        <a href="/order-status.html">Track Order</a>
-        <a href="/Contact.html">Contact</a>
-        <a href="/FAQ.html">FAQ</a>
+        <h4 data-i18n="footer.company">Company</h4>
+        <a href="/index.html" data-i18n="nav.home" data-i18n="footer.home">Home</a>
+        <a href="/order-status.html" data-i18n="nav.track" data-i18n="footer.track">Track Order</a>
+        <a href="/Contact.html" data-i18n="nav.contact" data-i18n="footer.contact">Contact</a>
+        <a href="/FAQ.html" data-i18n="nav.faq" data-i18n="footer.faq">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Get in Touch</h4>
-        <a href="https://wa.me/212651866578" target="_blank">WhatsApp Us</a>
+        <h4 data-i18n="footer.touch">Get in Touch</h4>
+        <a href="https://wa.me/212651866578" target="_blank"><span data-i18n="footer.whatsapp">WhatsApp Us</span></a>
         <a href="mailto:support@212clothing.com">support@212clothing.com</a>
-        <p class="footer-location">Tangier, Morocco</p>
+        <p class="footer-location"><span data-i18n="footer.location">Tangier, Morocco</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 212 Clothing. All rights reserved.</p>
+      <p><span data-i18n="footer.rights">© 2026 212 Clothing. All rights reserved.</span></p>
     </div>
   </footer>
 
@@ -391,12 +394,12 @@
   <div id="cartModal" class="cart-modal">
     <div class="cart-modal-content">
       <span class="close-button">&times;</span>
-      <h2>Your Shopping Cart</h2>
+      <h2 data-i18n="cart.title">Your Shopping Cart</h2>
       <div id="cartItems" class="cart-items"></div>
       <div class="cart-summary">
         <p>Total: $<span id="cartTotal">0.00</span></p>
-        <button class="button" id="checkoutButton">Proceed to Checkout</button>
-        <button class="button clear-cart-button" id="clearCartButton">Clear Cart</button>
+        <button class="button" id="checkoutButton" data-i18n="cart.checkout">Proceed to Checkout</button>
+        <button class="button clear-cart-button" id="clearCartButton" data-i18n="cart.clear">Clear Cart</button>
       </div>
     </div>
   </div>
@@ -417,5 +420,6 @@
     }
   </script>
 
+<script src="/JS/i18n.js"></script>
 </body>
 </html>

@@ -117,8 +117,9 @@ const STOCK_CONFIG = {
     if (sizeNoticeNeeded && sizeSelect) {
       var sizeNote = document.createElement('p');
       sizeNote.className = 'stock-note';
+      sizeNote.setAttribute('data-stock-key', 'product.sizeout');
       sizeNote.style.cssText = 'font-size:0.8rem;color:#ff4500;margin:6px 0 0;';
-      sizeNote.innerHTML = 'Some sizes are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
+      sizeNote.innerHTML = window.t ? window.t('product.sizeout') : 'Some sizes are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
       sizeSelect.insertAdjacentElement('afterend', sizeNote);
     }
 
@@ -127,8 +128,9 @@ const STOCK_CONFIG = {
       if (colorContainer) {
         var colorNote = document.createElement('p');
         colorNote.className = 'stock-note';
+        colorNote.setAttribute('data-stock-key', 'product.colorout');
         colorNote.style.cssText = 'font-size:0.8rem;color:#ff4500;margin:6px 0 0;';
-        colorNote.innerHTML = 'Some colors are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
+        colorNote.innerHTML = window.t ? window.t('product.colorout') : 'Some colors are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
         colorContainer.insertAdjacentElement('afterend', colorNote);
       }
     }

@@ -982,3 +982,62 @@ nav a:hover {
     justify-content: center;
   }
 }
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-btn {
+    flex: 1 1 150px;
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .trust-strip {
+    grid-template-columns: 1fr;
+    padding: 0 14px;
+  }
+}
+
+/* ===== LANGUAGE SWITCHER ===================================== */
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 12px;
+}
+.lang-switcher button {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.lang-switcher button:hover,
+.lang-switcher button.lang-active {
+  background: #ff4500;
+  border-color: #ff4500;
+  color: #fff;
+}
+
+/* ===== RTL (Arabic) overrides ================================ */
+/* Note: flexbox containers using the default row direction are
+   already auto-mirrored by the browser when dir="rtl" is set —
+   adding flex-direction:row-reverse on top of that double-flips
+   them, which is why nav/footer/colors looked broken before.
+   Only non-flex or genuinely-needed adjustments are kept below. */
+[dir="rtl"] body                    { text-align: right; }
+[dir="rtl"] .lang-switcher          { margin-left: 0; margin-right: 12px; }
+[dir="rtl"] .footer-grid            { direction: rtl; }
+[dir="rtl"] .cart-item              { direction: rtl; text-align: right; }
+[dir="rtl"] select, [dir="rtl"] input, [dir="rtl"] textarea { text-align: right; direction: rtl; }
+[dir="rtl"] .progress-labels        { direction: rtl; }
+[dir="rtl"] .faq-question           { text-align: right; }
