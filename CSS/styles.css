@@ -1447,26 +1447,66 @@ nav a:hover {
 /* ===== LANGUAGE SWITCHER ===================================== */
 .lang-switcher {
   display: flex;
-  gap: 4px;
   align-items: center;
   margin-left: 12px;
+  border: 1px solid #333;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
 }
 .lang-switcher button {
+  /* Explicit resets — a generic unscoped "button {}" rule elsewhere
+     (meant only for big CTA buttons like Add to Cart) was leaking its
+     box-shadow glow, 40px top margin, and oversized border-radius onto
+     these tiny buttons. Resetting everything here makes this pill
+     immune to that, regardless of which stylesheet the page loads. */
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  border: 1px solid #444;
-  color: #aaa;
-  padding: 3px 9px;
-  border-radius: 4px;
-  font-size: 0.72rem;
+  border: none;
+  border-right: 1px solid #333;
+  color: #999;
+  min-width: 34px;
+  padding: 6px 10px;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-align: center;
   cursor: pointer;
   transition: all 0.2s;
   letter-spacing: 0.5px;
+  box-shadow: none;
+  transform: none;
 }
-.lang-switcher button:hover,
+.lang-switcher button::before { content: none; } /* kill the CTA shine-sweep effect */
+.lang-switcher button:last-child { border-right: none; }
+.lang-switcher button:hover {
+  color: #fff;
+  background: rgba(255,69,0,0.15);
+  box-shadow: none;
+  transform: none;
+}
 .lang-switcher button.lang-active {
   background: #ff4500;
-  border-color: #ff4500;
   color: #fff;
+}
+
+@media (max-width: 600px) {
+  .lang-switcher {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  .lang-switcher button {
+    min-width: 38px;
+    padding: 7px 10px;
+    font-size: 0.68rem;
+  }
 }
 
 /* ===== RTL (Arabic) overrides ================================ */

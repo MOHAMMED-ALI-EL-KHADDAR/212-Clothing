@@ -126,6 +126,14 @@ function getConfig() { return CURRENCY_CONFIG[activeCurrency]; }
  
     @media (max-width: 480px) {
       #currency-switcher { bottom: 16px; right: 16px; }
+      #currency-toggle-btn {
+        padding: 7px 12px;
+        font-size: 11px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 14px rgba(255,69,0,0.3);
+        backdrop-filter: blur(6px);
+        background: rgba(17,17,17,0.85);
+      }
+      #currency-toggle-btn .btn-flag { font-size: 13px; }
     }
   `;
   document.head.appendChild(s);
