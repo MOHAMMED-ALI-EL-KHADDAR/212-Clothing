@@ -1055,16 +1055,30 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
+  /* The desktop "connected pill" look needs its border/background to
+     span the row so it forces a line-break — but that leaves a big
+     empty-looking bar on phones. So on mobile we make the outer wrapper
+     invisible and give each button its own small individual pill
+     instead, which can't visually "stretch" since nothing connects them. */
   .lang-switcher {
     flex-basis: 100%;
     justify-content: center;
+    gap: 6px;
     margin-left: 0;
-    margin-top: 8px;
+    margin-top: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 0;
   }
   .lang-switcher button {
     min-width: 38px;
-    padding: 7px 10px;
+    padding: 7px 12px;
     font-size: 0.68rem;
+    border: 1px solid #333 !important;
+    border-radius: 20px !important;
+  }
+  .lang-switcher button.lang-active {
+    border-color: #ff4500 !important;
   }
 }
 
