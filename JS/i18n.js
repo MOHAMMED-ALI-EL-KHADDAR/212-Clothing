@@ -417,6 +417,9 @@ window.setLang = function(lang) {
   _currentLang = lang;
   localStorage.setItem('212-lang', lang);
   applyI18n(lang);
+  if (typeof window.renderCartItems === 'function') {
+    window.renderCartItems(); // re-translate Color:/Size: labels on already-open cart items
+  }
 };
 
 function applyI18n(lang) {
