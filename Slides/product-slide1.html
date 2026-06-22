@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/JS/analytics.js"></script>
   <title>Biker Slides</title>
   <meta name="description" content="Engineered for premium post-ride comfort. These lightweight slides feature a high-density cushioned footbed and a soft, padded strap to give your feet...">
   <meta property="og:type" content="website">
@@ -50,7 +51,7 @@
     <div class="details">
       <h2 id="productName">"RIDE FREE" RECOVERY SLIDES</h2>
       <p>Engineered for premium post-ride comfort. These lightweight slides feature a high-density cushioned footbed and a soft, padded strap to give your feet instant relief. Sleek, minimal style with a bold graphic that makes a statement off the bike.</p>
-      <p class="price">$<span id="productPrice">33sudo .99</span></p>
+      <p class="price">$<span id="productPrice">33.99</span></p>
       <p><strong data-i18n="product.sizes">Sizes:</strong>
         <select id="productSize" style="padding: 5px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
           <option value="S">S</option>
@@ -72,6 +73,11 @@
         <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/biker-s-slides?product=1895&variation=105481', '_blank')">Buy Now (Direct)</button>
       </div>
     </div>  
+  
+    <section class="related-products-section">
+      <h3 data-i18n="related.title">You Might Also Like</h3>
+      <div class="related-products-grid" id="relatedProductsGrid"></div>
+    </section>
   </main>
     <footer class="footer" id="contact">
     <div class="footer-grid">
@@ -220,6 +226,8 @@
 </script>
   <script src="/JS/currency.js"></script>
 <script src="/JS/currency.js"></script><script src="/JS/stock.js" data-category="slide"></script><script src="/JS/i18n.js"></script>
+<script src="/JS/product-catalog.js"></script>
+<script src="/JS/related-products.js"></script>
 </body>
 </html>
 

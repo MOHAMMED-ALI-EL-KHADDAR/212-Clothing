@@ -140,6 +140,13 @@ const TRANSLATIONS = {
     'faq.reply': 'We usually reply within minutes',
     'faq.wa':    'Message us on WhatsApp',
 
+    /* Order Confirmed */
+    'confirm.title':    'Order Received!',
+    'confirm.text':     'Thanks for your order. We\'ve opened WhatsApp so you can confirm it with us directly — just hit send on the pre-filled message. We\'ll get back to you shortly to confirm your delivery details.',
+    'confirm.track':    'Track My Order',
+    'confirm.continue': 'Continue Shopping',
+    'related.title':    'You Might Also Like',
+
     /* Index homepage */
     'index.hero':       'Gear Up with Style — For Bikers, Drivers and Enthusiasts!',
     'index.see_tshirts':'See More T-Shirts',
@@ -267,6 +274,12 @@ const TRANSLATIONS = {
     'faq.reply': 'Nous répondons généralement en quelques minutes',
     'faq.wa':    'Écrivez-nous sur WhatsApp',
 
+    'confirm.title':    'Commande reçue !',
+    'confirm.text':     'Merci pour votre commande. Nous avons ouvert WhatsApp pour que vous puissiez la confirmer directement avec nous — il vous suffit d\'appuyer sur envoyer pour le message pré-rempli. Nous reviendrons vers vous sous peu pour confirmer les détails de livraison.',
+    'confirm.track':    'Suivre ma commande',
+    'confirm.continue': 'Continuer mes achats',
+    'related.title':    'Vous Aimerez Aussi',
+
     'index.hero':       'Équipez-vous avec Style — Pour les motards, conducteurs et passionnés !',
     'index.see_tshirts':'Voir plus de T-Shirts',
     'index.see_hoodies':'Voir plus de Sweats',
@@ -392,6 +405,12 @@ const TRANSLATIONS = {
     'faq.still': 'لا تزال لديك سؤال؟',
     'faq.reply': 'نرد عادةً في غضون دقائق',
     'faq.wa':    'راسلنا على واتساب',
+
+    'confirm.title':    'تم استلام طلبك!',
+    'confirm.text':     'شكرًا لطلبك. لقد فتحنا واتساب حتى تتمكن من تأكيده معنا مباشرة — فقط اضغط على إرسال للرسالة المُعدة مسبقًا. سنعود إليك قريبًا لتأكيد تفاصيل التوصيل.',
+    'confirm.track':    'تتبع طلبي',
+    'confirm.continue': 'مواصلة التسوق',
+    'related.title':    'قد يعجبك أيضًا',
 
     'index.hero':       'تجهّز بأناقة — للدرّاجين والسائقين وعشاق السرعة!',
     'index.see_tshirts':'عرض المزيد من التيشيرتات',

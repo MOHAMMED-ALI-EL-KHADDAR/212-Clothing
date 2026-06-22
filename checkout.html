@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/JS/analytics.js"></script>
   <title>Checkout - 212 Clothing</title>
   <meta name="description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco, with a small deposit to confirm your order.">
   <meta property="og:type" content="website">
@@ -356,37 +357,73 @@
       const whatsappNumber = "212651866578";
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
 
-      // ── Save order to Google Sheets (fire-and-forget, survives navigation) ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
+      // ── Save order to Google Sheets, then go to the confirmation page ──
+      // We wait for the real server-generated order ID (via JSONP, since
+      // the Apps Script callback param already supports this) instead of
+      // firing-and-forgetting, so we never show the customer a made-up
+      // order number. A safety-net timeout still protects against the
+      // request hanging — the order itself is the same reliable save as
+      // before, just no longer "blind" about the result.
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
 
-const productSummary = cart.map(item =>
-  item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
-).join(' | ');
+      const productSummary = cart.map(item =>
+        item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
+      ).join(' | ');
 
-const params = new URLSearchParams({
-  action:  'saveOrder',
-  name:    name,
-  phone:   phone,
-  city:    city,
-  address: address,
-  notes:   notes || '',
-  product: productSummary,
-  total:   formatPrice(total),
-  deposit: formatPrice(total * 0.1)
-});
+      const params = new URLSearchParams({
+        action:  'saveOrder',
+        name:    name,
+        phone:   phone,
+        city:    city,
+        address: address,
+        notes:   notes || '',
+        product: productSummary,
+        total:   formatPrice(total),
+        deposit: formatPrice(total * 0.1)
+      });
 
-// keepalive: true = browser finishes sending this even after the page unloads.
-// mode: 'no-cors' = we don't need to read the response, just deliver it.
-fetch(SCRIPT_URL + '?' + params.toString(), {
-  method: 'GET',
-  mode: 'no-cors',
-  keepalive: true
-}).catch(() => {});
+      function goToConfirmation(orderId) {
+        localStorage.removeItem('shoppingCart');
+        window.open(whatsappUrl, '_blank');
+        const q = new URLSearchParams({
+          id:       orderId || '',
+          total:    formatPrice(total),
+          deposit:  formatPrice(total * 0.1),
+          rawTotal: (total * cfg.rate).toFixed(2), // raw number, for accurate ad-platform purchase tracking
+          currency: cfg.label || 'MAD'              // ISO code (USD/EUR/MAD), same for ad-platform tracking
+        });
+        window.location.href = '/order-confirmed.html?' + q.toString();
+      }
 
-localStorage.removeItem('shoppingCart');
-window.open(whatsappUrl, '_blank');
-alert('Thank you! Redirecting to WhatsApp to confirm your order.');
-window.location.href = '/index.html';
+      const callbackName = '_orderCb' + Date.now();
+      let settled = false;
+
+      window[callbackName] = function(data) {
+        if (settled) return;
+        settled = true;
+        delete window[callbackName];
+        scriptTag.remove();
+        goToConfirmation(data && data.orderId ? data.orderId : null);
+      };
+
+      const scriptTag = document.createElement('script');
+      scriptTag.src = SCRIPT_URL + '?' + params.toString() + '&callback=' + callbackName;
+      scriptTag.onerror = function() {
+        if (settled) return;
+        settled = true;
+        delete window[callbackName];
+        goToConfirmation(null); // still let them confirm via WhatsApp even if we couldn't read the ID back
+      };
+      document.head.appendChild(scriptTag);
+
+      // Safety net: don't leave the customer stuck if Apps Script hangs
+      setTimeout(function() {
+        if (settled) return;
+        settled = true;
+        delete window[callbackName];
+        scriptTag.remove();
+        goToConfirmation(null);
+      }, 4000);
     });
  
   </script>
