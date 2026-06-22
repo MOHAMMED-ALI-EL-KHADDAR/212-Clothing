@@ -223,22 +223,7 @@ const PRODUCT_CATALOG = [
     "image": "/Hoodies/Hoodie9.jpg",
     "link": "/Hoodies/product-hoodie9.html"
   },
-  {
-    "id": "Slides/product-slide.html",
-    "category": "slide",
-    "name": "\"ROAD REBEL\" RECOVERY SLIDES",
-    "price": "39.99",
-    "image": "/Slides/Slide.jpg",
-    "link": "/Slides/product-slide.html"
-  },
-  {
-    "id": "Slides/product-slide1.html",
-    "category": "slide",
-    "name": "\"RIDE FREE\" RECOVERY SLIDES",
-    "price": "33.99",
-    "image": "/Slides/Slide1.jpg",
-    "link": "/Slides/product-slide1.html"
-  },
+
   {
     "id": "T-Shirts/product-tshirt.html",
     "category": "tshirt",

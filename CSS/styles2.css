@@ -982,8 +982,7 @@ nav a:hover {
     justify-content: center;
   }
 }
-  }
-
+  
   .hero-actions {
     width: 100%;
   }
@@ -994,7 +993,7 @@ nav a:hover {
     padding: 0 16px;
     font-size: 0.72rem;
   }
-}
+
 
 @media (max-width: 520px) {
   .trust-strip {
@@ -1098,8 +1097,11 @@ nav a:hover {
 
 /* ===== RELATED PRODUCTS ===================================== */
 .related-products-section {
-  margin: 50px auto 20px;
+  /* Sits OUTSIDE .container so flex/grid layout never touches it.
+     Plain block-level full-width section between </main> and <footer>. */
+  width: 100%;
   max-width: 1100px;
+  margin: 50px auto 20px;
   padding: 0 20px;
 }
 .related-products-section h3 {
@@ -1110,7 +1112,7 @@ nav a:hover {
 }
 .related-products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
 }
 .related-product-card {

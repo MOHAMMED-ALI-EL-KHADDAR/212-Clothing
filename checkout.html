@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="/JS/analytics.js"></script>
   <title>Checkout - 212 Clothing</title>
-  <meta name="description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco, with a small deposit to confirm your order.">
+  <meta name="description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Checkout - 212 Clothing">
-  <meta property="og:description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco, with a small deposit to confirm your order.">
+  <meta property="og:description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco.">
   <meta property="og:image" content="https://212clothing.pages.dev/Logo/Logo.png">
   <meta property="og:url" content="https://212clothing.pages.dev/checkout.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Checkout - 212 Clothing">
-  <meta name="twitter:description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco, with a small deposit to confirm your order.">
+  <meta name="twitter:description" content="Complete your 212 Clothing order. Cash on Delivery across Morocco.">
   <meta name="twitter:image" content="https://212clothing.pages.dev/Logo/Logo.png">
 
   <link rel="stylesheet" href="/CSS/styles.css">
@@ -123,38 +123,6 @@
     .submit-btn:hover {
       transform: scale(1.02);
     }
-    /* Deposit section */
-    .checkout-deposit {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      margin-top: 8px;
-      background: rgba(255, 69, 0, 0.08);
-      border: 1px solid rgba(255, 69, 0, 0.25);
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #ff4500;
-      letter-spacing: 1px;
-    }
-    .deposit-label {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ff4500;
-    }
-    .deposit-note {
-      margin-top: 10px;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.02);
-      border-left: 3px solid #ff4500;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.75rem;
-      color: #666;
-      line-height: 1.7;
-      letter-spacing: 0.3px;
-    }
   </style>
 </head>
 <body>
@@ -180,14 +148,6 @@
       </div>
       <div class="checkout-total">
         Total: <span id="checkoutTotalSymbol">$</span><span id="checkoutTotal">0.00</span>
-      </div>
-      <div class="checkout-deposit">
-        <span class="deposit-label">Deposit required (10%)</span>
-        <span id="checkoutDepositSymbol">$</span><span id="checkoutDeposit">0.00</span>
-      </div>
-      <div class="deposit-note">
-        Send this deposit via CIH / Barid Bank / Transfer to confirm your order.
-        The remaining 90% is paid on delivery (COD).
       </div>
     </div>
  
@@ -241,7 +201,6 @@
         <a href="/T-Shirts/tshirts.html" data-i18n="footer.tshirts">T-Shirts</a>
         <a href="/Hoodies/Hoodies.html" data-i18n="footer.hoodies">Hoodies</a>
         <a href="/Caps/caps.html" data-i18n="footer.caps">Caps</a>
-        <a href="/Slides/Slides.html" data-i18n="footer.slides">Slides</a>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.company">Company</h4>
@@ -304,13 +263,6 @@
       totalSpan.textContent = (total * cfg.rate).toFixed(2);
       const symbolSpan = document.getElementById('checkoutTotalSymbol');
       if (symbolSpan) symbolSpan.textContent = cfg.symbol;
-
-      // Show 10% deposit
-      const deposit = total * 0.1;
-      const depositSpan = document.getElementById('checkoutDeposit');
-      const depositSymbolSpan = document.getElementById('checkoutDepositSymbol');
-      if (depositSpan) depositSpan.textContent = (deposit * cfg.rate).toFixed(2);
-      if (depositSymbolSpan) depositSymbolSpan.textContent = cfg.symbol;
     }
  
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
@@ -349,8 +301,6 @@
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       rawMessage += `\nTotal Amount: ${formatPrice(total)}\n`;
-      rawMessage += `Deposit Required (10%): ${formatPrice(total * 0.1)}\n`;
-      rawMessage += `Remaining on Delivery (90%): ${formatPrice(total * 0.9)}\n`;
       rawMessage += `\n(Please hit SEND to confirm your order and reserve your items!)`;
 
       // Encode the full message once — prevents character corruption in WhatsApp
@@ -378,8 +328,7 @@
         address: address,
         notes:   notes || '',
         product: productSummary,
-        total:   formatPrice(total),
-        deposit: formatPrice(total * 0.1)
+        total:   formatPrice(total)
       });
 
       function goToConfirmation(orderId) {
@@ -388,7 +337,6 @@
         const q = new URLSearchParams({
           id:       orderId || '',
           total:    formatPrice(total),
-          deposit:  formatPrice(total * 0.1),
           rawTotal: (total * cfg.rate).toFixed(2), // raw number, for accurate ad-platform purchase tracking
           currency: cfg.label || 'MAD'              // ISO code (USD/EUR/MAD), same for ad-platform tracking
         });

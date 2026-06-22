@@ -28,7 +28,6 @@ const TRANSLATIONS = {
     'footer.tshirts':  'T-Shirts',
     'footer.hoodies':  'Hoodies',
     'footer.caps':     'Caps',
-    'footer.slides':   'Slides',
     'footer.company':  'Company',
     'footer.home':     'Home',
     'footer.track':    'Track Order',
@@ -83,7 +82,6 @@ const TRANSLATIONS = {
     'status.field.address': 'Address',
     'status.field.product': 'Product',
     'status.field.total':   'Total',
-    'status.field.deposit': 'Deposit Paid',
     'status.not_found': 'No orders found for this number.<br>Make sure you enter the same number used when ordering.<br><br><a href="https://wa.me/212651866578" target="_blank">Contact us on WhatsApp</a> if you need help.',
     'status.conn_error': 'Connection error. Please try again or <a href="https://wa.me/212651866578" style="color:#ff4500">contact us on WhatsApp</a>.',
     'status.question': 'Questions about your order?',
@@ -121,7 +119,7 @@ const TRANSLATIONS = {
     'faq.q5': 'How long does delivery take?',
     'faq.a5': 'After your order is confirmed, we print and prepare your item within 1-2 days. Delivery then takes 1-2 days for major cities and 3-5 days for other areas. Total estimated time: <strong>2-7 days</strong> from order confirmation.',
     'faq.q6': 'How do I pay?',
-    'faq.a6': 'We use a <strong>two-step payment system</strong>:<br><br><strong>1. Deposit (10%)</strong> — After placing your order, you send a small deposit of 10% of your total via CIH Bank, Barid Bank, or bank transfer. This confirms your order and we start printing.<br><br><strong>2. Remaining 90%</strong> — Paid in cash when you receive your package (Cash on Delivery).<br><br>The exact deposit amount is shown on the checkout page before you submit your order.',
+    'faq.a6': 'We accept Cash on Delivery across Morocco. You pay in full when you receive your package — no deposit required.',
     'faq.q7': 'How much does shipping cost?',
     'faq.a7': 'Shipping cost is calculated based on your city and is communicated to you when we confirm your order on WhatsApp.',
     'faq.products': 'Products',
@@ -152,7 +150,6 @@ const TRANSLATIONS = {
     'index.see_tshirts':'See More T-Shirts',
     'index.see_hoodies':'See More Hoodies',
     'index.see_caps':   'See More Caps',
-    'index.see_slides': 'See More Slides',
   },
 
   /* ── FRANÇAIS ──────────────────────────────────────────── */
@@ -168,7 +165,6 @@ const TRANSLATIONS = {
     'footer.tshirts':  'T-Shirts',
     'footer.hoodies':  'Sweats',
     'footer.caps':     'Casquettes',
-    'footer.slides':   'Claquettes',
     'footer.company':  'Entreprise',
     'footer.home':     'Accueil',
     'footer.track':    'Suivi commande',
@@ -219,7 +215,6 @@ const TRANSLATIONS = {
     'status.field.address': 'Adresse',
     'status.field.product': 'Produit',
     'status.field.total':   'Total',
-    'status.field.deposit': 'Dépôt payé',
     'status.not_found': 'Aucune commande trouvée pour ce numéro.<br>Vérifiez que vous utilisez le même numéro qu\'à la commande.<br><br><a href="https://wa.me/212651866578" target="_blank">Contactez-nous sur WhatsApp</a> si vous avez besoin d\'aide.',
     'status.conn_error': 'Erreur de connexion. Veuillez réessayer ou <a href="https://wa.me/212651866578" style="color:#ff4500">nous contacter sur WhatsApp</a>.',
     'status.question': 'Des questions sur votre commande ?',
@@ -255,7 +250,7 @@ const TRANSLATIONS = {
     'faq.q5': 'Quel est le délai de livraison ?',
     'faq.a5': 'Après confirmation de votre commande, nous imprimons et préparons votre article en 1-2 jours. La livraison prend ensuite 1-2 jours pour les grandes villes et 3-5 jours pour les autres zones. Délai total estimé : <strong>2-7 jours</strong> après confirmation.',
     'faq.q6': 'Comment payer ?',
-    'faq.a6': 'Nous utilisons un <strong>système de paiement en deux étapes</strong> :<br><br><strong>1. Acompte (10 %)</strong> — Après votre commande, vous envoyez un acompte de 10 % de votre total via CIH Bank, Barid Bank ou virement. Cela confirme votre commande et nous démarrons l\'impression.<br><br><strong>2. Solde 90 %</strong> — Réglé en espèces à la livraison (Paiement à la livraison).<br><br>Le montant exact de l\'acompte est indiqué sur la page de paiement avant validation.',
+    'faq.a6': 'Nous acceptons le paiement à la livraison dans tout le Maroc. Vous payez en totalité à la réception de votre colis — aucun acompte requis.',
     'faq.q7': 'Quel est le coût de livraison ?',
     'faq.a7': 'Les frais de livraison sont calculés selon votre ville et vous sont communiqués lors de la confirmation de votre commande sur WhatsApp.',
     'faq.products': 'Produits',
@@ -284,7 +279,6 @@ const TRANSLATIONS = {
     'index.see_tshirts':'Voir plus de T-Shirts',
     'index.see_hoodies':'Voir plus de Sweats',
     'index.see_caps':   'Voir plus de Casquettes',
-    'index.see_slides': 'Voir plus de Claquettes',
   },
 
   /* ── العربية ────────────────────────────────────────────── */
@@ -300,7 +294,6 @@ const TRANSLATIONS = {
     'footer.tshirts':  'تيشيرتات',
     'footer.hoodies':  'هوديز',
     'footer.caps':     'قبعات',
-    'footer.slides':   'شباشب',
     'footer.company':  'الشركة',
     'footer.home':     'الرئيسية',
     'footer.track':    'تتبع الطلب',
@@ -351,7 +344,6 @@ const TRANSLATIONS = {
     'status.field.address': 'العنوان',
     'status.field.product': 'المنتج',
     'status.field.total':   'المجموع',
-    'status.field.deposit': 'الدفعة المدفوعة',
     'status.not_found': 'لم يتم العثور على طلبات لهذا الرقم.<br>تأكد من إدخال نفس الرقم المستخدم عند الطلب.<br><br><a href="https://wa.me/212651866578" target="_blank">تواصل معنا على واتساب</a> إذا احتجت مساعدة.',
     'status.conn_error': 'خطأ في الاتصال. حاول مجددًا أو <a href="https://wa.me/212651866578" style="color:#ff4500">تواصل معنا على واتساب</a>.',
     'status.question': 'أسئلة حول طلبك؟',
@@ -387,7 +379,7 @@ const TRANSLATIONS = {
     'faq.q5': 'كم يستغرق التوصيل؟',
     'faq.a5': 'بعد تأكيد طلبك، نطبع ونجهز قطعتك خلال 1-2 أيام. ثم يستغرق التوصيل 1-2 أيام للمدن الكبرى و3-5 أيام للمناطق الأخرى. المدة الإجمالية المتوقعة: <strong>2-7 أيام</strong> من التأكيد.',
     'faq.q6': 'كيف يتم الدفع؟',
-    'faq.a6': 'نعتمد <strong>نظام دفع مرحلتين</strong>:<br><br><strong>1. دفعة أولى (10%)</strong> — بعد وضع طلبك، ترسل دفعة بنسبة 10% من المجموع عبر CIH Bank أو Barid Bank أو تحويل بنكي. هذا يؤكد طلبك ونبدأ الطباعة.<br><br><strong>2. الباقي 90%</strong> — يُدفع نقدًا عند استلام طردك (الدفع عند التسليم).<br><br>يظهر المبلغ الدقيق للدفعة في صفحة الطلب قبل التأكيد.',
+    'faq.a6': 'نقبل الدفع عند التسليم في جميع أنحاء المغرب. تدفع المبلغ كاملاً عند استلام طردك — لا حاجة لأي دفعة مسبقة.',
     'faq.q7': 'كم تكلف الشحنة؟',
     'faq.a7': 'تُحسب تكلفة الشحن بناءً على مدينتك وتُبلَّغ بها عند تأكيد طلبك على واتساب.',
     'faq.products': 'المنتجات',
@@ -416,7 +408,6 @@ const TRANSLATIONS = {
     'index.see_tshirts':'عرض المزيد من التيشيرتات',
     'index.see_hoodies':'عرض المزيد من الهوديز',
     'index.see_caps':   'عرض المزيد من القبعات',
-    'index.see_slides': 'عرض المزيد من الشباشب',
   }
 };
 

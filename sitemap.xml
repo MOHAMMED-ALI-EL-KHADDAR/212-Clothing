@@ -124,18 +124,8 @@
     <loc>https://212clothing.pages.dev/Hoodies/product-hoodie9.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://212clothing.pages.dev/Slides/Slides.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/Slides/product-slide.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/Slides/product-slide1.html</loc>
-    <priority>0.7</priority>
-  </url>
+
+
   <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt.html</loc>
     <priority>0.7</priority>

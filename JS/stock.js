@@ -37,7 +37,6 @@ const STOCK_CONFIG = {
   tshirt: { sizes: [], colors: [] },
   hoodie: { sizes: ['M', 'L', 'XL', 'XXL', 'S'], colors: [] },
   cap:    { sizes: [], colors: [] },
-  slide:  { sizes: [], colors: [] },
 };
 
 (function () {
