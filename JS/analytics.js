@@ -17,8 +17,8 @@
  * optimization actually work, since it tells Meta/Google which visitors
  * turned into paying customers.
  */
-var GA4_MEASUREMENT_ID = 'PASTE-YOUR-G-XXXXXXXXXX-HERE';
-var META_PIXEL_ID       = 'PASTE-YOUR-PIXEL-ID-HERE';
+var GA4_MEASUREMENT_ID = 'G-43C8CHJG5L';
+var META_PIXEL_ID       = '1010381705023274';
 
 (function () {
   // ── Google Analytics 4 ────────────────────────────────────────────
