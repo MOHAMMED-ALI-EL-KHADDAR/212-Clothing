@@ -1,11 +1,3 @@
-/**
- * 212 CLOTHING — Product Catalog
- *
- * Real product data (name, price, image, link) extracted directly from
- * each product page. Used by related-products.js to show "You might
- * also like" suggestions. If you add a new product page, you'll need to
- * add a matching entry here too — there's no automatic sync.
- */
 const PRODUCT_CATALOG = [
   {
     "id": "Caps/product-cap.html",
@@ -68,7 +60,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"PASSION POWER PERFORMANCE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie10.jpg",
+    "image": "/Hoodies/Hoodie10².jpg",
     "link": "/Hoodies/product-hoodie10.html"
   },
   {
@@ -76,7 +68,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"RIDE OR DIE\" PULLOVER HOODIE",
     "price": "34.99",
-    "image": "/Hoodies/Hoodie11.jpg",
+    "image": "/Hoodies/Hoodie11².jpg",
     "link": "/Hoodies/product-hoodie11.html"
   },
   {
@@ -84,7 +76,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"BORN TO RIDE\" PREMIUM HOODIE",
     "price": "33.99",
-    "image": "/Hoodies/Hoodie12.jpg",
+    "image": "/Hoodies/Hoodie12².jpg",
     "link": "/Hoodies/product-hoodie12.html"
   },
   {
@@ -172,7 +164,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie3.jpg",
+    "image": "/Hoodies/Hoodie3².jpg",
     "link": "/Hoodies/product-hoodie3.html"
   },
   {
@@ -180,7 +172,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"RIDE FREE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie4.jpg",
+    "image": "/Hoodies/Hoodie4².jpg",
     "link": "/Hoodies/product-hoodie4.html"
   },
   {
@@ -188,7 +180,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"BMX\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie5.jpg",
+    "image": "/Hoodies/Hoodie5².jpg",
     "link": "/Hoodies/product-hoodie5.html"
   },
   {
@@ -196,7 +188,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"MTB\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie6.jpg",
+    "image": "/Hoodies/Hoodie6².jpg",
     "link": "/Hoodies/product-hoodie6.html"
   },
   {
@@ -212,7 +204,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie8.jpg",
+    "image": "/Hoodies/Hoodie8².jpg",
     "link": "/Hoodies/product-hoodie8.html"
   },
   {
@@ -220,7 +212,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"ADVENTURE AWAITS\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie9.jpg",
+    "image": "/Hoodies/Hoodie9².jpg",
     "link": "/Hoodies/product-hoodie9.html"
   },
 
@@ -229,7 +221,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"UNLEASH YOUR SPIRIT\" GRAPHIC TEE",
     "price": "22.99",
-    "image": "/T-Shirts/T-Shirt.jpg",
+    "image": "/T-Shirts/T-Shirt².jpg",
     "link": "/T-Shirts/product-tshirt.html"
   },
   {
@@ -269,7 +261,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "BMW F90 Automotive Streetwear Graphic Tee",
     "price": "39.99",
-    "image": "/T-Shirts/T-shirt14.jpg",
+    "image": "/T-Shirts/T-shirt14².jpg",
     "link": "/T-Shirts/product-tshirt14.html"
   },
   {
@@ -285,7 +277,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"STRONGER\" PREMIUM TEE",
     "price": "24.99",
-    "image": "/T-Shirts/T-Shirt3.jpg",
+    "image": "/T-Shirts/T-Shirt3².jpg",
     "link": "/T-Shirts/product-tshirt3.html"
   },
   {
@@ -293,7 +285,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"BORN TO RIDE\" COMFORT TEE",
     "price": "21.99",
-    "image": "/T-Shirts/T-Shirt4.jpg",
+    "image": "/T-Shirts/T-Shirt4².jpg",
     "link": "/T-Shirts/product-tshirt4.html"
   },
   {
@@ -309,7 +301,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "Suzuki GSX-R Sportbike Streetwear T-Shirt",
     "price": "39.99",
-    "image": "/T-Shirts/T-Shirt8.jpg",
+    "image": "/T-Shirts/T-Shirt8².jpg",
     "link": "/T-Shirts/product-tshirt8.html"
   },
   {
