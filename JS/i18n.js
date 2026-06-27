@@ -138,6 +138,18 @@ const TRANSLATIONS = {
     'faq.reply': 'We usually reply within minutes',
     'faq.wa':    'Message us on WhatsApp',
 
+    /* Cookie consent */
+    'cookie.text':    'We use cookies and similar tools to analyse traffic and improve your experience. By continuing to browse, you accept our use of analytics and advertising cookies.',
+    'cookie.accept':  'Accept',
+    'cookie.decline': 'Decline',
+
+    /* Back in stock */
+    'bis.title': 'Get notified on WhatsApp when this size is back in stock:',
+    'bis.ph':    '0612345678',
+    'bis.btn':   'Notify Me',
+    'bis.err':   'Please enter a valid phone number.',
+    'bis.sent':  '✓ Message sent! We\'ll notify you when it\'s back.',
+
     /* Order Confirmed */
     'confirm.title':    'Order Received!',
     'confirm.text':     'Thanks for your order. We\'ve opened WhatsApp so you can confirm it with us directly — just hit send on the pre-filled message. We\'ll get back to you shortly to confirm your delivery details.',
@@ -269,6 +281,19 @@ const TRANSLATIONS = {
     'faq.reply': 'Nous répondons généralement en quelques minutes',
     'faq.wa':    'Écrivez-nous sur WhatsApp',
 
+    /* Cookie consent */
+    'cookie.text':    'Nous utilisons des cookies pour analyser le trafic et améliorer votre expérience. En continuant à naviguer, vous acceptez l\'utilisation de cookies analytiques et publicitaires.',
+    'cookie.accept':  'Accepter',
+    'cookie.decline': 'Refuser',
+
+    /* Back in stock */
+    'bis.title': 'Recevez une notification WhatsApp quand cette taille est disponible :',
+    'bis.ph':    '0612345678',
+    'bis.btn':   'Me notifier',
+    'bis.err':   'Veuillez entrer un numéro valide.',
+    'bis.sent':  '✓ Message envoyé ! Nous vous contacterons dès que c\'est disponible.',
+
+    /* Order Confirmed */
     'confirm.title':    'Commande reçue !',
     'confirm.text':     'Merci pour votre commande. Nous avons ouvert WhatsApp pour que vous puissiez la confirmer directement avec nous — il vous suffit d\'appuyer sur envoyer pour le message pré-rempli. Nous reviendrons vers vous sous peu pour confirmer les détails de livraison.',
     'confirm.track':    'Suivre ma commande',
@@ -398,6 +423,19 @@ const TRANSLATIONS = {
     'faq.reply': 'نرد عادةً في غضون دقائق',
     'faq.wa':    'راسلنا على واتساب',
 
+    /* Cookie consent */
+    'cookie.text':    'نستخدم ملفات تعريف الارتباط لتحليل حركة المرور وتحسين تجربتك. بمواصلة التصفح، فإنك توافق على استخدامنا لملفات تعريف الارتباط التحليلية والإعلانية.',
+    'cookie.accept':  'قبول',
+    'cookie.decline': 'رفض',
+
+    /* Back in stock */
+    'bis.title': 'احصل على إشعار واتساب عندما يتوفر هذا المقاس:',
+    'bis.ph':    '0612345678',
+    'bis.btn':   'أعلمني',
+    'bis.err':   'يرجى إدخال رقم هاتف صحيح.',
+    'bis.sent':  '✓ تم إرسال الرسالة! سنعلمك عند توفره.',
+
+    /* Order Confirmed */
     'confirm.title':    'تم استلام طلبك!',
     'confirm.text':     'شكرًا لطلبك. لقد فتحنا واتساب حتى تتمكن من تأكيده معنا مباشرة — فقط اضغط على إرسال للرسالة المُعدة مسبقًا. سنعود إليك قريبًا لتأكيد تفاصيل التوصيل.',
     'confirm.track':    'تتبع طلبي',

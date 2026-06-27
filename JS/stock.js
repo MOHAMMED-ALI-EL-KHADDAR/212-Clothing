@@ -143,6 +143,10 @@ const STOCK_CONFIG = {
         addBtn.style.opacity = '0.5';
         addBtn.style.cursor = 'not-allowed';
       }
+      // Show the back-in-stock notification form (from tier1.js)
+      if (typeof window.showBackInStockForm === 'function') {
+        window.showBackInStockForm(category, outOfStockSizes);
+      }
     }
   });
 })();
