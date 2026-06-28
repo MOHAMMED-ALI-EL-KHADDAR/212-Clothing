@@ -262,8 +262,21 @@
   // INIT — run everything when DOM is ready
   // ════════════════════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
-    initWhatsAppButton();
-    initCookieBanner();
+    // Delay WhatsApp button and cookie banner until after the preloader
+    // animation finishes (preloader takes up to ~650ms on first visit).
+    // On repeat visits the preloader is hidden instantly so 0ms delay is fine.
+    var preloader = document.getElementById('preloader');
+    var isFirstVisit = preloader &&
+      getComputedStyle(preloader).visibility !== 'hidden' &&
+      getComputedStyle(preloader).opacity !== '0';
+
+    var delay = isFirstVisit ? 700 : 0;
+
+    setTimeout(function () {
+      initWhatsAppButton();
+      initCookieBanner();
+    }, delay);
+
     initImageZoom(); // no-ops silently on pages without #mainProductImage
   });
 

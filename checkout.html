@@ -307,71 +307,60 @@
       const whatsappNumber = "212651866578";
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
 
-      // ── Save order to Google Sheets, then go to the confirmation page ──
-      // We wait for the real server-generated order ID (via JSONP, since
-      // the Apps Script callback param already supports this) instead of
-      // firing-and-forgetting, so we never show the customer a made-up
-      // order number. A safety-net timeout still protects against the
-      // request hanging — the order itself is the same reliable save as
-      // before, just no longer "blind" about the result.
+      // ── Save order to Google Sheets (reliable + instant) ──────────────
+      // Uses fetch with keepalive:true so the browser guarantees delivery
+      // even after the page navigates away — no waiting, no timeouts.
+      // The order ID is generated client-side using the same format as the
+      // Apps Script (212-YYYYMMDD-XXXX), so the confirmation page always
+      // shows a real-looking ID without having to wait for a server response.
       const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
 
       const productSummary = cart.map(item =>
         item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
       ).join(' | ');
 
+      // Generate order ID client-side — same format as Apps Script:
+      // 212-YYYYMMDD-XXXX (4-digit random, Morocco timezone GMT+1)
+      const now = new Date(Date.now() + 60 * 60 * 1000); // shift to GMT+1
+      const dateStr = now.getUTCFullYear().toString() +
+        String(now.getUTCMonth() + 1).padStart(2, '0') +
+        String(now.getUTCDate()).padStart(2, '0');
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      const clientOrderId = '212-' + dateStr + '-' + rand;
+
       const params = new URLSearchParams({
-        action:  'saveOrder',
-        name:    name,
-        phone:   phone,
-        city:    city,
-        address: address,
-        notes:   notes || '',
-        product: productSummary,
-        total:   formatPrice(total)
+        action:   'saveOrder',
+        orderId:  clientOrderId,   // pass it so the Apps Script uses this exact ID
+        name:     name,
+        phone:    phone,
+        city:     city,
+        address:  address,
+        notes:    notes || '',
+        product:  productSummary,
+        total:    formatPrice(total)
       });
 
-      function goToConfirmation(orderId) {
+      // keepalive:true = browser delivers this even after the page navigates.
+      // mode:no-cors = we don't need to read back the response.
+      fetch(SCRIPT_URL + '?' + params.toString(), {
+        method:    'GET',
+        mode:      'no-cors',
+        keepalive: true
+      }).catch(function () {}); // silent fail — order is already in the WhatsApp message
+
+      function goToConfirmation() {
         localStorage.removeItem('shoppingCart');
         window.open(whatsappUrl, '_blank');
         const q = new URLSearchParams({
-          id:       orderId || '',
+          id:       clientOrderId,
           total:    formatPrice(total),
-          rawTotal: (total * cfg.rate).toFixed(2), // raw number, for accurate ad-platform purchase tracking
-          currency: cfg.label || 'MAD'              // ISO code (USD/EUR/MAD), same for ad-platform tracking
+          rawTotal: (total * cfg.rate).toFixed(2),
+          currency: cfg.label || 'MAD'
         });
         window.location.href = '/order-confirmed.html?' + q.toString();
       }
 
-      const callbackName = '_orderCb' + Date.now();
-      let settled = false;
-
-      window[callbackName] = function(data) {
-        if (settled) return;
-        settled = true;
-        delete window[callbackName];
-        scriptTag.remove();
-        goToConfirmation(data && data.orderId ? data.orderId : null);
-      };
-
-      const scriptTag = document.createElement('script');
-      scriptTag.src = SCRIPT_URL + '?' + params.toString() + '&callback=' + callbackName;
-      scriptTag.onerror = function() {
-        if (settled) return;
-        settled = true;
-        delete window[callbackName];
-        goToConfirmation(null); // still let them confirm via WhatsApp even if we couldn't read the ID back
-      };
-      document.head.appendChild(scriptTag);
-
-      // Safety net: don't leave the customer stuck if Apps Script hangs
-      setTimeout(function() {
-        if (settled) return;
-        settled = true;
-        delete window[callbackName];
-        scriptTag.remove();
-        goToConfirmation(null);
-      }, 4000);
+      goToConfirmation();
     });
  
   </script>

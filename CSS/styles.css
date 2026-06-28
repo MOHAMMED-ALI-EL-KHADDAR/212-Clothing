@@ -1557,6 +1557,12 @@ nav a:hover {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
 }
+@media (max-width: 480px) {
+  .related-products-section { padding: 0 12px; }
+  .related-products-grid    { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .related-product-card h4  { font-size: 0.72rem; }
+  .related-product-price    { font-size: 0.78rem; }
+}
 .related-product-card {
   display: block;
   text-decoration: none;

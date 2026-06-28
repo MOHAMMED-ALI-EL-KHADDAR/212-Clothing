@@ -9,7 +9,7 @@
  * (uses the same window.getActiveCurrencyConfig() that currency.js
  * exposes), so prices shown here always match the rest of the site.
  */
-document.addEventListener('DOMContentLoaded', function () {
+function initRelatedProducts() {
   const grid = document.getElementById('relatedProductsGrid');
   if (!grid || typeof PRODUCT_CATALOG === 'undefined') return;
 
@@ -49,4 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
   render();
   // Re-render if the customer switches currency while looking at this page
   window.addEventListener('currencyChanged', render);
-});
+}
+
+// Guard against the DOMContentLoaded race condition on mobile:
+// on slow connections this script may load AFTER DOMContentLoaded has
+// already fired, in which case the event listener would never trigger
+// and the grid would stay empty. Checking readyState first fixes this.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRelatedProducts);
+} else {
+  initRelatedProducts();
+}
