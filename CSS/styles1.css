@@ -1648,9 +1648,16 @@ select, .button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
+  width: 100%;
+  overflow: hidden;
 }
 @media (max-width: 480px) {
-  .related-products-section { padding: 0 12px; }
+  .related-products-section {
+    padding: 0 12px;
+    box-sizing: border-box;
+    max-width: 100vw;
+    overflow: hidden;
+  }
   .related-products-grid    { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .related-product-card h4  { font-size: 0.72rem; }
   .related-product-price    { font-size: 0.78rem; }
@@ -1663,6 +1670,11 @@ select, .button {
   border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.2s, transform 0.2s;
+  /* min-width:0 overrides the CSS grid default min-width:auto on grid
+     items, which lets cards grow beyond their 1fr column to fit their
+     image content, pushing the whole grid past the viewport edge. */
+  min-width: 0;
+  box-sizing: border-box;
 }
 .related-product-card:hover {
   border-color: #ff4500;
