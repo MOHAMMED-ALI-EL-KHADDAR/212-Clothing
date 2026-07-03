@@ -1,0 +1,103 @@
+{
+  "name": "212 Clothing - Moroccan Streetwear",
+  "short_name": "212 Clothing",
+  "description": "Moroccan streetwear inspired by cars, bikes, and the open road. Shop graphic tees, hoodies, and caps — Cash on Delivery across Morocco.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080808",
+  "theme_color": "#ff4500",
+  "categories": ["shopping", "fashion"],
+  "icons": [
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/Logo/Logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Shop T-Shirts",
+      "short_name": "T-Shirts",
+      "description": "Browse our collection of T-Shirts",
+      "url": "/T-Shirts/tshirts.html",
+      "icons": [
+        {
+          "src": "/Logo/Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Shop Hoodies",
+      "short_name": "Hoodies",
+      "description": "Browse our collection of Hoodies",
+      "url": "/Hoodies/Hoodies.html",
+      "icons": [
+        {
+          "src": "/Logo/Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Shop Caps",
+      "short_name": "Caps",
+      "description": "Browse our collection of Caps",
+      "url": "/Caps/caps.html",
+      "icons": [
+        {
+          "src": "/Logo/Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Track Order",
+      "short_name": "Track",
+      "description": "Check your order status",
+      "url": "/order-status.html",
+      "icons": [
+        {
+          "src": "/Logo/Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

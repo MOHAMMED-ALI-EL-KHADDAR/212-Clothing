@@ -15,7 +15,18 @@
   <meta name="twitter:title" content="212 Clothing">
   <meta name="twitter:description" content="Moroccan streetwear inspired by cars, bikes, and the open road. Shop graphic tees, hoodies, and caps — Cash on Delivery across Morocco.">
   <meta name="twitter:image" content="https://212clothing.pages.dev/Logo/Logo.png">
+<!-- PWA Manifest -->
+<link rel="manifest" href="/manifest.json">
 
+<!-- PWA Metadata -->
+<meta name="theme-color" content="#ff4500">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="212 Clothing">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- PWA Icons for Apple -->
+<link rel="apple-touch-icon" href="/Logo/Logo.png">
   <link rel="stylesheet" href="CSS/styles.css">
   <link rel="icon" href="/Logo/Logo.png">
   <!-- Animation Libraries -->
@@ -228,22 +239,18 @@
   <script src="/JS/currency.js"></script>
   <script src="/JS/crazy_animations.js"></script>
   <script>
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      const hasVisited = sessionStorage.getItem('212-clothing-visited');
-      if (hasVisited) {
-        preloader.style.opacity = '0';
-        preloader.style.visibility = 'hidden';
-      } else {
-        sessionStorage.setItem('212-clothing-visited', 'true');
-        setTimeout(() => {
-          preloader.style.opacity = '0';
-          setTimeout(() => {
-            preloader.style.visibility = 'hidden';
-          }, 250);
-        }, 400); 
-      }
-    });
+    // Check if running as installed app
+const isStandalone = window.navigator.standalone === true || 
+                     window.matchMedia('(display-mode: standalone)').matches;
+
+// If app mode → hide preloader instantly
+if (isStandalone) {
+  preloader.style.display = 'none';
+  return;
+}
+
+// If browser mode → show preloader animation
+// (your normal code here)
 
     const revealElements = document.querySelectorAll('.product, .see-more-container');
     const revealOnScroll = () => {
@@ -259,5 +266,79 @@
   </script>
   <script src="/JS/i18n.js"></script>
 <script src="/JS/tier1.js"></script>
+<!-- PWA Install Prompt -->
+<style>
+  #pwaInstallPrompt {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ff4500 0%, #ff6b35 100%);
+    color: white;
+    padding: 16px 20px;
+    z-index: 9998;
+    box-shadow: 0 -4px 20px rgba(255, 69, 0, 0.3);
+    animation: slideUp 0.4s ease;
+    font-family: inherit;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  #pwaInstallPrompt.show {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .pwa-install-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+  .pwa-install-text { font-size: 14px; font-weight: 500; }
+  .pwa-install-text strong { display: block; margin-bottom: 4px; }
+  .pwa-install-actions { display: flex; gap: 8px; }
+  .pwa-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #pwaInstallButton {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 2px solid white;
+  }
+  #pwaDismissButton {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+  @media (max-width: 599px) {
+    #pwaInstallPrompt.show { flex-direction: column; }
+    .pwa-install-actions { width: 100%; }
+    .pwa-button { flex: 1; }
+  }
+</style>
+
+<div id="pwaInstallPrompt">
+  <div class="pwa-install-content">
+    <div class="pwa-install-icon">📱</div>
+    <div class="pwa-install-text">
+      <strong>Get 212 Clothing on your home screen</strong>
+      <span>Shop offline, instant access</span>
+    </div>
+  </div>
+  <div class="pwa-install-actions">
+    <button id="pwaInstallButton" class="pwa-button">Install</button>
+    <button id="pwaDismissButton" class="pwa-button">Not now</button>
+  </div>
+</div>
+
+<script src="/pwa.js"></script>
 </body>
 </html>
