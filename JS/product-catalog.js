@@ -1,58 +1,10 @@
-const PRODUCT_CATALOG = [
-  {
-    "id": "Caps/product-cap.html",
-    "category": "cap",
-    "name": "\"FIRE WHEELS\" FOAM TRUCKER",
-    "price": "33.99",
-    "image": "/Caps/Cap.jpg",
-    "link": "/Caps/product-cap.html"
-  },
-  {
-    "id": "Caps/product-cap1.html",
-    "category": "cap",
-    "name": "\"CO-FOX GAMING\" DISTRESSED DAD HAT",
-    "price": "32.99",
-    "image": "/Caps/Cap1.jpg",
-    "link": "/Caps/product-cap1.html"
-  },
-  {
-    "id": "Caps/product-cap2.html",
-    "category": "cap",
-    "name": "\"BORN FOR SPEED\" FOAM TRUCKER",
-    "price": "33.99",
-    "image": "/Caps/Cap2.jpg",
-    "link": "/Caps/product-cap2.html"
-  },
-  {
-    "id": "Caps/product-cap3.html",
-    "category": "cap",
-    "name": "\"SPEED AND ADRENALINE\" TRUCKER HAT",
-    "price": "33.99",
-    "image": "/Caps/Cap3.jpg",
-    "link": "/Caps/product-cap3.html"
-  },
-  {
-    "id": "Caps/product-cap4.html",
-    "category": "cap",
-    "name": "\"RIDE ON!\" CHINO DAD HAT",
-    "price": "28.99",
-    "image": "/Caps/Cap4.jpg",
-    "link": "/Caps/product-cap4.html"
-  },
-  {
-    "id": "Caps/product-cap5.html",
-    "category": "cap",
-    "name": "\"RIDER'S PRIDE\" DAD HAT",
-    "price": "28.99",
-    "image": "/Caps/Cap5.jpg",
-    "link": "/Caps/product-cap5.html"
-  },
+﻿const PRODUCT_CATALOG = [,
   {
     "id": "Hoodies/product-hoodie.html",
     "category": "hoodie",
     "name": "\"FREEDOM AWAITS\" STREETWEAR HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie².jpg",
+    "image": "/Hoodies/HoodieÂ².jpg",
     "link": "/Hoodies/product-hoodie.html"
   },
   {
@@ -60,7 +12,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"PASSION POWER PERFORMANCE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie10².jpg",
+    "image": "/Hoodies/Hoodie10Â².jpg",
     "link": "/Hoodies/product-hoodie10.html"
   },
   {
@@ -68,7 +20,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"RIDE OR DIE\" PULLOVER HOODIE",
     "price": "34.99",
-    "image": "/Hoodies/Hoodie11².jpg",
+    "image": "/Hoodies/Hoodie11Â².jpg",
     "link": "/Hoodies/product-hoodie11.html"
   },
   {
@@ -76,7 +28,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"BORN TO RIDE\" PREMIUM HOODIE",
     "price": "33.99",
-    "image": "/Hoodies/Hoodie12².jpg",
+    "image": "/Hoodies/Hoodie12Â².jpg",
     "link": "/Hoodies/product-hoodie12.html"
   },
   {
@@ -92,7 +44,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Suzuki GSX-R Sportbike Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie14².jpg",
+    "image": "/Hoodies/Hoodie14Â².jpg",
     "link": "/Hoodies/product-hoodie14.html"
   },
   {
@@ -108,7 +60,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Mercedes Classic Automotive Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie16².jpg",
+    "image": "/Hoodies/Hoodie16Â².jpg",
     "link": "/Hoodies/product-hoodie16.html"
   },
   {
@@ -148,7 +100,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "BMW F90 5 Series Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie20².jpg",
+    "image": "/Hoodies/Hoodie20Â².jpg",
     "link": "/Hoodies/product-hoodie20.html"
   },
   {
@@ -164,7 +116,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie3².jpg",
+    "image": "/Hoodies/Hoodie3Â².jpg",
     "link": "/Hoodies/product-hoodie3.html"
   },
   {
@@ -172,7 +124,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"RIDE FREE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie4².jpg",
+    "image": "/Hoodies/Hoodie4Â².jpg",
     "link": "/Hoodies/product-hoodie4.html"
   },
   {
@@ -180,7 +132,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"BMX\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie5².jpg",
+    "image": "/Hoodies/Hoodie5Â².jpg",
     "link": "/Hoodies/product-hoodie5.html"
   },
   {
@@ -188,7 +140,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"MTB\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie6².jpg",
+    "image": "/Hoodies/Hoodie6Â².jpg",
     "link": "/Hoodies/product-hoodie6.html"
   },
   {
@@ -196,7 +148,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"BORN TO RIDE\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie7².jpg",
+    "image": "/Hoodies/Hoodie7Â².jpg",
     "link": "/Hoodies/product-hoodie7.html"
   },
   {
@@ -204,7 +156,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie8².jpg",
+    "image": "/Hoodies/Hoodie8Â².jpg",
     "link": "/Hoodies/product-hoodie8.html"
   },
   {
@@ -212,7 +164,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "\"ADVENTURE AWAITS\" PULLOVER HOODIE",
     "price": "40.99",
-    "image": "/Hoodies/Hoodie9².jpg",
+    "image": "/Hoodies/Hoodie9Â².jpg",
     "link": "/Hoodies/product-hoodie9.html"
   },
 
@@ -221,7 +173,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"UNLEASH YOUR SPIRIT\" GRAPHIC TEE",
     "price": "22.99",
-    "image": "/T-Shirts/T-Shirt².jpg",
+    "image": "/T-Shirts/T-ShirtÂ².jpg",
     "link": "/T-Shirts/product-tshirt.html"
   },
   {
@@ -229,7 +181,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "Mercedes Classic Automotive Streetwear Tee",
     "price": "39.99",
-    "image": "/T-Shirts/T-Shirt10².jpg",
+    "image": "/T-Shirts/T-Shirt10Â².jpg",
     "link": "/T-Shirts/product-tshirt10.html"
   },
   {
@@ -261,7 +213,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "BMW F90 Automotive Streetwear Graphic Tee",
     "price": "39.99",
-    "image": "/T-Shirts/T-shirt14².jpg",
+    "image": "/T-Shirts/T-shirt14Â².jpg",
     "link": "/T-Shirts/product-tshirt14.html"
   },
   {
@@ -277,7 +229,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"STRONGER\" PREMIUM TEE",
     "price": "24.99",
-    "image": "/T-Shirts/T-Shirt3².jpg",
+    "image": "/T-Shirts/T-Shirt3Â².jpg",
     "link": "/T-Shirts/product-tshirt3.html"
   },
   {
@@ -285,7 +237,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "\"BORN TO RIDE\" COMFORT TEE",
     "price": "21.99",
-    "image": "/T-Shirts/T-Shirt4².jpg",
+    "image": "/T-Shirts/T-Shirt4Â².jpg",
     "link": "/T-Shirts/product-tshirt4.html"
   },
   {
@@ -301,7 +253,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "Suzuki GSX-R Sportbike Streetwear T-Shirt",
     "price": "39.99",
-    "image": "/T-Shirts/T-Shirt8².jpg",
+    "image": "/T-Shirts/T-Shirt8Â².jpg",
     "link": "/T-Shirts/product-tshirt8.html"
   },
   {
@@ -313,3 +265,4 @@ const PRODUCT_CATALOG = [
     "link": "/T-Shirts/product-tshirt9.html"
   }
 ];
+

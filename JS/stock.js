@@ -1,9 +1,9 @@
-/**
- * 212 CLOTHING — Stock / Availability Indicator
+﻿/**
+ * 212 CLOTHING â€” Stock / Availability Indicator
  *
  * Since you print-on-demand, "out of stock" is really about the
- * BLANK garment running out — either in a given SIZE or a given
- * COLOR — not one specific design. So this works per CATEGORY
+ * BLANK garment running out â€” either in a given SIZE or a given
+ * COLOR â€” not one specific design. So this works per CATEGORY
  * (T-Shirt / Hoodie / Cap / Slide), and applies automatically to
  * every product page in that category.
  *
@@ -12,7 +12,7 @@
  *     out for a category, on every product page in that category at once.
  *   - Shows a small "Message us on WhatsApp" note right under the size
  *     selector when a size is sold out, and a separate one right under
- *     the color swatches when a color is sold out — each one only
+ *     the color swatches when a color is sold out â€” each one only
  *     appears on products that actually have that kind of thing sold out.
  *   - If every size, or every color, is sold out for a category,
  *     disables the "Add to Cart" button too and relabels it "Out of Stock"
@@ -36,11 +36,10 @@
 const STOCK_CONFIG = {
   tshirt: { sizes: [], colors: [] },
   hoodie: { sizes: ['M', 'L', 'XL', 'XXL', 'S'], colors: [] },
-  cap:    { sizes: [], colors: [] },
 };
 
 (function () {
-  // Capture the <script> tag's data-category attribute now — this only
+  // Capture the <script> tag's data-category attribute now â€” this only
   // works synchronously, before any other code runs.
   var scriptTag = document.currentScript;
   var category = scriptTag ? scriptTag.dataset.category : null;
@@ -57,7 +56,7 @@ const STOCK_CONFIG = {
     var sizeFullyOut  = false;
     var colorFullyOut = false;
 
-    // ── SIZES ──────────────────────────────────────────────
+    // â”€â”€ SIZES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     var sizeSelect = document.getElementById('productSize');
     if (sizeSelect && outOfStockSizes.length > 0) {
       var sizeOptions = Array.prototype.slice.call(sizeSelect.options);
@@ -82,7 +81,7 @@ const STOCK_CONFIG = {
       }
     }
 
-    // ── COLORS ─────────────────────────────────────────────
+    // â”€â”€ COLORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     var swatches = Array.prototype.slice.call(document.querySelectorAll('.color-swatch'));
     if (swatches.length > 0 && outOfStockColors.length > 0) {
       swatches.forEach(function (swatch) {
@@ -111,8 +110,8 @@ const STOCK_CONFIG = {
 
     if (!sizeNoticeNeeded && !colorNoticeNeeded) return; // category fully in stock for this product
 
-    // ── "Message us" notes — shown separately, right under whichever
-    //    selector (size or color) actually has something sold out ──
+    // â”€â”€ "Message us" notes â€” shown separately, right under whichever
+    //    selector (size or color) actually has something sold out â”€â”€
     if (sizeNoticeNeeded && sizeSelect) {
       var sizeNote = document.createElement('p');
       sizeNote.className = 'stock-note';
@@ -134,7 +133,7 @@ const STOCK_CONFIG = {
       }
     }
 
-    // ── Fully out of stock (no valid size OR no valid color) ─────
+    // â”€â”€ Fully out of stock (no valid size OR no valid color) â”€â”€â”€â”€â”€
     if (sizeFullyOut || colorFullyOut) {
       var addBtn = document.getElementById('addToCartButton');
       if (addBtn) {
