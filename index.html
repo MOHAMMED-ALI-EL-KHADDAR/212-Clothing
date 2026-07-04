@@ -240,35 +240,47 @@
   <script src="/JS/crazy_animations.js"></script>
   <script>
     window.addEventListener('load', () => {
-  const preloader = document.getElementById('preloader');
-  
-  // Check if app is running in standalone mode (installed app from home screen)
-  const isStandalone = window.navigator.standalone === true || 
-                       window.matchMedia('(display-mode: standalone)').matches;
-  
-  // If running as installed app, hide preloader immediately (no animation)
-  if (isStandalone) {
-    preloader.style.display = 'none';
-    preloader.style.visibility = 'hidden';
-    return; // Exit early, skip rest of preloader logic
-  }
-  
-  // Otherwise (browser mode), show normal preloader animation
-  const hasVisited = sessionStorage.getItem('212-clothing-visited');
-  if (hasVisited) {
-    preloader.style.opacity = '0';
-    preloader.style.visibility = 'hidden';
-  } else {
-    sessionStorage.setItem('212-clothing-visited', 'true');
-    setTimeout(() => {
-      preloader.style.opacity = '0';
-      setTimeout(() => {
-        preloader.style.visibility = 'hidden';
-      }, 250);
-    }, 400); 
-  }
-});
-
+      const preloader = document.getElementById('preloader');
+      
+      // More reliable: check if service worker is ready
+      // (Service worker only loads in installed PWA app)
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then(() => {
+          // Service worker is active = running as PWA app
+          preloader.style.display = 'none';
+          preloader.style.visibility = 'hidden';
+          preloader.style.opacity = '0';
+          console.log('[Preloader] Hidden - App mode detected (service worker active)');
+        }).catch(() => {
+          // Service worker not ready = browser mode, show preloader
+          handleBrowserPreloader();
+        });
+      } else {
+        // No service worker = browser mode
+        handleBrowserPreloader();
+      }
+      
+      function handleBrowserPreloader() {
+        const hasVisited = sessionStorage.getItem('212-clothing-visited');
+        if (hasVisited) {
+          // Returning visitor - hide instantly
+          preloader.style.opacity = '0';
+          preloader.style.visibility = 'hidden';
+          console.log('[Preloader] Hidden - returning browser visitor');
+        } else {
+          // First visit - show animation
+          sessionStorage.setItem('212-clothing-visited', 'true');
+          console.log('[Preloader] Showing - first browser visit');
+          setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+              preloader.style.visibility = 'hidden';
+            }, 250);
+          }, 400); 
+        }
+      }
+    });
+ 
     const revealElements = document.querySelectorAll('.product, .see-more-container');
     const revealOnScroll = () => {
       revealElements.forEach(el => {
@@ -281,6 +293,7 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
   </script>
+
   <script src="/JS/i18n.js"></script>
 <script src="/JS/tier1.js"></script>
 <!-- PWA Install Prompt -->
