@@ -239,18 +239,35 @@
   <script src="/JS/currency.js"></script>
   <script src="/JS/crazy_animations.js"></script>
   <script>
-    // Check if running as installed app
-const isStandalone = window.navigator.standalone === true || 
-                     window.matchMedia('(display-mode: standalone)').matches;
-
-// If app mode → hide preloader instantly
-if (isStandalone) {
-  preloader.style.display = 'none';
-  return;
-}
-
-// If browser mode → show preloader animation
-// (your normal code here)
+    window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  
+  // Check if app is running in standalone mode (installed app from home screen)
+  const isStandalone = window.navigator.standalone === true || 
+                       window.matchMedia('(display-mode: standalone)').matches;
+  
+  // If running as installed app, hide preloader immediately (no animation)
+  if (isStandalone) {
+    preloader.style.display = 'none';
+    preloader.style.visibility = 'hidden';
+    return; // Exit early, skip rest of preloader logic
+  }
+  
+  // Otherwise (browser mode), show normal preloader animation
+  const hasVisited = sessionStorage.getItem('212-clothing-visited');
+  if (hasVisited) {
+    preloader.style.opacity = '0';
+    preloader.style.visibility = 'hidden';
+  } else {
+    sessionStorage.setItem('212-clothing-visited', 'true');
+    setTimeout(() => {
+      preloader.style.opacity = '0';
+      setTimeout(() => {
+        preloader.style.visibility = 'hidden';
+      }, 250);
+    }, 400); 
+  }
+});
 
     const revealElements = document.querySelectorAll('.product, .see-more-container');
     const revealOnScroll = () => {
