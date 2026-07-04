@@ -20,7 +20,6 @@
   var imageMap = {
     tshirt: '/SizeGuides/sizeguide-tshirt.jpg',
     hoodie: '/SizeGuides/sizeguide-hoodie.jpg',
-    cap:    '/SizeGuides/sizeguide-cap.jpg'
   };
 
   var imgSrc = imageMap[type] || imageMap['tshirt'];
