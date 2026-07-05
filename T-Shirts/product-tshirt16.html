@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/JS/analytics.js"></script>
+  <title>Biker T-Shirt</title>
+  <meta name="description" content="Celebrate the legacy of high-performance luxury with this detailed graphic tee showcasing the F90 5 Series. Offering casual everyday comfort and an...">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BMW F90 Automotive Streetwear Graphic Tee - 212 Clothing">
+  <meta property="og:description" content="Celebrate the legacy of high-performance luxury with this detailed graphic tee showcasing the F90 5 Series. Offering casual everyday comfort and an...">
+  <meta property="og:image" content="https://212clothing.pages.dev/T-Shirts/T-shirt16.jpg">
+  <meta property="og:url" content="https://212clothing.pages.dev/T-Shirts/product-tshirt16.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BMW F90 Automotive Streetwear Graphic Tee - 212 Clothing">
+  <meta name="twitter:description" content="Celebrate the legacy of high-performance luxury with this detailed graphic tee showcasing the F90 5 Series. Offering casual everyday comfort and an...">
+  <meta name="twitter:image" content="https://212clothing.pages.dev/T-Shirts/T-shirt16.jpg">
+
+  <link rel="stylesheet" href="/CSS/styles1.css">
+  <link rel="icon" href="/Logo/Logo.png">
+</head>
+<body>
+  <header>
+    <h1>212 CLOTHING</h1>
+    <nav> 
+        <a href="/index.html" data-i18n="nav.home">Home</a>
+        <a href="/T-Shirts/tshirts.html" data-i18n="nav.products">Products</a>
+        <a href="/Contact.html" data-i18n="nav.contact">Contact</a> 
+        <a href="/FAQ.html" data-i18n="nav.faq">FAQ</a> 
+        <a href="/order-status.html" data-i18n="nav.track">Track Order</a>
+        <a href="#" id="cartIcon" class="nav-cart-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
+            <span id="cartItemCount" class="cart-badge">0</span>
+        </a>
+    <div class="lang-switcher">
+      <button onclick="setLang('en')" data-lang-btn="en">EN</button>
+      <button onclick="setLang('fr')" data-lang-btn="fr">FR</button>
+      <button onclick="setLang('ar')" data-lang-btn="ar">ع</button>
+    </div>
+    </nav>
+  </header>
+  <main class="container">  
+    <div class="image-box">
+      <div class="main-image">
+    <img id="mainProductImage" src="T-shirt16.jpg" alt="Classic Biker T-Shirt">
+      </div>
+      <div class="thumbnails">
+      <img id="thumbnailFront" src="T-shirt16.jpg" alt="Front" class="active" onclick="changeView('front')">
+      <img id="thumbnailBack" src="T-Shirt16².jpg" alt="Back"  onclick="changeView('back')">
+      </div>
+    </div>
+    <div class="details">
+      <h2 id="productName">Gothic Thorn Tribal Streetwear Tee</h2>
+      <p>Make a bold statement with this oversized streetwear tee featuring a complex, symmetrical gothic-thorny tribal design. Engineered for everyday comfort and layered looks, it's perfect for effortless, casual urban style.</p>
+      <p class="price">$<span id="productPrice">39.99</span></p>
+      <p><strong data-i18n="product.sizes">Sizes:</strong>
+      <select id="productSize" style="padding: 10px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
+      </p>
+      <div class="color-options">
+      <strong data-i18n="product.colors">Colors:</strong>
+      <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
+      <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
+      </div>
+      <div>
+      <button class="button" id="addToCartButton" style="margin-bottom: 10px; border-radius: 50px; padding: 12px 30px; background-color: #ffffff; font-weight: bold;" data-i18n="product.addtocart">Add to Cart</button>
+      </div></main>
+<section class="related-products-section">
+  <h3 data-i18n="related.title">You Might Also Like</h3>
+  <div class="related-products-grid" id="relatedProductsGrid"></div>
+</section>
+
+   <footer class="footer" id="contact">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <h3>212 CLOTHING</h3>
+        <p data-i18n="footer.tagline">Streetwear inspired by what moves you.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/212clothing.ma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/share/1BJN2hKEHk/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@212clothing.ma?_r=1&_t=ZS-95SiawBc43A" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <a href="/T-Shirts/tshirts.html" data-i18n="footer.tshirts">T-Shirts</a>
+        <a href="/Hoodies/Hoodies.html" data-i18n="footer.hoodies">Hoodies</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Company</h4>
+        <a href="/index.html" data-i18n="nav.home" data-i18n="footer.home">Home</a>
+        <a href="/order-status.html" data-i18n="nav.track" data-i18n="footer.track">Track Order</a>
+        <a href="/Contact.html" data-i18n="nav.contact" data-i18n="footer.contact">Contact</a>
+        <a href="/FAQ.html" data-i18n="nav.faq" data-i18n="footer.faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.touch">Get in Touch</h4>
+        <a href="https://wa.me/212651866578" target="_blank"><span data-i18n="footer.whatsapp">WhatsApp Us</span></a>
+        <a href="mailto:support@212clothing.com">support@212clothing.com</a>
+        <p class="footer-location"><span data-i18n="footer.location">Tangier, Morocco</span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span data-i18n="footer.rights">© 2026 212 Clothing. All rights reserved.</span></p>
+    </div>
+  </footer>
+  <script>
+  const productImages = {
+    'T-Shirt': {
+      'black': {
+        'front': '/T-Shirts/T-shirt16.jpg',
+        'back': '/T-Shirts/T-Shirt16².jpg',
+      },  
+      'white': {
+        'front': '/T-Shirts/T-Shirt16-white.jpg',
+        'back': '/T-Shirts/T-Shirt16²-white.jpg',
+      },
+    },
+  };
+
+  let currentProductType = 'T-Shirt'; 
+  let selectedColor = 'black'; 
+  let selectedView = 'back';
+
+  function updateProductImage() {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnailFront = document.getElementById('thumbnailFront');
+    const thumbnailBack = document.getElementById('thumbnailBack');
+
+    if (productImages[currentProductType] && productImages[currentProductType][selectedColor]) {
+      const paths = productImages[currentProductType][selectedColor];
+      
+      if (mainImage) mainImage.src = paths[selectedView];
+      if (thumbnailFront) thumbnailFront.src = paths['front'];
+      if (thumbnailBack) thumbnailBack.src = paths['back'];
+    }
+
+    document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+    
+    if (selectedView === 'front' && thumbnailBack) {
+      thumbnailFront.classList.add('active');
+    } else if (selectedView === 'back' && thumbnailFront) {
+      thumbnailBack.classList.add('active');
+    }
+  }
+
+  function selectColor(color) {
+    selectedColor = color;
+    updateProductImage();
+
+    document.querySelectorAll(".color-swatch").forEach(swatch => {
+      swatch.classList.toggle('active', swatch.dataset.color === color);
+    });
+  }
+
+  function changeView(view) {
+    selectedView = view;
+    updateProductImage();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateProductImage();
+  });
+</script>
+<script src="/JS/cart.js"></script>
+<div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close-button">&times;</span>
+    <h2 data-i18n="cart.title">Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="button" id="checkoutButton" data-i18n="cart.checkout">Proceed to Checkout</button>
+      <button class="button clear-cart-button" id="clearCartButton" data-i18n="cart.clear">Clear Cart</button>
+    </div>
+  </div>
+</div>
+<script src="/JS/currency.js"></script>
+<script src="/JS/sizeguide.js" data-type="tshirt"></script><script src="/JS/stock.js" data-category="tshirt"></script><script src="/JS/i18n.js"></script>
+<script src="/JS/product-catalog.js"></script>
+<script src="/JS/related-products.js"></script>
+<script src="/JS/tier1.js"></script>
+</body>
+</html>
