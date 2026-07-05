@@ -1,36 +1,4 @@
-﻿const PRODUCT_CATALOG = [,
-  {
-    "id": "Hoodies/product-hoodie.html",
-    "category": "hoodie",
-    "name": "\"FREEDOM AWAITS\" STREETWEAR HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie².jpg",
-    "link": "/Hoodies/product-hoodie.html"
-  },
-  {
-    "id": "Hoodies/product-hoodie10.html",
-    "category": "hoodie",
-    "name": "\"PASSION POWER PERFORMANCE\" PULLOVER HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie10².jpg",
-    "link": "/Hoodies/product-hoodie10.html"
-  },
-  {
-    "id": "Hoodies/product-hoodie11.html",
-    "category": "hoodie",
-    "name": "\"RIDE OR DIE\" PULLOVER HOODIE",
-    "price": "34.99",
-    "image": "/Hoodies/Hoodie11².jpg",
-    "link": "/Hoodies/product-hoodie11.html"
-  },
-  {
-    "id": "Hoodies/product-hoodie12.html",
-    "category": "hoodie",
-    "name": "\"BORN TO RIDE\" PREMIUM HOODIE",
-    "price": "33.99",
-    "image": "/Hoodies/Hoodie12².jpg",
-    "link": "/Hoodies/product-hoodie12.html"
-  },
+﻿const PRODUCT_CATALOG = [
   {
     "id": "Hoodies/product-hoodie13.html",
     "category": "hoodie",
@@ -120,14 +88,6 @@
     "link": "/Hoodies/product-hoodie3.html"
   },
   {
-    "id": "Hoodies/product-hoodie4.html",
-    "category": "hoodie",
-    "name": "\"RIDE FREE\" PULLOVER HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie4².jpg",
-    "link": "/Hoodies/product-hoodie4.html"
-  },
-  {
     "id": "Hoodies/product-hoodie5.html",
     "category": "hoodie",
     "name": "\"BMX\" PULLOVER HOODIE",
@@ -136,36 +96,12 @@
     "link": "/Hoodies/product-hoodie5.html"
   },
   {
-    "id": "Hoodies/product-hoodie6.html",
-    "category": "hoodie",
-    "name": "\"MTB\" PULLOVER HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie6².jpg",
-    "link": "/Hoodies/product-hoodie6.html"
-  },
-  {
-    "id": "Hoodies/product-hoodie7.html",
-    "category": "hoodie",
-    "name": "\"BORN TO RIDE\" PULLOVER HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie7².jpg",
-    "link": "/Hoodies/product-hoodie7.html"
-  },
-  {
     "id": "Hoodies/product-hoodie8.html",
     "category": "hoodie",
     "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
     "price": "40.99",
     "image": "/Hoodies/Hoodie8².jpg",
     "link": "/Hoodies/product-hoodie8.html"
-  },
-  {
-    "id": "Hoodies/product-hoodie9.html",
-    "category": "hoodie",
-    "name": "\"ADVENTURE AWAITS\" PULLOVER HOODIE",
-    "price": "40.99",
-    "image": "/Hoodies/Hoodie9².jpg",
-    "link": "/Hoodies/product-hoodie9.html"
   },
 
   {
