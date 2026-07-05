@@ -229,7 +229,7 @@
     "category": "tshirt",
     "name": "No Bike No Life Streetwear Tee",
     "price": "39.99",
-    "image": "/T-Shirts/T-Shirt20.jpg",
+    "image": "/T-Shirts/T-Shirt20².jpg",
     "link": "/T-Shirts/product-tshirt20.html"
   }
 ];

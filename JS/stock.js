@@ -34,7 +34,7 @@
  *   and "WHITE" all work the same.
  */
 const STOCK_CONFIG = {
-  tshirt: { sizes: [], colors: [] },
+  tshirt: { sizes: ['XXL'], colors: [] },
   hoodie: { sizes: ['M', 'L', 'XL', 'XXL', 'S'], colors: [] },
 };
 
