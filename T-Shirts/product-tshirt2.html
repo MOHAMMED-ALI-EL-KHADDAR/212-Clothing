@@ -25,7 +25,9 @@
     <nav>
       <a href="/index.html" data-i18n="nav.home">Home</a>
       <a href="/T-Shirts/tshirts.html" data-i18n="nav.products">Products</a>
-      <a href="/Contact.html" data-i18n="nav.contact">Contact</a><a href="/FAQ.html" data-i18n="nav.faq">FAQ</a><a href="/order-status.html" data-i18n="nav.track">Track Order</a>
+      <a href="/Contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="/FAQ.html" data-i18n="nav.faq">FAQ</a>
+      <a href="/order-status.html" data-i18n="nav.track">Track Order</a>
       <a href="#" id="cartIcon" class="nav-cart-link">
         <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
         <span id="cartItemCount" class="cart-badge">0</span>
@@ -58,18 +60,14 @@
         <option value="L">L</option>
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>
-        <option value="3XL">3XL</option>
       </select>
       </p>
       <div class="color-options">
       <strong data-i18n="product.colors">Colors:</strong>
-      <button class="color-swatch active" style="background-color: rgb(233, 224, 206);" data-color="cream" onclick="selectColor('cream')"></button>
-      <button class="color-swatch" style="background-color: rgb(177, 179, 182);" data-color="heather grey" onclick="selectColor('heather grey')"></button>
-      <button class="color-swatch" style="background-color: rgb(71, 76, 83);" data-color="heavy metal" onclick="selectColor('heavy metal')"></button>
-      <button class="color-swatch" style="background-color: rgb(178, 179, 173);" data-color="light grey" onclick="selectColor('light grey')"></button>
+      <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
       <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
       </div>
-    <button class="button" onclick="window.open('https://my-store-e6f49b.creator-spring.com/listing/i-don-t-care-t-september-2024?product=46&variation=2755', '_blank')" style="border-radius: 50px; padding: 12px 30px;">Buy Now (Direct)</button>
+    <button class="button" id="addToCartButton" style="margin-bottom: 10px; border-radius: 50px; padding: 12px 30px; background-color: #ffffff; font-weight: bold;" data-i18n="product.addtocart">Add to Cart</button>
     </div></main>
 <section class="related-products-section">
   <h3 data-i18n="related.title">You Might Also Like</h3>
@@ -119,21 +117,9 @@
   <script>
   const productImages = {
     'T-Shirt': {
-      'cream': {
+      'black': {
         'front': '/T-Shirts/T-Shirt2.jpg',
         'back': '/T-Shirts/T-Shirt2².jpg',
-      },
-      'heather grey': {
-        'front': '/T-Shirts/T-Shirt2-heathergrey.jpg',
-        'back': '/T-Shirts/T-Shirt2²-heathergrey.jpg',
-      },
-      'heavy metal': {
-        'front': '/T-Shirts/T-Shirt2-heavymetal.jpg',
-        'back': '/T-Shirts/T-Shirt2²-heavymetal.jpg',
-      },
-      'light grey': {
-        'front': '/T-Shirts/T-Shirt2-lightgrey.jpg',
-        'back': '/T-Shirts/T-Shirt2²-lightgrey.jpg',
       },
       'white': {
         'front': '/T-Shirts/T-Shirt2-white.jpg',
@@ -143,7 +129,7 @@
   };
 
   let currentProductType = 'T-Shirt'; 
-  let selectedColor = 'cream'; 
+  let selectedColor = 'black'; 
   let selectedView = 'front';
 
   function updateProductImage() {

@@ -58,7 +58,6 @@
         <option value="L">L</option>
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>
-        <option value="3XL">3XL</option>
       </select>
       </p>
       <div class="color-options">
@@ -123,18 +122,6 @@
         'front': '/T-Shirts/T-Shirt3.jpg',
         'back': '/T-Shirts/T-Shirt3².jpg',
       },
-      'Heavy Metal': {
-        'front': '/T-Shirts/T-Shirt3-heavymetal.jpg',
-        'back': '/T-Shirts/T-Shirt3²-heavymetal.jpg',
-      },
-      'heather': {
-        'front': '/T-Shirts/T-Shirt3-heather.jpg',
-        'back': '/T-Shirts/T-Shirt3²-heather.jpg',
-      },
-      'grey': {
-        'front': '/T-Shirts/T-Shirt3-grey.jpg',
-        'back': '/T-Shirts/T-Shirt3²-grey.jpg',
-      },
       'white': {
         'front': '/T-Shirts/T-Shirt3-white.jpg',
         'back': '/T-Shirts/T-Shirt3²-white.jpg',
@@ -144,7 +131,7 @@
 
   let currentProductType = 'T-Shirt'; 
   let selectedColor = 'black'; 
-  let selectedView = 'back';
+  let selectedView = 'front';
 
   function updateProductImage() {
     const mainImage = document.getElementById('mainProductImage');
