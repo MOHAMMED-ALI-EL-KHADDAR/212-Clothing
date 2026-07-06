@@ -244,9 +244,10 @@
     "id": "T-Shirts/product-tshirtcostume.html",
     "category": "tshirt",
     "name": "Custom Printed Streetwear Graphic Tee",
-    "price": "39.99",
+    "price": "custom",
     "image": "/T-Shirts/T-Shirtcostume.jpg",
     "link": "/T-Shirts/product-tshirtcostume.html"
   }
 
 ];
+

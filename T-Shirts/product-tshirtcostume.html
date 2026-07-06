@@ -18,6 +18,46 @@
 
   <link rel="stylesheet" href="/CSS/styles1.css">
   <link rel="icon" href="/Logo/Logo.png">
+  <style>
+    /* Custom pricing section styling */
+    .price-section {
+      margin: 20px 0;
+      padding: 20px;
+      background: rgba(255, 69, 0, 0.1);
+      border: 2px solid #ff4500;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .price-label {
+      font-size: 1.1rem;
+      color: #ff4500;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .price-text {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .whatsapp-cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1rem;
+    }
+    .whatsapp-cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -49,23 +89,20 @@
     <div class="details">
       <h2 id="productName">Custom Printed Streetwear Graphic Tee</h2>
       <p>Bring your unique vision to life with this custom printed graphic tee. Featuring comfortable material and a relaxed streetwear fit, it is the perfect personalized option for daily wear, urban style, and showcasing your own creative designs.</p>
-      <p class="price">$<span id="productPrice">39.99</span></p>
-      <p><strong data-i18n="product.sizes">Sizes:</strong>
-      <select id="productSize" style="padding: 10px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-        <option value="XXL">XXL</option>
-      </select>
-      </p>
+      <!-- CUSTOM PRICING SECTION -->
+      <div class="price-section">
+        <div class="price-label">💬 Pricing Discussed on WhatsApp</div>
+        <div class="price-text">
+          Since every custom print is unique, pricing is customized based on your design complexity and order quantity. Let's discuss your project directly!
+        </div>
+        <a href="https://wa.me/212651866578?text=Hi%20there%21%20I%27m%20looking%20to%20order%20a%20custom%20printed%20t-shirt.%20Please%20let%20me%20know%20what%20details%20%28like%20quantity%20or%20design%29%20you%20need%20from%20me%20to%20provide%20an%20accurate%20quote." target="_blank" class="whatsapp-cta-btn">
+          💬 Discuss Pricing on WhatsApp
+        </a>
+      </div>
       <div class="color-options">
       <strong data-i18n="product.colors">Colors:</strong>
       <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
       <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
-      </div>
-      <div>
-      <button class="button" id="addToCartButton" style="margin-bottom: 10px; border-radius: 50px; padding: 12px 30px; background-color: #ffffff; font-weight: bold;" data-i18n="product.addtocart">Add to Cart</button>
       </div></main>
 <section class="related-products-section">
   <h3 data-i18n="related.title">You Might Also Like</h3>

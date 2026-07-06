@@ -27,11 +27,15 @@ function initRelatedProducts() {
   const shuffled = sameCategory.slice().sort(() => Math.random() - 0.5);
   const picks = shuffled.slice(0, 4);
 
-  function renderPrice(usdPrice) {
+  function renderPrice(price) {
+    // Handle custom pricing
+    if (price === 'custom' || isNaN(parseFloat(price))) {
+      return '💬 Ask for Quote';
+    }
     const cfg = typeof window.getActiveCurrencyConfig === 'function'
       ? window.getActiveCurrencyConfig()
       : { symbol: '$', rate: 1, label: 'USD' };
-    const converted = usdPrice * cfg.rate;
+    const converted = parseFloat(price) * cfg.rate;
     const isWhole = cfg.label === 'MAD';
     return cfg.symbol + (isWhole ? Math.round(converted) : converted.toFixed(2));
   }
@@ -41,7 +45,7 @@ function initRelatedProducts() {
       <a class="related-product-card" href="${p.link}">
         <img src="${p.image}" alt="${p.name}" loading="lazy">
         <h4>${p.name}</h4>
-        <p class="related-product-price">${renderPrice(parseFloat(p.price))}</p>
+        <p class="related-product-price">${renderPrice(p.price)}</p>
       </a>
     `).join('');
   }
