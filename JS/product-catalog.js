@@ -233,11 +233,20 @@
     "link": "/T-Shirts/product-tshirt20.html"
   },
   {
-    "id": "T-Shirts/product-tshirt20.html",
+    "id": "T-Shirts/product-tshirt21.html",
     "category": "tshirt",
     "name": "Nissan 350Z Technical Automotive Blueprint Tee",
     "price": "39.99",
     "image": "/T-Shirts/T-Shirt21².jpg",
     "link": "/T-Shirts/product-tshirt21.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirtcostume.html",
+    "category": "tshirt",
+    "name": "Custom Printed Streetwear Graphic Tee",
+    "price": "39.99",
+    "image": "/T-Shirts/T-Shirtcostume.jpg",
+    "link": "/T-Shirts/product-tshirtcostume.html"
   }
+
 ];
