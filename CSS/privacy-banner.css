@@ -1,0 +1,159 @@
+/**
+ * Privacy Banner Styles
+ * Matches 212 Clothing theme (dark background, orange accents)
+ */
+
+#privacyBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(15, 15, 15, 0.98) 100%);
+  border-top: 2px solid #ff4500;
+  padding: 20px 24px;
+  z-index: 9999;
+  display: none; /* Hidden by default, shown by JS if not dismissed */
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Content container */
+#privacyBanner .privacy-banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Text section */
+#privacyBanner .privacy-banner-text {
+  flex: 1;
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#privacyBanner .privacy-banner-text p {
+  margin: 0;
+  color: #bbb;
+}
+
+/* Links */
+#privacyBanner a {
+  color: #ff4500;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+#privacyBanner a:hover {
+  color: #ff6b2c;
+  text-decoration: underline;
+}
+
+/* Button container */
+#privacyBanner .privacy-banner-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Dismiss button */
+#privacyBannerDismiss {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+}
+
+#privacyBannerDismiss:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 69, 0, 0.4);
+  background: linear-gradient(135deg, #ff6b2c 0%, #e03d00 100%);
+}
+
+#privacyBannerDismiss:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  #privacyBanner {
+    padding: 16px;
+  }
+
+  #privacyBanner .privacy-banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  #privacyBanner .privacy-banner-text {
+    font-size: 0.85rem;
+  }
+
+  #privacyBanner .privacy-banner-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  #privacyBannerDismiss {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+/* Accessibility: High contrast mode support */
+@media (prefers-contrast: more) {
+  #privacyBanner {
+    border-top: 3px solid #ff4500;
+  }
+
+  #privacyBanner .privacy-banner-text {
+    color: #fff;
+  }
+
+  #privacyBannerDismiss {
+    border: 2px solid #ff4500;
+  }
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #privacyBanner {
+    animation: none;
+  }
+}
+
+/* Print media: hide on print */
+@media print {
+  #privacyBanner {
+    display: none !important;
+  }
+}
