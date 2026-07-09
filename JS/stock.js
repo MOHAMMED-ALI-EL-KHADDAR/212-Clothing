@@ -1,4 +1,4 @@
-﻿/**
+/**
  * HOW TO MARK SOMETHING AS OUT OF STOCK:
  *   Just edit the category's lists below. That single edit applies
  *   to every T-shirt (or every hoodie, etc.) on the whole site.
@@ -90,7 +90,7 @@ const STOCK_CONFIG = {
       sizeNote.className = 'stock-note';
       sizeNote.setAttribute('data-stock-key', 'product.sizeout');
       sizeNote.style.cssText = 'font-size:0.8rem;color:#ff4500;margin:6px 0 0;';
-      sizeNote.innerHTML = window.t ? window.t('product.sizeout') : 'Some sizes are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
+      sizeNote.innerHTML = window.t ? window.t('product.sizeout') : 'Some sizes are sold out. <a href="https://wa.me/212664890937" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
       sizeSelect.insertAdjacentElement('afterend', sizeNote);
     }
 
@@ -101,7 +101,7 @@ const STOCK_CONFIG = {
         colorNote.className = 'stock-note';
         colorNote.setAttribute('data-stock-key', 'product.colorout');
         colorNote.style.cssText = 'font-size:0.8rem;color:#ff4500;margin:6px 0 0;';
-        colorNote.innerHTML = window.t ? window.t('product.colorout') : 'Some colors are sold out. <a href="https://wa.me/212651866578" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
+        colorNote.innerHTML = window.t ? window.t('product.colorout') : 'Some colors are sold out. <a href="https://wa.me/212664890937" target="_blank" style="color:#ff4500;text-decoration:underline;">Message us on WhatsApp</a> to check availability or restock.';
         colorContainer.insertAdjacentElement('afterend', colorNote);
       }
     }

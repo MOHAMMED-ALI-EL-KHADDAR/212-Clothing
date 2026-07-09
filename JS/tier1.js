@@ -1,22 +1,9 @@
-/**
- * 212 CLOTHING — Tier 1 Features
- *
- * 1. Floating WhatsApp button  — appears on every page
- * 2. Cookie consent banner     — appears once per visitor
- * 3. Back-in-stock notifier    — appears on product pages with sold-out items
- * 4. Product image zoom        — hover/touch zoom on product pages
- */
-
 (function () {
   'use strict';
-
-  // ════════════════════════════════════════════════════════════════
-  // 1. FLOATING WHATSAPP BUTTON
-  // ════════════════════════════════════════════════════════════════
   function initWhatsAppButton() {
     var btn = document.createElement('a');
     btn.id        = 'wa-float-btn';
-    btn.href      = 'https://wa.me/212651866578';
+    btn.href      = 'https://wa.me/212664890937';
     btn.target    = '_blank';
     btn.rel       = 'noopener noreferrer';
     btn.setAttribute('aria-label', 'Chat on WhatsApp');
@@ -52,7 +39,6 @@
       btn.style.boxShadow    = '0 4px 16px rgba(37,211,102,0.45)';
     });
 
-    // Push the button above the cookie banner when it's visible
     function adjustPosition() {
       var banner = document.getElementById('cookie-banner');
       if (banner && banner.style.display !== 'none' && banner.offsetHeight) {
@@ -64,16 +50,11 @@
 
     document.body.appendChild(btn);
     adjustPosition();
-    // Re-adjust when banner is dismissed
     document.addEventListener('cookieConsentDone', adjustPosition);
   }
 
-
-  // ════════════════════════════════════════════════════════════════
-  // 2. COOKIE CONSENT BANNER
-  // ════════════════════════════════════════════════════════════════
   function initCookieBanner() {
-    if (localStorage.getItem('212-cookie-consent')) return; // already accepted
+    if (localStorage.getItem('212-cookie-consent')) return; 
 
     var banner = document.createElement('div');
     banner.id = 'cookie-banner';
@@ -105,7 +86,6 @@
 
     function dismiss(accepted) {
       localStorage.setItem('212-cookie-consent', accepted ? 'accepted' : 'declined');
-      // If declined, disable analytics collection
       if (!accepted) {
         window['ga-disable-' + (window.GA4_MEASUREMENT_ID || '')] = true;
         if (window.fbq) window.fbq('consent', 'revoke');
@@ -117,7 +97,6 @@
     }
 
     document.getElementById && setTimeout(function () {
-      // buttons are in DOM by now
       var acc = banner.querySelector('#cookie-accept');
       var dec = banner.querySelector('#cookie-decline');
       if (acc) acc.addEventListener('click', function () { dismiss(true); });
@@ -128,15 +107,9 @@
     document.dispatchEvent(new CustomEvent('cookieBannerShown'));
   }
 
-
-  // ════════════════════════════════════════════════════════════════
-  // 3. BACK-IN-STOCK NOTIFIER
-  // ════════════════════════════════════════════════════════════════
-  // Injected by stock.js calling window.showBackInStockForm(category, soldOutSizes)
-  // (wired up at the bottom of this file)
   window.showBackInStockForm = function (category, soldOutSizes) {
     if (!soldOutSizes || soldOutSizes.length === 0) return;
-    if (document.getElementById('bis-form-wrap')) return; // already shown
+    if (document.getElementById('bis-form-wrap')) return; 
 
     var productName = (function () {
       var el = document.getElementById('productName');
@@ -172,7 +145,6 @@
         return;
       }
 
-      // Build a pre-filled WhatsApp message to yourself
       var digits = phone.replace(/[^\d]/g, '');
       if (digits.length === 9)  digits = '212' + digits;
       if (digits.length === 10 && digits[0] === '0') digits = '212' + digits.slice(1);
@@ -180,7 +152,7 @@
       var text = encodeURIComponent(
         '👋 I want to be notified when ' + productName + ' (' + sizeLabel + ') is back in stock. My number: +' + digits
       );
-      window.open('https://wa.me/212651866578?text=' + text, '_blank');
+      window.open('https://wa.me/212664890937?text=' + text, '_blank');
 
       var msg = wrap.querySelector('#bis-msg');
       msg.style.color  = '#2ecc71';
@@ -190,10 +162,6 @@
     });
   };
 
-
-  // ════════════════════════════════════════════════════════════════
-  // 4. PRODUCT IMAGE ZOOM
-  // ════════════════════════════════════════════════════════════════
   function initImageZoom() {
     var img = document.getElementById('mainProductImage');
     if (!img) return;
@@ -241,7 +209,6 @@
       wrapper.style.cursor = 'zoom-in';
     });
 
-    // Mobile: tap to zoom in, tap again to zoom out
     var zoomed = false;
     wrapper.addEventListener('touchstart', function () { isTouch = true; }, { passive: true });
     wrapper.addEventListener('touchend', function (e) {
@@ -258,13 +225,7 @@
   }
 
 
-  // ════════════════════════════════════════════════════════════════
-  // INIT — run everything when DOM is ready
-  // ════════════════════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
-    // Delay WhatsApp button and cookie banner until after the preloader
-    // animation finishes (preloader takes up to ~650ms on first visit).
-    // On repeat visits the preloader is hidden instantly so 0ms delay is fine.
     var preloader = document.getElementById('preloader');
     var isFirstVisit = preloader &&
       getComputedStyle(preloader).visibility !== 'hidden' &&
@@ -277,7 +238,7 @@
       initCookieBanner();
     }, delay);
 
-    initImageZoom(); // no-ops silently on pages without #mainProductImage
+    initImageZoom(); 
   });
 
 })();

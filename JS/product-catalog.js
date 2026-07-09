@@ -1,4 +1,4 @@
-﻿const PRODUCT_CATALOG = [
+const PRODUCT_CATALOG = [
   {
     "id": "Hoodies/product-hoodie13.html",
     "category": "hoodie",

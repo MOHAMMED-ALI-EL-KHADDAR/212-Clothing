@@ -127,7 +127,6 @@
   </style>
 </head>
 <body>
-  <!-- Privacy & Cookie Consent Banner -->
   <div id="privacyBanner">
     <div class="privacy-banner-content">
       <div class="privacy-banner-text">
@@ -161,7 +160,6 @@
     <div class="order-summary">
       <h2 data-i18n="checkout.summary">Order Summary</h2>
       <div id="checkoutItems">
-        <!-- Items will be loaded here via JS -->
       </div>
       <div class="checkout-total">
         Total: <span id="checkoutTotalSymbol">$</span><span id="checkoutTotal">0.00</span>
@@ -227,7 +225,7 @@
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.touch">Get in Touch</h4>
-        <a href="https://wa.me/212651866578" target="_blank"><span data-i18n="footer.whatsapp">WhatsApp Us</span></a>
+        <a href="https://wa.me/212664890937" target="_blank"><span data-i18n="footer.whatsapp">WhatsApp Us</span></a>
         <a href="mailto:support@212clothing.com">support@212clothing.com</a>
         <p class="footer-location"><span data-i18n="footer.location">Tangier, Morocco</span></p>
       </div>
@@ -238,10 +236,9 @@
   </footer>
  
   <script>
-    // Load cart from localStorage
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
  
-    function _ignore() {} // JSONP callback for saveOrder script tag
+    function _ignore() {} 
 
     function renderCheckout() {
       const container = document.getElementById('checkoutItems');
@@ -249,7 +246,7 @@
       
       if (cart.length === 0) {
         container.innerHTML = '<p>Your cart is empty.</p>';
-        window.location.href = '/index.html'; // Redirect if empty
+        window.location.href = '/index.html'; 
         return;
       }
  
@@ -290,7 +287,6 @@
       const address = document.getElementById('address').value;
       const notes = document.getElementById('notes').value;
       
-      // Get the currency the customer is currently using
       const cfg = typeof window.getActiveCurrencyConfig === 'function'
         ? window.getActiveCurrencyConfig()
         : { symbol: 'MAD ', rate: 10.0, label: 'MAD' };
@@ -301,7 +297,6 @@
         return cfg.symbol + (isWhole ? Math.round(converted) : converted.toFixed(2));
       }
 
-      // Build the message as plain text, then encode it all at once
       let rawMessage = `🚀 New Order from 212 Clothing\n`;
       rawMessage += `Customer Info:\n\n`;
       rawMessage += `- Name: ${name}\n`;
@@ -319,24 +314,14 @@
       rawMessage += `\nTotal Amount: ${formatPrice(total)}\n`;
       rawMessage += `\n(Please hit SEND to confirm your order and reserve your items!)`;
 
-      // Encode the full message once — prevents character corruption in WhatsApp
-      const whatsappNumber = "212651866578";
+      const whatsappNumber = "212664890937";
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawMessage)}`;
-
-      // ── Save order to Google Sheets (reliable + instant) ──────────────
-      // Uses fetch with keepalive:true so the browser guarantees delivery
-      // even after the page navigates away — no waiting, no timeouts.
-      // The order ID is generated client-side using the same format as the
-      // Apps Script (212-YYYYMMDD-XXXX), so the confirmation page always
-      // shows a real-looking ID without having to wait for a server response.
       const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_NQNK_3A-MdaBcKv_jAI--UeC2lxvPkaYvIM3KeeadCDwEuoTI7k2Ur0ag9rQ4C_2GQ/exec';
 
       const productSummary = cart.map(item =>
         item.name + ' (' + item.color + ', ' + item.size + ') x' + item.quantity
       ).join(' | ');
 
-      // Generate order ID client-side — same format as Apps Script:
-      // 212-YYYYMMDD-XXXX (4-digit random, Morocco timezone GMT+1)
       const now = new Date(Date.now() + 60 * 60 * 1000); // shift to GMT+1
       const dateStr = now.getUTCFullYear().toString() +
         String(now.getUTCMonth() + 1).padStart(2, '0') +
@@ -346,7 +331,7 @@
 
       const params = new URLSearchParams({
         action:   'saveOrder',
-        orderId:  clientOrderId,   // pass it so the Apps Script uses this exact ID
+        orderId:  clientOrderId,   
         name:     name,
         phone:    phone,
         city:     city,
@@ -356,13 +341,11 @@
         total:    formatPrice(total)
       });
 
-      // keepalive:true = browser delivers this even after the page navigates.
-      // mode:no-cors = we don't need to read back the response.
       fetch(SCRIPT_URL + '?' + params.toString(), {
         method:    'GET',
         mode:      'no-cors',
         keepalive: true
-      }).catch(function () {}); // silent fail — order is already in the WhatsApp message
+      }).catch(function () {}); 
 
       function goToConfirmation() {
         localStorage.removeItem('shoppingCart');
@@ -387,8 +370,6 @@
 </script>
 <script src="/JS/i18n.js"></script>
 <script src="/JS/tier1.js"></script>
-
-<!-- Privacy Banner Script -->
 <script src="/JS/privacy-banner.js"></script>
 </body>
 </html>

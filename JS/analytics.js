@@ -1,27 +1,7 @@
-/**
- * 212 CLOTHING — Analytics (Google Analytics 4 + Meta Pixel)
- *
- * SETUP — this is the ONLY place you need to paste your real IDs:
- *   1. GA4_MEASUREMENT_ID: from Google Analytics → Admin → Data Streams →
- *      your web stream → starts with "G-..."
- *   2. META_PIXEL_ID: from Meta Events Manager → your Pixel → a long
- *      number, e.g. "1234567890123456"
- *
- * Leave either one as 'PASTE-...' to skip it — this file checks before
- * loading anything, so it's safe to fill in just one if you don't want both.
- *
- * This file is loaded on EVERY page, so both tools automatically log a
- * page view on every page load with no extra setup. On the Order
- * Confirmed page specifically, it also reports the order as a real
- * "Purchase" conversion — this is the main thing that makes ad
- * optimization actually work, since it tells Meta/Google which visitors
- * turned into paying customers.
- */
 var GA4_MEASUREMENT_ID = 'G-43C8CHJG5L';
 var META_PIXEL_ID       = '1010381705023274';
 
 (function () {
-  // ── Google Analytics 4 ────────────────────────────────────────────
   if (GA4_MEASUREMENT_ID && GA4_MEASUREMENT_ID.indexOf('PASTE-') !== 0) {
     var gaScript = document.createElement('script');
     gaScript.async = true;
@@ -34,7 +14,6 @@ var META_PIXEL_ID       = '1010381705023274';
     window.gtag('config', GA4_MEASUREMENT_ID);
   }
 
-  // ── Meta Pixel ───────────────────────────────────────────────────
   if (META_PIXEL_ID && META_PIXEL_ID.indexOf('PASTE-') !== 0) {
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
@@ -52,11 +31,6 @@ var META_PIXEL_ID       = '1010381705023274';
   }
 })();
 
-/**
- * Call this from the Order Confirmed page (and ONLY there) once you have
- * the real order total and currency. Safe to call even if one or both
- * IDs above aren't set yet — it just no-ops for whichever isn't ready.
- */
 window.trackPurchase = function (value, currency, orderId) {
   if (typeof value !== 'number' || isNaN(value)) return;
 

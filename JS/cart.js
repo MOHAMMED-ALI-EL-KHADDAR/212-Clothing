@@ -17,9 +17,6 @@ function updateCartUI() {
 }
  
 function addToCart(product) {
-  // BUG FIX: Always store the raw USD price, not the converted display value.
-  // If currency.js is active and not USD, #productPrice shows the converted amount.
-  // We read data-usd from the span if available; fall back to the raw textContent.
   const priceSpan = document.getElementById('productPrice');
   if (priceSpan) {
     const usdBase = parseFloat(priceSpan.dataset.usd);
@@ -75,7 +72,6 @@ function renderCartItems() {
     return;
   }
  
-  // Get active currency for display
   const cfg = typeof window.getActiveCurrencyConfig === 'function'
     ? window.getActiveCurrencyConfig()
     : { symbol: '$', rate: 1 };
@@ -104,7 +100,6 @@ function renderCartItems() {
     cartItemsContainer.appendChild(cartItemDiv);
   });
  
-  // Remove buttons — use index, never breaks with special chars in product name
   cartItemsContainer.querySelectorAll('.remove-item-button').forEach(btn => {
     btn.addEventListener('click', e => {
       const idx = parseInt(e.currentTarget.dataset.index);
@@ -115,7 +110,6 @@ function renderCartItems() {
     });
   });
  
-  // + button
   cartItemsContainer.querySelectorAll('.qty-plus').forEach(btn => {
     btn.addEventListener('click', e => {
       const idx = parseInt(e.currentTarget.dataset.index);
@@ -126,7 +120,6 @@ function renderCartItems() {
     });
   });
  
-  // − button
   cartItemsContainer.querySelectorAll('.qty-minus').forEach(btn => {
     btn.addEventListener('click', e => {
       const idx = parseInt(e.currentTarget.dataset.index);
@@ -141,7 +134,6 @@ function renderCartItems() {
     });
   });
  
-  // Typing in the input
   cartItemsContainer.querySelectorAll('.cart-qty-input').forEach(input => {
     input.addEventListener('input', e => {
       const idx = parseInt(e.target.dataset.index);
@@ -168,7 +160,6 @@ function updateCartTotal() {
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   cartTotalSpan.textContent = (total * cfg.rate).toFixed(2);
  
-  // Fix the symbol text node before #cartTotal
   const parent = cartTotalSpan.parentElement;
   if (parent) {
     parent.childNodes.forEach(node => {
@@ -213,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addToCartButton.addEventListener('click', () => {
       const productName = document.getElementById('productName').textContent;
       const productPriceEl = document.getElementById('productPrice');
-      // Read USD base if available (set by currency.js), else raw text
       const productPrice = parseFloat(productPriceEl.dataset.usd || productPriceEl.textContent);
       const sizeElement = document.getElementById('productSize');
       const productSize = sizeElement ? sizeElement.value : 'One Size';
@@ -246,11 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
 });
  
-// Qty styles are in styles1.css — no dynamic injection needed
- 
-/**
- * COLOR SWITCHER
- */
 const ColorSwitcher = {
     cache: {},
  
@@ -297,7 +282,6 @@ const ColorSwitcher = {
                 const realTitle = titleEl ? titleEl.textContent.trim() : null;
  
                 const priceEl = doc.getElementById('productPrice');
-                // Always read the data-usd if present (raw USD), else textContent
                 const rawPrice = priceEl
                     ? parseFloat(priceEl.dataset.usd || priceEl.textContent.trim())
                     : null;

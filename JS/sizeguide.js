@@ -1,18 +1,4 @@
-/* ============================================================
-   212 CLOTHING - SIZE GUIDE (Image Popup)
-   Folder structure required:
-     /SizeGuides/sizeguide-tshirt.jpg
-     /SizeGuides/sizeguide-hoodie.jpg
-     /SizeGuides/sizeguide-cap.jpg      (when you have it)
-
-   Usage: add to each product page before </body>:
-     T-shirt:  <script src="/JS/sizeguide.js" data-type="tshirt"></script>
-     Hoodie:   <script src="/JS/sizeguide.js" data-type="hoodie"></script>
-     Cap:      <script src="/JS/sizeguide.js" data-type="cap"></script>
-   ============================================================ */
-
 (function () {
-  // Get which type this page is
   var scripts = document.getElementsByTagName('script');
   var currentScript = scripts[scripts.length - 1];
   var type = currentScript.getAttribute('data-type') || 'tshirt';
@@ -24,7 +10,6 @@
 
   var imgSrc = imageMap[type] || imageMap['tshirt'];
 
-  // Inject CSS
   var style = document.createElement('style');
   style.textContent = [
     '#sg-overlay{display:none;position:fixed;inset:0;z-index:3000;',
@@ -55,7 +40,6 @@
   ].join('');
   document.head.appendChild(style);
 
-  // Build HTML
   var overlay = document.createElement('div');
   overlay.id = 'sg-overlay';
   overlay.style.display = 'none';
@@ -93,17 +77,14 @@
     document.body.style.overflow = '';
   }
 
-  // Close on click outside the image
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) close();
   });
 
-  // Close on Escape
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') close();
   });
 
-  // Show after short delay so page loads first
   window.addEventListener('load', function () {
     setTimeout(open, 600);
   });

@@ -1,27 +1,9 @@
-/**
- * 212 Clothing - Animations System
- * Desktop : Vanta.js NET (WebGL interactive background) + VanillaTilt 3D cards
- * Mobile  : Pure CSS/JS scroll-driven experience — zero WebGL, zero flashing
- *
- * Root cause of the old flashing:
- *  - setInterval(100ms) was triggering continuous repaints on mobile.
- *  - three.js / Vanta still partially initialised even when initVanta() returned early.
- * Fix: mobile path is 100% CSS animations driven by IntersectionObserver.
- *      Desktop libraries are only touched after window 'load', no polling loop.
- */
-
-/* ─────────────────────────────────────────────
-   DEVICE DETECTION
-───────────────────────────────────────────── */
 const IS_MOBILE =
   window.innerWidth <= 900 ||
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
   );
 
-/* ─────────────────────────────────────────────
-   INJECT ANIMATION CSS  (once, in <head>)
-───────────────────────────────────────────── */
 (function injectStyles() {
   const style = document.createElement('style');
   style.textContent = `
@@ -128,9 +110,6 @@ const IS_MOBILE =
   document.head.appendChild(style);
 })();
 
-/* ─────────────────────────────────────────────
-   SCROLL PROGRESS BAR  (all devices)
-───────────────────────────────────────────── */
 function initScrollBar() {
   const bar = document.createElement('div');
   bar.id = 'scroll-bar';
@@ -143,9 +122,6 @@ function initScrollBar() {
   }, { passive: true });
 }
 
-/* ─────────────────────────────────────────────
-   INTERSECTION OBSERVER – scroll reveals
-───────────────────────────────────────────── */
 function initScrollReveal() {
   const targets = document.querySelectorAll('.product, .see-more-container, .hero');
 
@@ -157,7 +133,7 @@ function initScrollReveal() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('anim-visible');
-          observer.unobserve(entry.target); // fire once
+          observer.unobserve(entry.target); 
         }
       });
     },
@@ -167,11 +143,6 @@ function initScrollReveal() {
   targets.forEach(el => observer.observe(el));
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE CANVAS PARTICLES
-   Lightweight 2D canvas — tiny orange dots
-   drifting upward. No WebGL, no libraries.
-───────────────────────────────────────────── */
 function initMobileParticles() {
   const canvas = document.createElement('canvas');
   canvas.id = 'mobile-particles';
@@ -221,9 +192,6 @@ function initMobileParticles() {
   window.addEventListener('resize', () => { resize(); createParticles(); }, { passive: true });
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE PARALLAX – hero drifts slowly on scroll
-───────────────────────────────────────────── */
 function initMobileParallax() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
@@ -234,13 +202,7 @@ function initMobileParallax() {
   }, { passive: true });
 }
 
-/* ─────────────────────────────────────────────
-   DESKTOP – Vanta NET + VanillaTilt
-   Uses 'load' event + script.onload chain.
-   No setInterval, no polling.
-───────────────────────────────────────────── */
 function initDesktop() {
-  // three.js is already in <head>; wait for window load then chain
   window.addEventListener('load', () => {
     // Vanta
     if (typeof VANTA !== 'undefined') {
@@ -260,7 +222,6 @@ function initDesktop() {
       });
     }
 
-    // VanillaTilt
     if (typeof VanillaTilt !== 'undefined') {
       VanillaTilt.init(document.querySelectorAll('.product'), {
         max: 20,
@@ -272,9 +233,6 @@ function initDesktop() {
   });
 }
 
-/* ─────────────────────────────────────────────
-   BOOT
-───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initScrollBar();
   initScrollReveal();

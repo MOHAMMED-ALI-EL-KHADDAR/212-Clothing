@@ -1,38 +1,14 @@
-/**
- * 212 CLOTHING — Currency Switcher
- * Supports: USD ($) · EUR (€) · MAD (د.م.)
- *
- * HOW TO ADD TO ANY PAGE:
- *   Add this ONE line before </body>:
- *   <script src="/JS/currency.js"></script>
- *
- * HOW IT WORKS:
- *   1. Reads every price on the page and stores its USD base value.
- *   2. When user picks a currency, converts all prices instantly.
- *   3. Patches the cart so cart totals and item prices convert too.
- *   4. Saves the user's choice in localStorage — persists across pages.
- */
- 
-/* ─────────────────────────────────────────────
-   RATES  (base: 1 USD)
-   Update these numbers when rates change.
-───────────────────────────────────────────── */
+
 const CURRENCY_CONFIG = {
   USD: { symbol: '$',     rate: 1,     label: 'USD', flag: '🇺🇸' },
   EUR: { symbol: '€',     rate: 0.92,  label: 'EUR', flag: '🇪🇺' },
   MAD: { symbol: 'MAD ', rate: 10.0,  label: 'MAD', flag: '🇲🇦' },
 };
- 
-/* ─────────────────────────────────────────────
-   STATE
-───────────────────────────────────────────── */
+
 let activeCurrency = localStorage.getItem('212_currency') || 'USD';
  
 function getConfig() { return CURRENCY_CONFIG[activeCurrency]; }
  
-/* ─────────────────────────────────────────────
-   INJECT WIDGET STYLES
-───────────────────────────────────────────── */
 (function injectStyles() {
   const s = document.createElement('style');
   s.textContent = `
@@ -139,14 +115,10 @@ function getConfig() { return CURRENCY_CONFIG[activeCurrency]; }
   document.head.appendChild(s);
 })();
  
-/* ─────────────────────────────────────────────
-   BUILD THE WIDGET
-───────────────────────────────────────────── */
 function buildWidget() {
   const wrapper = document.createElement('div');
   wrapper.id = 'currency-switcher';
  
-  // Dropdown
   const dropdown = document.createElement('div');
   dropdown.id = 'currency-dropdown';
  
@@ -163,7 +135,6 @@ function buildWidget() {
     dropdown.appendChild(btn);
   });
  
-  // Toggle button
   const toggleBtn = document.createElement('button');
   toggleBtn.id = 'currency-toggle-btn';
   updateToggleBtn(toggleBtn);
@@ -174,7 +145,6 @@ function buildWidget() {
     toggleBtn.classList.toggle('open', isOpen);
   });
  
-  // Close on outside click
   document.addEventListener('click', () => {
     dropdown.classList.remove('open');
     toggleBtn.classList.remove('open');
@@ -196,21 +166,13 @@ function updateToggleBtn(btn) {
   `;
 }
  
-/* ─────────────────────────────────────────────
-   PRICE SCANNING
-   Finds every price element on the page and
-   stores its original USD value as data-usd.
-───────────────────────────────────────────── */
 function scanPrices() {
-  /* 1. Product page: <span id="productPrice">39.99</span> */
   const productPriceSpan = document.getElementById('productPrice');
   if (productPriceSpan && !productPriceSpan.dataset.usd) {
     const usd = parseFloat(productPriceSpan.textContent);
     if (!isNaN(usd)) productPriceSpan.dataset.usd = usd;
   }
  
-  /* 2. Listing pages: <p><strong>Price: $00.00</strong></p>
-     We wrap the number part so we can update it later. */
   document.querySelectorAll('p strong, p').forEach(el => {
     if (el.dataset.priceScanned) return;
     const text = el.textContent || '';
@@ -220,7 +182,6 @@ function scanPrices() {
       const usd = parseFloat(match[1]);
       if (isNaN(usd)) return;
  
-      // Pre-fill the span immediately — NEVER leave it empty (causes flash)
       const cfgNow = getConfig();
       const displayNow = cfgNow.symbol + (usd * cfgNow.rate).toFixed(2);
       el.innerHTML = el.innerHTML.replace(
@@ -229,19 +190,10 @@ function scanPrices() {
       );
     }
   });
- 
-  /* 3. Cart total label: <p>Total: $<span id="cartTotal">...</span></p>
-     We find the "$" text node before #cartTotal and store it. */
-  // Handled by updateCartTotalDisplay()
 }
  
-/* ─────────────────────────────────────────────
-   CONVERT ALL PRICES
-───────────────────────────────────────────── */
 function convertAllPrices() {
   const cfg = getConfig();
- 
-  /* 1. Product page #productPrice */
   const productPriceSpan = document.getElementById('productPrice');
   if (productPriceSpan && productPriceSpan.dataset.usd) {
     productPriceSpan.classList.add('price-converting');
@@ -250,8 +202,6 @@ function convertAllPrices() {
       productPriceSpan.classList.remove('price-converting');
     }, 100);
  
-    // Fix the currency symbol text node before #productPrice
-    // Must match ANY symbol (not just $) so repeated switching works
     const parent = productPriceSpan.parentElement;
     if (parent) {
       parent.childNodes.forEach(node => {
@@ -262,7 +212,6 @@ function convertAllPrices() {
     }
   }
  
-  /* 2. .converted-price spans (listing pages) */
   document.querySelectorAll('.converted-price[data-usd]').forEach(span => {
     span.classList.add('price-converting');
     setTimeout(() => {
@@ -272,11 +221,8 @@ function convertAllPrices() {
     }, 100);
   });
  
-  /* 3. Cart total */
   updateCartTotalDisplay();
  
-  /* 4. Cart items — re-render completely via cart.js which already
-        uses getActiveCurrencyConfig() directly. Clean, no double-convert. */
   if (typeof renderCartItems === 'function') renderCartItems();
 }
  
@@ -291,11 +237,9 @@ function updateCartTotalDisplay() {
   const cartData = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
   const total = cartData.reduce((s, i) => s + i.price * i.quantity, 0);
  
-  // ── Cart modal total (#cartTotal) ──
   const cartTotalSpan = document.getElementById('cartTotal');
   if (cartTotalSpan) {
     cartTotalSpan.textContent = (total * cfg.rate).toFixed(2);
-    // Fix symbol text node in cart modal (no dedicated span there)
     const parent = cartTotalSpan.parentElement;
     if (parent) {
       parent.childNodes.forEach(node => {
@@ -305,77 +249,52 @@ function updateCartTotalDisplay() {
       });
     }
   }
- 
-  // ── Checkout page total (#checkoutTotal + #checkoutTotalSymbol) ──
   const checkoutTotalSpan = document.getElementById('checkoutTotal');
   if (checkoutTotalSpan) {
     checkoutTotalSpan.textContent = (total * cfg.rate).toFixed(2);
-    // Symbol has its own dedicated span — direct update, no text node juggling
     const symbolSpan = document.getElementById('checkoutTotalSymbol');
     if (symbolSpan) symbolSpan.textContent = cfg.symbol;
   }
 }
  
-/* ─────────────────────────────────────────────
-   SWITCH CURRENCY
-───────────────────────────────────────────── */
 function switchCurrency(code) {
   activeCurrency = code;
   localStorage.setItem('212_currency', code);
  
-  // Update active state in dropdown
   document.querySelectorAll('.currency-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.currency === code);
   });
  
-  // Update toggle button label
   updateToggleBtn();
  
-  // Close dropdown
   document.getElementById('currency-dropdown')?.classList.remove('open');
   document.getElementById('currency-toggle-btn')?.classList.remove('open');
  
-  // Convert everything
   convertAllPrices();
 
-  // Notify other scripts (e.g. checkout) that currency changed
   window.dispatchEvent(new CustomEvent('currencyChanged'));
 }
  
-/* ─────────────────────────────────────────────
-   ALSO: expose a helper so cart.js addToCart
-   always stores the USD price (not the converted one)
-   This prevents double-conversion when re-rendering.
-───────────────────────────────────────────── */
 window.getActiveCurrencyConfig = () => getConfig();
 window.convertFromUSD = (usd) => parseFloat((usd * getConfig().rate).toFixed(2));
 window.getActiveCurrencySymbol = () => getConfig().symbol;
  
-/* ─────────────────────────────────────────────
-   BOOT
-───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   buildWidget();
-  // Set data-usd on #productPrice IMMEDIATELY — before any conversion.
-  // If we wait for the 400ms timeout below, a fast "Add to Cart" click
-  // reads the already-converted price as the USD base → double conversion.
   const productPriceSpan = document.getElementById('productPrice');
   if (productPriceSpan && !productPriceSpan.dataset.usd) {
     const usd = parseFloat(productPriceSpan.textContent);
     if (!isNaN(usd)) productPriceSpan.dataset.usd = usd;
   }
  
-  // Small delay so all dynamic content (ColorSwitcher, cart) renders first
   setTimeout(() => {
     scanPrices();
-    // Apply saved currency if not USD
     if (activeCurrency !== 'USD') {
       convertAllPrices();
     }
   }, 400);
 });
  
-// Re-scan after any dynamic renders (e.g. ColorSwitcher replaces price p tags)
 window.addEventListener('currencyRescan', () => {
   scanPrices();
   convertAllPrices();

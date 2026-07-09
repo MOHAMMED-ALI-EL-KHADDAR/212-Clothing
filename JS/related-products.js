@@ -1,14 +1,4 @@
-/**
- * 212 CLOTHING — Related Products Widget
- *
- * Reads JS/product-catalog.js and shows 4 other real products from the
- * same category on the current product page (excluding the current one).
- * Requires a <div id="relatedProductsGrid"></div> placeholder on the page.
- *
- * Respects whatever currency the customer currently has selected
- * (uses the same window.getActiveCurrencyConfig() that currency.js
- * exposes), so prices shown here always match the rest of the site.
- */
+
 function initRelatedProducts() {
   const grid = document.getElementById('relatedProductsGrid');
   if (!grid || typeof PRODUCT_CATALOG === 'undefined') return;
@@ -51,14 +41,8 @@ function initRelatedProducts() {
   }
 
   render();
-  // Re-render if the customer switches currency while looking at this page
   window.addEventListener('currencyChanged', render);
 }
-
-// Guard against the DOMContentLoaded race condition on mobile:
-// on slow connections this script may load AFTER DOMContentLoaded has
-// already fired, in which case the event listener would never trigger
-// and the grid would stay empty. Checking readyState first fixes this.
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initRelatedProducts);
 } else {
