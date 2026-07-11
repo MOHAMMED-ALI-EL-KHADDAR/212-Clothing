@@ -4,7 +4,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Classic Golf GTI Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie13.jpg",
+    "image": "/Hoodies/Hoodie13².jpg",
     "link": "/Hoodies/product-hoodie13.html"
   },
   {
@@ -20,7 +20,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Yamaha MT-09 Graphic Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie15.jpg",
+    "image": "/Hoodies/Hoodie15².jpg",
     "link": "/Hoodies/product-hoodie15.html"
   },
   {
@@ -36,7 +36,7 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Apollo Evo Hypercar Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie17.jpg",
+    "image": "/Hoodies/Hoodie17².jpg",
     "link": "/Hoodies/product-hoodie17.html"
   },
   {
@@ -52,14 +52,14 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "BMW M5 CS Motorsport Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie19.jpg",
+    "image": "/Hoodies/Hoodie19².jpg",
     "link": "/Hoodies/product-hoodie19.html"
   },
   {
     "id": "Hoodies/product-hoodie2.html",
     "category": "hoodie",
     "name": "\"HUMAN BEING\" PULLOVER HOODIE",
-    "price": "40.99",
+    "price": "39.99",
     "image": "/Hoodies/Hoodie2.jpg",
     "link": "/Hoodies/product-hoodie2.html"
   },
@@ -75,7 +75,7 @@ const PRODUCT_CATALOG = [
     "id": "Hoodies/product-hoodie21.html",
     "category": "hoodie",
     "name": "\"THE UNYIELDING WARRIOR\" HOODIE",
-    "price": "40.99",
+    "price": "39.99",
     "image": "/Hoodies/Hoodie21.jpg",
     "link": "/Hoodies/product-hoodie21.html"
   },
@@ -83,7 +83,7 @@ const PRODUCT_CATALOG = [
     "id": "Hoodies/product-hoodie3.html",
     "category": "hoodie",
     "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
-    "price": "40.99",
+    "price": "39.99",
     "image": "/Hoodies/Hoodie3².jpg",
     "link": "/Hoodies/product-hoodie3.html"
   },
@@ -91,7 +91,7 @@ const PRODUCT_CATALOG = [
     "id": "Hoodies/product-hoodie5.html",
     "category": "hoodie",
     "name": "\"BMX\" PULLOVER HOODIE",
-    "price": "40.99",
+    "price": "39.99",
     "image": "/Hoodies/Hoodie5².jpg",
     "link": "/Hoodies/product-hoodie5.html"
   },
@@ -99,16 +99,56 @@ const PRODUCT_CATALOG = [
     "id": "Hoodies/product-hoodie8.html",
     "category": "hoodie",
     "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
-    "price": "40.99",
+    "price": "39.99",
     "image": "/Hoodies/Hoodie8².jpg",
     "link": "/Hoodies/product-hoodie8.html"
+  },
+  {
+    "id": "Hoodies/product-hoodie22.html",
+    "category": "hoodie",
+    "name": "I Don't Care Typographic Streetwear Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie22.jpg",
+    "link": "/Hoodies/product-hoodie22.html"
+  },
+  {
+    "id": "Hoodies/product-hoodie23.html",
+    "category": "hoodie",
+    "name": "Gothic Thorn Tribal Streetwear Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie23².jpg",
+    "link": "/Hoodies/product-hoodie23.html"
+  },
+  {
+    "id": "Hoodies/product-hoodie24.html",
+    "category": "hoodie",
+    "name": "JDM Nissan Blueprint Custom Car Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie24².jpg",
+    "link": "/Hoodies/product-hoodie24.html"
+  },
+  {
+    "id": "Hoodies/product-hoodie25.html",
+    "category": "hoodie",
+    "name": "Stronger Than You Think Streetwear Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie25².jpg",
+    "link": "/Hoodies/product-hoodie25.html"
+  },
+  {
+    "id": "Hoodies/product-hoodiecostume.html",
+    "category": "hoodie",
+    "name": "Custom Printed Streetwear Graphic Hoodie",
+    "price": "custom",
+    "image": "/Hoodies/Hoodiecostume.jpg",
+    "link": "/Hoodies/product-hoodiecostume.html"
   },
 
   {
     "id": "T-Shirts/product-tshirt10.html",
     "category": "tshirt",
     "name": "Mercedes Classic Automotive Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt10².jpg",
     "link": "/T-Shirts/product-tshirt10.html"
   },
@@ -116,7 +156,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt11.html",
     "category": "tshirt",
     "name": "Apollo Evo Hypercar Streetwear T-Shirt",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt11.jpg",
     "link": "/T-Shirts/product-tshirt11.html"
   },
@@ -124,7 +164,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt12.html",
     "category": "tshirt",
     "name": "Keyvany Purosangue Performance Streetwear T-Shirt",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt12.jpg",
     "link": "/T-Shirts/product-tshirt12.html"
   },
@@ -132,7 +172,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt13.html",
     "category": "tshirt",
     "name": "BMW M5 CS Performance Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt13².jpg",
     "link": "/T-Shirts/product-tshirt13.html"
   },
@@ -140,7 +180,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt14.html",
     "category": "tshirt",
     "name": "BMW F90 Automotive Streetwear Graphic Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-shirt14².jpg",
     "link": "/T-Shirts/product-tshirt14.html"
   },
@@ -164,7 +204,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt7.html",
     "category": "tshirt",
     "name": "Classic Golf GTI Streetwear T-Shirt",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt7.jpg",
     "link": "/T-Shirts/product-tshirt7.html"
   },
@@ -172,7 +212,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt8.html",
     "category": "tshirt",
     "name": "Suzuki GSX-R Sportbike Streetwear T-Shirt",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt8².jpg",
     "link": "/T-Shirts/product-tshirt8.html"
   },
@@ -180,7 +220,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt9.html",
     "category": "tshirt",
     "name": "Yamaha MT-09 Graphic Biker Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt9².jpg",
     "link": "/T-Shirts/product-tshirt9.html"
   },
@@ -188,7 +228,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt15.html",
     "category": "tshirt",
     "name": "The Warrior Graphic Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt15.jpg",
     "link": "/T-Shirts/product-tshirt15.html"
   },
@@ -196,7 +236,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt16.html",
     "category": "tshirt",
     "name": "Gothic Thorn Tribal Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt16².jpg",
     "link": "/T-Shirts/product-tshirt16.html"
   },
@@ -204,7 +244,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt17.html",
     "category": "tshirt",
     "name": "Human Being Lightning Wing Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt17.jpg",
     "link": "/T-Shirts/product-tshirt17.html"
   },
@@ -212,7 +252,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt18.html",
     "category": "tshirt",
     "name": "Motocross Adrenaline Graphic Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt18².jpg",
     "link": "/T-Shirts/product-tshirt18.html"
   },
@@ -220,7 +260,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt19.html",
     "category": "tshirt",
     "name": "BMX Life Graphic Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt19².jpg",
     "link": "/T-Shirts/product-tshirt19.html"
   },
@@ -228,7 +268,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt20.html",
     "category": "tshirt",
     "name": "No Bike No Life Streetwear Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt20².jpg",
     "link": "/T-Shirts/product-tshirt20.html"
   },
@@ -236,7 +276,7 @@ const PRODUCT_CATALOG = [
     "id": "T-Shirts/product-tshirt21.html",
     "category": "tshirt",
     "name": "Nissan 350Z Technical Automotive Blueprint Tee",
-    "price": "39.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt21².jpg",
     "link": "/T-Shirts/product-tshirt21.html"
   },
