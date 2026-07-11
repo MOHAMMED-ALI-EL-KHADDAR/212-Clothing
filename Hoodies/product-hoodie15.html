@@ -9,12 +9,12 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yamaha MT-09 Graphic Streetwear Hoodie - 212 Clothing">
   <meta property="og:description" content="Showcase your passion for hyper-naked motorcycles with this graphic hoodie featuring the Yamaha MT-09. Offering everyday comfort and effortless streetwear...">
-  <meta property="og:image" content="https://212clothing.pages.dev/Hoodies/Hoodie15.jpg">
+  <meta property="og:image" content="https://212clothing.pages.dev/Hoodies/Hoodie15².jpg">
   <meta property="og:url" content="https://212clothing.pages.dev/Hoodies/product-hoodie15.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yamaha MT-09 Graphic Streetwear Hoodie - 212 Clothing">
   <meta name="twitter:description" content="Showcase your passion for hyper-naked motorcycles with this graphic hoodie featuring the Yamaha MT-09. Offering everyday comfort and effortless streetwear...">
-  <meta name="twitter:image" content="https://212clothing.pages.dev/Hoodies/Hoodie15.jpg">
+  <meta name="twitter:image" content="https://212clothing.pages.dev/Hoodies/Hoodie15².jpg">
 
   <link rel="stylesheet" href="/CSS/styles1.css">
   <link rel="icon" href="/Logo/Logo.png">
@@ -40,11 +40,11 @@
   <main class="container">
     <div class="image-box">
       <div class="main-image">
-        <img id="mainProductImage" src="Hoodie15.jpg" alt="Classic Biker T-Shirt">
+        <img id="mainProductImage" src="/Hoodies/Hoodie15².jpg" alt="Classic Biker T-Shirt">
       </div>
       <div class="thumbnails">
-        <img id="thumbnailFront" src="Hoodie15.jpg" alt="Front" class="active" onclick="changeView('front')">
-        <img id="thumbnailBack" src="Hoodie15².jpg" alt="Back"  onclick="changeView('back')">
+        <img id="thumbnailFront" src="/Hoodies/1.jpg" alt="Front" class="active" onclick="changeView('front')">
+        <img id="thumbnailBack" src="/Hoodies/Hoodie15².jpg" alt="Back"  onclick="changeView('back')">
       </div>
     </div>
     <div class="details">
@@ -57,7 +57,6 @@
         <option value="M">M</option>
         <option value="L">L</option>
         <option value="XL">XL</option>
-        <option value="XXL">XXL</option>
       </select>
       </p>
       <div class="color-options">
@@ -117,11 +116,11 @@
   const productImages = {
     'Hoodie': {
       'black': {
-        'front': '/Hoodies/Hoodie15.jpg',
+        'front': '/Hoodies/1.jpg',
         'back': '/Hoodies/Hoodie15².jpg',
       },
       'white': {
-        'front': '/Hoodies/Hoodie15-white.jpg',
+        'front': '/Hoodies/3.jpg',
         'back': '/Hoodies/Hoodie15²-white.jpg',
       },
     },
@@ -129,7 +128,7 @@
 
   let currentProductType = 'Hoodie'; 
   let selectedColor = 'black'; 
-  let selectedView = 'front';
+  let selectedView = 'back';
 
   function updateProductImage() {
     const mainImage = document.getElementById('mainProductImage');

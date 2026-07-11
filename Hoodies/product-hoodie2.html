@@ -25,7 +25,9 @@
     <nav>
       <a href="/index.html" data-i18n="nav.home">Home</a>
       <a href="/Hoodies/Hoodies.html">Products</a>
-<a href="/Contact.html" data-i18n="nav.contact">Contact</a><a href="/FAQ.html" data-i18n="nav.faq">FAQ</a><a href="/order-status.html" data-i18n="nav.track">Track Order</a>
+      <a href="/Contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="/FAQ.html" data-i18n="nav.faq">FAQ</a>
+      <a href="/order-status.html" data-i18n="nav.track">Track Order</a>
       <a href="#" id="cartIcon" class="nav-cart-link">
         <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" class="cart-img-white">
         <span id="cartItemCount" class="cart-badge">0</span>
@@ -40,29 +42,29 @@
   <main class="container">
     <div class="image-box">
       <div class="main-image">
-        <img id="mainProductImage" src="Hoodie2.jpg" alt="Classic Biker T-Shirt">
+        <img id="mainProductImage" src="/Hoodies/Hoodie2.jpg" alt="Classic Biker T-Shirt">
       </div>
       <div class="thumbnails">
-        <img id="thumbnailFront" src="Hoodie2.jpg" alt="Front" class="active" onclick="changeView('front')">
-        <img id="thumbnailBack" src="Hoodie2².jpg" alt="Back"  onclick="changeView('back')">
+        <img id="thumbnailFront" src="/Hoodies/Hoodie2.jpg" alt="Front" class="active" onclick="changeView('front')">
+        <img id="thumbnailBack" src="/Hoodies/2.jpg" alt="Back"  onclick="changeView('back')">
       </div>
     </div>
     <div class="details">
       <h2 id="productName">"HUMAN BEING" PULLOVER HOODIE</h2>
       <p>Make a bold, grounded statement with this modern streetwear essential. This dark heather pullover hoodie features a striking white "HUMAN BEING" typographic graphic across the chest, electrified by a clean lightning bolt design. Engineered from a heavy cotton-poly blend with a ultra-soft brushed interior, it comes equipped with a classic front pouch pocket and a double-lined hood to keep you comfortable all day long.</p>
-     <p class="price">$<span id="productPrice">-</span></p>
+     <p class="price">$<span id="productPrice">40</span></p>
       <p><strong data-i18n="product.sizes">Sizes:</strong>
       <select id="productSize" style="padding: 10px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #444;">
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
         <option value="XL">XL</option>
-        <option value="XXL">XXL</option>
       </select>
       </p>
       <div class="color-options">
       <strong data-i18n="product.colors">Colors:</strong>
       <button class="color-swatch active" style="background-color: black;" data-color="black" onclick="selectColor('black')"></button>
+      <button class="color-swatch" style="background-color: white;" data-color="white" onclick="selectColor('white')"></button>
       </div>
       <button class="button" id="addToCartButton" style="margin-bottom: 10px; border-radius: 50px; padding: 12px 30px; background-color: #ffffff; font-weight: bold;" data-i18n="product.addtocart">Add to Cart</button>
     </div></main>
@@ -116,7 +118,11 @@
     'Hoodie': {
       'black': {
         'front': '/Hoodies/Hoodie2.jpg',
-        'back': '/Hoodies/Hoodie2².jpg',
+        'back': '/Hoodies/2.jpg',
+      },
+      'white': {
+        'front': '/Hoodies/Hoodie2-white.jpg',
+        'back': '/Hoodies/4.jpg',
       },
     },
   };
