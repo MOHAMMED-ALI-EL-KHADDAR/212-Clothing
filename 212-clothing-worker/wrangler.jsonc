@@ -1,0 +1,19 @@
+{
+  "name": "212-clothing-order-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-07-01",
+  
+  // Route où le worker va traiter les commandes
+  "route": "https://212clothing.pages.dev/api/submit-order",
+
+  "env": {
+    "production": {
+      "routes": [
+        {
+          "pattern": "212clothing.pages.dev/api/submit-order",
+          "zone_name": "212clothing.pages.dev"
+        }
+      ]
+    }
+  }
+}
