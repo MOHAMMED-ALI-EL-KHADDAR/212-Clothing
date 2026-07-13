@@ -157,6 +157,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt22.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt23.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt24.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt25.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt26.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt27.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirtcostume.html</loc>
     <priority>0.7</priority>
   </url>
@@ -177,4 +201,3 @@
     <priority>0.5</priority>
   </url>
 </urlset>
-

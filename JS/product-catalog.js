@@ -287,7 +287,54 @@ const PRODUCT_CATALOG = [
     "price": "custom",
     "image": "/T-Shirts/T-Shirtcostume.jpg",
     "link": "/T-Shirts/product-tshirtcostume.html"
-  }
-
+  },
+  {
+    "id": "T-Shirts/product-tshirt22.html",
+    "category": "tshirt",
+    "name": "Gojo Reverse Cursed Technique Anime Streetwear Graphic Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt22².jpg",
+    "link": "/T-Shirts/product-tshirt22.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirt23.html",
+    "category": "tshirt",
+    "name": "Luffy Gear 5 Sun God Nika Anime Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt23².jpg",
+    "link": "/T-Shirts/product-tshirt23.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirt24.html",
+    "category": "tshirt",
+    "name": "Gojo Limitless Anime Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt24².jpg",
+    "link": "/T-Shirts/product-tshirt24.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirt25.html",
+    "category": "tshirt",
+    "name": "Luffy Gear 5 Anime Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt25².jpg",
+    "link": "/T-Shirts/product-tshirt25.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirt26.html",
+    "category": "tshirt",
+    "name": "Why Not Me Anime Graphic Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt26².jpg",
+    "link": "/T-Shirts/product-tshirt26.html"
+  },
+  {
+    "id": "T-Shirts/product-tshirt27.html",
+    "category": "tshirt",
+    "name": "Left It Behind Anime Graphic Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt27².jpg",
+    "link": "/T-Shirts/product-tshirt27.html"
+  },
 ];
 
