@@ -2,6 +2,7 @@
   "name": "212-clothing-order-api",
   "main": "src/index.ts",
   "compatibility_date": "2024-07-01",
+  "workers_dev": true,
   
   // Route où le worker va traiter les commandes
   "route": "https://212clothing.pages.dev/api/submit-order",

@@ -186,7 +186,7 @@ async function submitToGoogleSheet(
 
 function getCorsHeaders(): Record<string, string> {
   return {
-    'Access-Control-Allow-Origin': 'https://212clothing.pages.dev',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, x-api-key',
     'Content-Type': 'application/json',
