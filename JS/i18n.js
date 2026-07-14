@@ -34,7 +34,7 @@ const TRANSLATIONS = {
     'footer.faq':      'FAQ',
     'footer.touch':    'Get in Touch',
     'footer.whatsapp': 'WhatsApp Us',
-    'footer.location': 'Tangier, Morocco',
+    'footer.location': 'Morocco',
     'footer.rights':   '© 2026 212 Clothing. All rights reserved.',
 
     /* Cart modal */
@@ -181,7 +181,7 @@ const TRANSLATIONS = {
     'footer.faq':      'FAQ',
     'footer.touch':    'Nous contacter',
     'footer.whatsapp': 'WhatsApp',
-    'footer.location': 'Tanger, Maroc',
+    'footer.location': 'Maroc',
     'footer.rights':   '© 2026 212 Clothing. Tous droits réservés.',
 
     'cart.title':    'Votre panier',
@@ -321,7 +321,7 @@ const TRANSLATIONS = {
     'footer.faq':      'الأسئلة الشائعة',
     'footer.touch':    'تواصل معنا',
     'footer.whatsapp': 'واتساب',
-    'footer.location': 'طنجة، المغرب',
+    'footer.location': 'المغرب',
     'footer.rights':   '© 2026 212 Clothing. جميع الحقوق محفوظة.',
 
     'cart.title':    'سلة التسوق',
