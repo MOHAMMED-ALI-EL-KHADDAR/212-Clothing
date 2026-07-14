@@ -22,10 +22,8 @@ self.addEventListener('install', event => {
       console.log('[SW] Caching critical resources');
       return cache.addAll(CRITICAL_URLS).catch(err => {
         console.warn('[SW] Some resources failed to cache:', err);
-        // Non-critical: don't block install if some files fail
       });
     }).then(() => {
-      // Activate immediately (skip waiting)
       return self.skipWaiting();
     })
   );
@@ -45,13 +43,12 @@ self.addEventListener('activate', event => {
         })
       );
     }).then(() => {
-      // Take control of all pages immediately
       return self.clients.claim();
     })
   );
 });
 
-// Fetch event: Network-first for API, Cache-first for assets
+// Fetch event: Optimized for e-commerce updates
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
@@ -61,8 +58,11 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // API/external calls: Network-first with offline fallback
-  if (url.pathname.includes('/script.google.com') || 
+  // STRATEGY 1: Network-First for Navigations (HTML files), APIs, Forms, and External Scripts
+  // This ensures that when you edit HTML files or product links, online users see changes instantly.
+  if (request.mode === 'navigate' || 
+      url.pathname.endsWith('.html') ||
+      url.pathname.includes('/script.google.com') || 
       url.pathname.includes('api') ||
       request.method !== 'GET') {
     event.respondWith(
@@ -78,54 +78,50 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(() => {
-          // Offline: return offline page for navigation, cached response for assets
+          // Offline: return specific cached page if possible, otherwise send to offline.html
           if (request.mode === 'navigate') {
-            return caches.match(OFFLINE_URL);
+            return caches.match(request).then(cachedResponse => {
+              return cachedResponse || caches.match(OFFLINE_URL);
+            });
           }
           return caches.match(request);
         })
     );
   } else {
-    // Static assets: Cache-first (fast load, update in background)
+    // STRATEGY 2: Stale-While-Revalidate for Static Assets (CSS, JS, Images)
+    // Loads assets instantly from cache for maximum speed, but fetches updates in the background.
     event.respondWith(
-      caches.match(request).then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(request)
-          .then(response => {
-            // Cache successful responses
-            if (response && response.status === 200) {
-              const clonedResponse = response.clone();
-              caches.open(CACHE_NAME).then(cache => {
-                cache.put(request, clonedResponse);
-              });
-            }
-            return response;
-          })
-          .catch(() => {
-            // Last resort: offline page for navigation
-            if (request.mode === 'navigate') {
-              return caches.match(OFFLINE_URL);
-            }
-          });
+      caches.match(request).then(cachedResponse => {
+        const fetchPromise = fetch(request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clonedResponse = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(request, clonedResponse);
+            });
+          }
+          return networkResponse;
+        }).catch(() => {
+          // Suppress background network errors if user goes offline
+        });
+
+        // Return the cached asset immediately, or wait for the network asset if it's not cached yet
+        return cachedResponse || fetchPromise;
       })
     );
   }
 });
 
-// Background sync (future: order notifications when back online)
+// Background sync (order notifications when back online)
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-orders') {
     event.waitUntil(
-      // Sync order status if previously offline
       fetch('/order-status.html')
         .catch(() => console.log('[SW] Order sync failed (offline)'))
     );
   }
 });
 
-// Push notifications (future: order updates)
+// Push notifications
 self.addEventListener('push', event => {
   if (!event.data) return;
   const data = event.data.json();
@@ -147,13 +143,11 @@ self.addEventListener('notificationclick', event => {
   event.notification.close();
   event.waitUntil(
     clients.matchAll({ type: 'window' }).then(clientList => {
-      // Check if app is already open
       for (let i = 0; i < clientList.length; i++) {
         if (clientList[i].url === '/' && 'focus' in clientList[i]) {
           return clientList[i].focus();
         }
       }
-      // Open app if not running
       if (clients.openWindow) {
         return clients.openWindow('/order-status.html');
       }
