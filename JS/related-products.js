@@ -1,11 +1,16 @@
-
 function initRelatedProducts() {
   const grid = document.getElementById('relatedProductsGrid');
   if (!grid || typeof PRODUCT_CATALOG === 'undefined') return;
 
-  // Current page path, e.g. "/T-Shirts/product-tshirt14.html"
-  const currentPath = window.location.pathname;
-  const current = PRODUCT_CATALOG.find(p => currentPath.endsWith(p.link));
+  // Clean the current URL path: lowercase it and remove .html extension if present
+  const currentPath = window.location.pathname.toLowerCase().replace('.html', '');
+  
+  // Find the product by comparing cleaned links
+  const current = PRODUCT_CATALOG.find(p => {
+    const cleanCatalogLink = p.link.toLowerCase().replace('.html', '');
+    return currentPath.endsWith(cleanCatalogLink);
+  });
+  
   if (!current) return; // unknown page — fail silently, don't break the product page
 
   const sameCategory = PRODUCT_CATALOG.filter(
@@ -43,6 +48,7 @@ function initRelatedProducts() {
   render();
   window.addEventListener('currencyChanged', render);
 }
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initRelatedProducts);
 } else {
