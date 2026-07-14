@@ -226,7 +226,7 @@
 <body>
   <div class="offline-container">
     <div class="offline-icon">
-      <img src="/Logo/Logo.png" alt="212 Logo" class="logo" onerror="this.style.display='none'">
+      <img src="Logo/Logo.png" alt="212 Logo" class="logo" onerror="this.style.display='none'">
     </div>
 
     <h1>No Connection</h1>
@@ -279,8 +279,8 @@
 
     function goHome() {
       // Try to go home, fallback to offline home
-      fetch('/index.html')
-        .then(response => response.ok ? location.href = '/' : null)
+      fetch('index.html')
+        .then(response => response.ok ? location.href = 'index.html' : null)
         .catch(() => {
           // Offline: stay on this page
           alert('Still offline. Please check your connection.');
