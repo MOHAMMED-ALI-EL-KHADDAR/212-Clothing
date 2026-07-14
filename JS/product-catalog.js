@@ -181,7 +181,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "BMW F90 Automotive Streetwear Graphic Tee",
     "price": "24.99",
-    "image": "/T-Shirts/T-shirt14².jpg",
+    "image": "/T-Shirts/T-Shirt14².jpg",
     "link": "/T-Shirts/product-tshirt14.html"
   },
   {
