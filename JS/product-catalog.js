@@ -309,7 +309,7 @@ const PRODUCT_CATALOG = [
     "category": "tshirt",
     "name": "Gojo Limitless Anime Streetwear Tee",
     "price": "24.99",
-    "image": "/T-Shirts/T-Shirt24².jpg",
+    "image": "/T-Shirts/T-Shirt24.jpg",
     "link": "/T-Shirts/product-tshirt24.html"
   },
   {
