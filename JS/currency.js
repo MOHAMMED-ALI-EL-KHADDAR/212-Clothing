@@ -5,7 +5,7 @@ const CURRENCY_CONFIG = {
   MAD: { symbol: 'MAD ', rate: 10.0,  label: 'MAD', flag: '🇲🇦' },
 };
 
-let activeCurrency = localStorage.getItem('212_currency') || 'USD';
+let activeCurrency = localStorage.getItem('212_currency') || 'MAD';
  
 function getConfig() { return CURRENCY_CONFIG[activeCurrency]; }
  
