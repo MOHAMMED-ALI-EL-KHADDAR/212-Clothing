@@ -160,7 +160,9 @@ const TRANSLATIONS = {
     'index.hero':       'Gear Up with Style — For Bikers, Drivers and Enthusiasts!',
     'index.see_tshirts':'See More T-Shirts',
     'index.see_hoodies':'See More Hoodies',
-  },
+    'banner.free_shipping': 'FREE SHIPPING',
+    'banner.cod': 'CASH ON DELIVERY'
+},
 
   /* ── FRANÇAIS ──────────────────────────────────────────── */
   fr: {
@@ -300,7 +302,9 @@ const TRANSLATIONS = {
     'index.hero':       'Équipez-vous avec Style — Pour les motards, conducteurs et passionnés !',
     'index.see_tshirts':'Voir plus de T-Shirts',
     'index.see_hoodies':'Voir plus de Sweats',
-  },
+    'banner.free_shipping': 'LIVRAISON GRATUITE',
+    'banner.cod': 'PAIEMENT À LA LIVRAISON'
+},
 
   /* ── العربية ────────────────────────────────────────────── */
   ar: {
@@ -440,6 +444,8 @@ const TRANSLATIONS = {
     'index.hero':       'تجهّز بأناقة — للدرّاجين والسائقين وعشاق السرعة!',
     'index.see_tshirts':'عرض المزيد من التيشيرتات',
     'index.see_hoodies':'عرض المزيد من الهوديز',
+    'banner.free_shipping': 'شحن مجاني',
+    'banner.cod': 'دفع عند الاستلام'
   }
 };
 
