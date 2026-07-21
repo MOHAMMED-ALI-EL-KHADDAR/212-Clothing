@@ -336,5 +336,52 @@ const PRODUCT_CATALOG = [
     "image": "/T-Shirts/T-Shirt27².jpg",
     "link": "/T-Shirts/product-tshirt27.html"
   },
+  {
+    "id": "/T-Shirts/product-tshirt1.html",
+    "category": "tshirt",
+    "name": "MYSTIC GUARDIAN GOTHIC OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt1².jpg",
+    "link": "/T-Shirts/product-tshirt1.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt4.html",
+    "category": "tshirt",
+    "name": "Ryomen Sukuna \"King of Curses\" Anime Graphic Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt4.jpg",
+    "link": "/T-Shirts/product-tshirt4.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt5.html",
+    "category": "tshirt",
+    "name": "Samurai \"Mentality\" Dark Graphic Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt5².jpg",
+    "link": "/T-Shirts/product-tshirt5.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt28.html",
+    "category": "tshirt",
+    "name": "Satoru Gojo \"Honored One\" Anime Graphic Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt28².jpg",
+    "link": "/T-Shirts/product-tshirt28.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt29.html",
+    "category": "tshirt",
+    "name": "UNIVERSAL MONEY SKELETAL HAND STREETWEAR TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt29².jpg",
+    "link": "/T-Shirts/product-tshirt29.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt30.html",
+    "category": "tshirt",
+    "name": "Toji Fushiguro \"Beginning To Crush\" Anime Graphic Streetwear Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt30².jpg",
+    "link": "/T-Shirts/product-tshirt30.html"
+  },
 ];
-

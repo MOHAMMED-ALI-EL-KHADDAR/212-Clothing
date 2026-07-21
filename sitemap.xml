@@ -87,6 +87,38 @@
 
 
   <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt1.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt2.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt3.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt4.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt5.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt7.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt8.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt9.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt10.html</loc>
     <priority>0.7</priority>
   </url>
@@ -118,7 +150,6 @@
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt17.html</loc>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt18.html</loc>
     <priority>0.7</priority>
@@ -127,29 +158,8 @@
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt19.html</loc>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt20.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt2.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt3.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt7.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt8.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt9.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -178,6 +188,18 @@
   </url>
   <url>
     <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt27.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt28.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt29.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://212clothing.pages.dev/T-Shirts/product-tshirt30.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
