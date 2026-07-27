@@ -188,7 +188,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt2.html",
     "category": "tshirt",
     "name": "\"I DON'T CARE\" PREMIUM TEE",
-    "price": "24.99",
+    "price": "21.99",
     "image": "/T-Shirts/T-Shirt2.jpg",
     "link": "/T-Shirts/product-tshirt2.html"
   },
@@ -228,7 +228,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt15.html",
     "category": "tshirt",
     "name": "The Warrior Graphic Streetwear Tee",
-    "price": "24.99",
+    "price": "21.99",
     "image": "/T-Shirts/T-Shirt15.jpg",
     "link": "/T-Shirts/product-tshirt15.html"
   },
@@ -244,7 +244,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt17.html",
     "category": "tshirt",
     "name": "Human Being Lightning Wing Streetwear Tee",
-    "price": "24.99",
+    "price": "21.99",
     "image": "/T-Shirts/T-Shirt17.jpg",
     "link": "/T-Shirts/product-tshirt17.html"
   },
@@ -383,5 +383,45 @@ const PRODUCT_CATALOG = [
     "price": "24.99",
     "image": "/T-Shirts/T-Shirt30².jpg",
     "link": "/T-Shirts/product-tshirt30.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt6.html",
+    "category": "tshirt",
+    "name": "Berserker Armor Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt6².jpg",
+    "link": "/T-Shirts/product-tshirt6.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt31.html",
+    "category": "tshirt",
+    "name": "Villain Smile Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt31.jpg",
+    "link": "/T-Shirts/product-tshirt31.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt32.html",
+    "category": "tshirt",
+    "name": "Gothic Specter Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt32²-white.jpg",
+    "link": "/T-Shirts/product-tshirt32.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt33.html",
+    "category": "tshirt",
+    "name": "Hellsing Death Moth Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt33².jpg",
+    "link": "/T-Shirts/product-tshirt33.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt34.html",
+    "category": "tshirt",
+    "name": "Japan National Crest Heavyweight Oversized Tee",
+    "price": "21.99",
+    "image": "/T-Shirts/T-Shirt34.jpg",
+    "link": "/T-Shirts/product-tshirt34.html"
   },
 ];
