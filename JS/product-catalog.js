@@ -1,5 +1,101 @@
 const PRODUCT_CATALOG = [
   {
+    "id": "/Hoodies/product-hoodie1.html",
+    "category": "hoodie",
+    "name": "Gojo Satoru \"Six Eyes & Limitless\" Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie1².jpg",
+    "link": "/Hoodies/product-hoodie1.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie2.html",
+    "category": "hoodie",
+    "name": "\"HUMAN BEING\" PULLOVER HOODIE",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie2.jpg",
+    "link": "/Hoodies/product-hoodie2.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie3.html",
+    "category": "hoodie",
+    "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie3².jpg",
+    "link": "/Hoodies/product-hoodie3.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie4.html",
+    "category": "hoodie",
+    "name": "Monkey D. Luffy \"Gear 5 Sun God Nika\" Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie4².jpg",
+    "link": "/Hoodies/product-hoodie4.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie5.html",
+    "category": "hoodie",
+    "name": "\"BMX\" PULLOVER HOODIE",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie5².jpg",
+    "link": "/Hoodies/product-hoodie5.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie6.html",
+    "category": "hoodie",
+    "name": "\"Why Not Me?\" Emotional Manga Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie6².jpg",
+    "link": "/Hoodies/product-hoodie6.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie7.html",
+    "category": "hoodie",
+    "name": "Toji Fushiguro \"Left It All Behind\" Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie7².jpg",
+    "link": "/Hoodies/product-hoodie7.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie8.html",
+    "category": "hoodie",
+    "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie8².jpg",
+    "link": "/Hoodies/product-hoodie8.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie9.html",
+    "category": "hoodie",
+    "name": "\"Mentality\" Dark Samurai Gothic Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie9².jpg",
+    "link": "/Hoodies/product-hoodie9.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie10.html",
+    "category": "hoodie",
+    "name": "Gojo Satoru \"Limitless\" Cyan Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie10².jpg",
+    "link": "/Hoodies/product-hoodie10.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie11.html",
+    "category": "hoodie",
+    "name": "\"Universal Money\" Skeleton Hand Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie11².jpg",
+    "link": "/Hoodies/product-hoodie11².html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie12.html",
+    "category": "hoodie",
+    "name": "Gojo Satoru \"Purple Aura\" Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie12².jpg",
+    "link": "/Hoodies/product-hoodie12.html"
+  },
+  {
     "id": "/Hoodies/product-hoodie13.html",
     "category": "hoodie",
     "name": "Classic Golf GTI Streetwear Hoodie",
@@ -56,14 +152,6 @@ const PRODUCT_CATALOG = [
     "link": "/Hoodies/product-hoodie19.html"
   },
   {
-    "id": "/Hoodies/product-hoodie2.html",
-    "category": "hoodie",
-    "name": "\"HUMAN BEING\" PULLOVER HOODIE",
-    "price": "39.99",
-    "image": "/Hoodies/Hoodie2.jpg",
-    "link": "/Hoodies/product-hoodie2.html"
-  },
-  {
     "id": "/Hoodies/product-hoodie20.html",
     "category": "hoodie",
     "name": "BMW F90 5 Series Hoodie",
@@ -78,30 +166,6 @@ const PRODUCT_CATALOG = [
     "price": "39.99",
     "image": "/Hoodies/Hoodie21.jpg",
     "link": "/Hoodies/product-hoodie21.html"
-  },
-  {
-    "id": "/Hoodies/product-hoodie3.html",
-    "category": "hoodie",
-    "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
-    "price": "39.99",
-    "image": "/Hoodies/Hoodie3².jpg",
-    "link": "/Hoodies/product-hoodie3.html"
-  },
-  {
-    "id": "/Hoodies/product-hoodie5.html",
-    "category": "hoodie",
-    "name": "\"BMX\" PULLOVER HOODIE",
-    "price": "39.99",
-    "image": "/Hoodies/Hoodie5².jpg",
-    "link": "/Hoodies/product-hoodie5.html"
-  },
-  {
-    "id": "/Hoodies/product-hoodie8.html",
-    "category": "hoodie",
-    "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
-    "price": "39.99",
-    "image": "/Hoodies/Hoodie8².jpg",
-    "link": "/Hoodies/product-hoodie8.html"
   },
   {
     "id": "/Hoodies/product-hoodie22.html",
@@ -132,8 +196,72 @@ const PRODUCT_CATALOG = [
     "category": "hoodie",
     "name": "Stronger Than You Think Streetwear Hoodie",
     "price": "39.99",
-    "image": "/Hoodies/Hoodie25².jpg",
+    "image": "/Hoodies/Hoodie25.jpg",
     "link": "/Hoodies/product-hoodie25.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie26.html",
+    "category": "hoodie",
+    "name": "Gothic Sacred Art Heavy Metal Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie26².jpg",
+    "link": "/Hoodies/product-hoodie26.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie27.html",
+    "category": "hoodie",
+    "name": "Toji Fushiguro \"The Battle's Just Beginning\" Manga Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie27².jpg",
+    "link": "/Hoodies/product-hoodie27.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie28.html",
+    "category": "hoodie",
+    "name": "Japan Football Kanji Core Streetwear Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie28.jpg",
+    "link": "/Hoodies/product-hoodie28.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie29.html",
+    "category": "hoodie",
+    "name": "\"Raja Tega Terate\" Gothic Dark Art Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie29².jpg",
+    "link": "/Hoodies/product-hoodie29.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie30.html",
+    "category": "hoodie",
+    "name": "\"Death\" Cyber Punk Skull Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie30².jpg",
+    "link": "/Hoodies/product-hoodie30.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie31.html",
+    "category": "hoodie",
+    "name": "\"Demon Smile\" Minimalist Venom Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie31.jpg",
+    "link": "/Hoodies/product-hoodie31.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie32.html",
+    "category": "hoodie",
+    "name": "\"Brand of Sacrifice\" Berserker Armor Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie32².jpg",
+    "link": "/Hoodies/product-hoodie32.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie33.html",
+    "category": "hoodie",
+    "name": "Ryomen Sukuna \"King of Curses\" Anime Graphic Hoodie",
+    "price": "39.99",
+    "image": "/Hoodies/Hoodie33².jpg",
+    "link": "/Hoodies/product-hoodie33.html"
   },
   {
     "id": "/Hoodies/product-hoodiecostume.html",
