@@ -665,6 +665,14 @@ const PRODUCT_CATALOG = [
     "link": "/T-Shirts/product-tshirt48.html"
   },
   {
+    "id": "/T-Shirts/product-tshirt49.html",
+    "category": "tshirt",
+    "name": "\"SIR LEWIS\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt49².jpg",
+    "link": "/T-Shirts/product-tshirt49.html"
+  },
+  {
     "id": "/Packs/product-pack1.html",
     "category": "pack",
     "name": "\"THE BOSS / THE REAL BOSS\" MATCHING PACK",
