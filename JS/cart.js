@@ -205,8 +205,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const productName = document.getElementById('productName').textContent;
       const productPriceEl = document.getElementById('productPrice');
       const productPrice = parseFloat(productPriceEl.dataset.usd || productPriceEl.textContent);
-      const sizeElement = document.getElementById('productSize');
-      const productSize = sizeElement ? sizeElement.value : 'One Size';
+     const sizeBoyElement = document.getElementById('productSizeBoy');
+const sizeGirlElement = document.getElementById('productSizeGirl');
+const sizeElement = document.getElementById('productSize');
+
+let productSize = 'One Size';
+
+// Check if it's a pack with Boy/Girl sizes
+if (sizeBoyElement && sizeGirlElement) {
+  productSize = `Boy: ${sizeBoyElement.value} | Girl: ${sizeGirlElement.value}`;
+} 
+// Otherwise, fall back to standard single size
+else if (sizeElement) {
+  productSize = sizeElement.value;
+}
       const productImage = document.getElementById('mainProductImage').src;
  
       const product = {
@@ -260,9 +272,9 @@ const ColorSwitcher = {
                 const doc = new DOMParser().parseFromString(html, 'text/html');
  
                 const colors = Array.from(doc.querySelectorAll('.color-swatch')).map(s => ({
-                    name: (s.dataset.color || '').trim().toLowerCase(),
-                    label: (s.dataset.color || ''),
-                    css: s.style.backgroundColor || '#ccc'
+                  name: (s.dataset.color || '').trim().toLowerCase(),
+                  label: (s.dataset.color || ''),
+                  css: s.style.backgroundImage || s.style.backgroundColor || '#ccc'
                 })).filter(c => c.name);
  
                 const imgData = {};
@@ -328,7 +340,7 @@ const ColorSwitcher = {
                 colors.forEach((c, i) => {
                     const btn = document.createElement('button');
                     btn.className = 'listing-color-swatch' + (i === 0 ? ' active' : '');
-                    btn.style.cssText = `background-color:${c.css};width:24px;height:24px;border-radius:50%;border:2px solid ${i === 0 ? '#ff4500' : '#444'};cursor:pointer;transition:0.3s;`;
+                    btn.style.cssText = `background:${c.css};width:24px;height:24px;border-radius:50%;border:2px solid ${i === 0 ? '#ff4500' : '#444'};cursor:pointer;transition:0.3s;`;
                     btn.title = c.label;
  
                     btn.onclick = e => {

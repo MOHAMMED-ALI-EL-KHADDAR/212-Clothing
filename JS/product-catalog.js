@@ -316,7 +316,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt2.html",
     "category": "tshirt",
     "name": "\"I DON'T CARE\" PREMIUM TEE",
-    "price": "21.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt2.jpg",
     "link": "/T-Shirts/product-tshirt2.html"
   },
@@ -356,7 +356,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt15.html",
     "category": "tshirt",
     "name": "The Warrior Graphic Streetwear Tee",
-    "price": "21.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt15.jpg",
     "link": "/T-Shirts/product-tshirt15.html"
   },
@@ -372,7 +372,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt17.html",
     "category": "tshirt",
     "name": "Human Being Lightning Wing Streetwear Tee",
-    "price": "21.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt17.jpg",
     "link": "/T-Shirts/product-tshirt17.html"
   },
@@ -548,8 +548,168 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt34.html",
     "category": "tshirt",
     "name": "Japan National Crest Heavyweight Oversized Tee",
-    "price": "21.99",
+    "price": "24.99",
     "image": "/T-Shirts/T-Shirt34.jpg",
     "link": "/T-Shirts/product-tshirt34.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt35.html",
+    "category": "tshirt",
+    "name": "\"TRUST ISSUES\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt35.jpg",
+    "link": "/T-Shirts/product-tshirt35.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt36.html",
+    "category": "tshirt",
+    "name": "\"AMOR / AMORE\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt36².jpg",
+    "link": "/T-Shirts/product-tshirt36.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt37.html",
+    "category": "tshirt",
+    "name": "\"SPIDER-BOY / SPIDER-MAN\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt37².jpg",
+    "link": "/T-Shirts/product-tshirt37.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt38.html",
+    "category": "tshirt",
+    "name": "\"SPIDER-Gwen / SPIDER-GIRL\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt38².jpg",
+    "link": "/T-Shirts/product-tshirt38.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt39.html",
+    "category": "tshirt",
+    "name": "\"SPIDER-MAN\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt39².jpg",
+    "link": "/T-Shirts/product-tshirt39.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt40.html",
+    "category": "tshirt",
+    "name": "\"SPIDER-GWEN\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt40².jpg",
+    "link": "/T-Shirts/product-tshirt40.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt41.html",
+    "category": "tshirt",
+    "name": "\"SUKUNA DOMAIN EXPANSION\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt41².jpg",
+    "link": "/T-Shirts/product-tshirt41.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt42.html",
+    "category": "tshirt",
+    "name": "\"STAND WITH PALESTINE\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt42².jpg",
+    "link": "/T-Shirts/product-tshirt42.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt43.html",
+    "category": "tshirt",
+    "name": "\"PATIENCE\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt43².jpg",
+    "link": "/T-Shirts/product-tshirt43.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt44.html",
+    "category": "tshirt",
+    "name": "\"LESS TALK, MORE HUSTLE\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt44².jpg",
+    "link": "/T-Shirts/product-tshirt44.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt45.html",
+    "category": "tshirt",
+    "name": "\"PORSCHE 911 GT3 RS\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt45².jpg",
+    "link": "/T-Shirts/product-tshirt45.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt46.html",
+    "category": "tshirt",
+    "name": "\"THE BOSS\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt46².jpg",
+    "link": "/T-Shirts/product-tshirt46.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt47.html",
+    "category": "tshirt",
+    "name": "\"THE REAL BOSS\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt47².jpg",
+    "link": "/T-Shirts/product-tshirt47.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt48.html",
+    "category": "tshirt",
+    "name": "\"ONLY YOU\" HEAVYWEIGHT OVERSIZED TEE",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt48².jpg",
+    "link": "/T-Shirts/product-tshirt48.html"
+  },
+  {
+    "id": "/Packs/product-pack1.html",
+    "category": "pack",
+    "name": "\"THE BOSS / THE REAL BOSS\" MATCHING PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack1.jpg",
+    "link": "/Packs/product-pack1.html"
+  },
+  {
+    "id": "/Packs/product-pack2.html",
+    "category": "pack",
+    "name": "\"SPIDER-VERSE\" COUPLE PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack2.jpg",
+    "link": "/Packs/product-pack2.html"
+  },
+  {
+    "id": "/Packs/product-pack3.html",
+    "category": "pack",
+    "name": "\"SPIDER-MAN & GWEN\" DUAL PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack3.jpg",
+    "link": "/Packs/product-pack3.html"
+  },
+  {
+    "id": "/Packs/product-pack4.html",
+    "category": "pack",
+    "name": "\"SNIPER & WIFEY\" MATCHING PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack4.jpg",
+    "link": "/Packs/product-pack4.html"
+  },
+  {
+    "id": "/Packs/product-pack5.html",
+    "category": "pack",
+    "name": "\"AMOR / AMORE\" MATCHING PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack5.jpg",
+    "link": "/Packs/product-pack5.html"
+  },
+  {
+    "id": "/Packs/product-pack6.html",
+    "category": "pack",
+    "name": "\"ONLY YOU\" MATCHING PACK",
+    "price": "39.99",
+    "image": "/Packs/Pack6.jpg",
+    "link": "/Packs/product-pack6.html"
   },
 ];

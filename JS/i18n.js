@@ -48,6 +48,8 @@ const TRANSLATIONS = {
 
     /* Product pages */
     'product.sizes':     'Sizes:',
+    'product.boysizes':  'Boy Tee Sizes:',
+    'product.girlsizes': 'Girl Tee Sizes:',
     'product.colors':    'Colors:',
     'product.addtocart': 'Add to Cart',
     'product.outofstock':'Out of Stock',
@@ -159,6 +161,7 @@ const TRANSLATIONS = {
     /* Index homepage */
     'index.hero':       'Gear Up with Style — For Bikers, Drivers and Enthusiasts!',
     'index.see_tshirts':'See More T-Shirts',
+    'index.see_packs':'See More Packs',
     'index.see_hoodies':'See More Hoodies',
     'banner.free_shipping': 'FREE SHIPPING',
     'banner.cod': 'CASH ON DELIVERY'
@@ -195,6 +198,8 @@ const TRANSLATIONS = {
     'cart.size':     'Taille',
 
     'product.sizes':     'Tailles :',
+    'product.boysizes':  'Tailles pour garçons :',
+    'product.girlsizes': 'Tailles pour filles :',
     'product.colors':    'Couleurs :',
     'product.addtocart': 'Ajouter au panier',
     'product.outofstock':'Rupture de stock',
@@ -301,6 +306,7 @@ const TRANSLATIONS = {
 
     'index.hero':       'Équipez-vous avec Style — Pour les motards, conducteurs et passionnés !',
     'index.see_tshirts':'Voir plus de T-Shirts',
+    'index.see_packs':'Voir plus de Packs',
     'index.see_hoodies':'Voir plus de Sweats',
     'banner.free_shipping': 'LIVRAISON GRATUITE',
     'banner.cod': 'PAIEMENT À LA LIVRAISON'
@@ -337,6 +343,8 @@ const TRANSLATIONS = {
     'cart.size':     'المقاس',
 
     'product.sizes':     'المقاسات:',
+    'product.boysizes':  ' : مقاسات قمصان الأولاد',
+    'product.girlsizes': ' : مقاسات قمصان الفتيات',
     'product.colors':    'الألوان:',
     'product.addtocart': 'أضف للسلة',
     'product.outofstock':'نفد المخزون',
@@ -443,6 +451,7 @@ const TRANSLATIONS = {
 
     'index.hero':       'تجهّز بأناقة — للدرّاجين والسائقين وعشاق السرعة!',
     'index.see_tshirts':'عرض المزيد من التيشيرتات',
+    'index.see_packs':'عرض المزيد من الحزم',
     'index.see_hoodies':'عرض المزيد من الهوديز',
     'banner.free_shipping': 'شحن مجاني',
     'banner.cod': 'دفع عند الاستلام'
