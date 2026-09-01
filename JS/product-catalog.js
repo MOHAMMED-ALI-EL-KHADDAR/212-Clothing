@@ -673,6 +673,62 @@ const PRODUCT_CATALOG = [
     "link": "/T-Shirts/product-tshirt49.html"
   },
   {
+    "id": "/T-Shirts/product-tshirt50.html",
+    "category": "tshirt",
+    "name": "Diamond Grillz Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt50.jpg",
+    "link": "/T-Shirts/product-tshirt50.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt51.html",
+    "category": "tshirt",
+    "name": "Risk Play To Win Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt51.jpg",
+    "link": "/T-Shirts/product-tshirt51.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt52.html",
+    "category": "tshirt",
+    "name": "Red Bull Racing Verstappen Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt52.jpg",
+    "link": "/T-Shirts/product-tshirt52.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt53.html",
+    "category": "tshirt",
+    "name": "Brazil Neymar Jr Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt53².jpg",
+    "link": "/T-Shirts/product-tshirt53.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt54.html",
+    "category": "tshirt",
+    "name": "Salgoat Staline Graphic Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt54².jpg",
+    "link": "/T-Shirts/product-tshirt54.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt55.html",
+    "category": "tshirt",
+    "name": "El Grande Toto Salgoat Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt55².jpg",
+    "link": "/T-Shirts/product-tshirt55.html"
+  },
+  {
+    "id": "/T-Shirts/product-tshirt56.html",
+    "category": "tshirt",
+    "name": "Lamine Yamal Signature Heavyweight Oversized Tee",
+    "price": "24.99",
+    "image": "/T-Shirts/T-Shirt56².jpg",
+    "link": "/T-Shirts/product-tshirt56.html"
+  },
+  {
     "id": "/Packs/product-pack1.html",
     "category": "pack",
     "name": "\"THE BOSS / THE REAL BOSS\" MATCHING PACK",
