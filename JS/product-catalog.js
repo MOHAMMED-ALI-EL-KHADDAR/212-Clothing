@@ -676,7 +676,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt50.html",
     "category": "tshirt",
     "name": "Diamond Grillz Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt50.jpg",
     "link": "/T-Shirts/product-tshirt50.html"
   },
@@ -684,7 +684,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt51.html",
     "category": "tshirt",
     "name": "Risk Play To Win Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt51.jpg",
     "link": "/T-Shirts/product-tshirt51.html"
   },
@@ -700,7 +700,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt53.html",
     "category": "tshirt",
     "name": "Brazil Neymar Jr Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt53².jpg",
     "link": "/T-Shirts/product-tshirt53.html"
   },
@@ -716,7 +716,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt55.html",
     "category": "tshirt",
     "name": "El Grande Toto Salgoat Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt55².jpg",
     "link": "/T-Shirts/product-tshirt55.html"
   },
@@ -724,7 +724,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt56.html",
     "category": "tshirt",
     "name": "Lamine Yamal Signature Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt56².jpg",
     "link": "/T-Shirts/product-tshirt56.html"
   },
