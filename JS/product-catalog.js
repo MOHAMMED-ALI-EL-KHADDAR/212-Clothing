@@ -732,7 +732,7 @@ const PRODUCT_CATALOG = [
     "id": "/T-Shirts/product-tshirt57.html",
     "category": "tshirt",
     "name": "Driven By Niyya Heavyweight Oversized Tee",
-    "price": "24.99",
+    "price": "22.99",
     "image": "/T-Shirts/T-Shirt57².jpg",
     "link": "/T-Shirts/product-tshirt57.html"
   },
