@@ -3,7 +3,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie1.html",
     "category": "hoodie",
     "name": "Gojo Satoru \"Six Eyes & Limitless\" Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie1².jpg",
     "link": "/Hoodies/product-hoodie1.html"
   },
@@ -11,7 +11,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie2.html",
     "category": "hoodie",
     "name": "\"HUMAN BEING\" PULLOVER HOODIE",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie2.jpg",
     "link": "/Hoodies/product-hoodie2.html"
   },
@@ -19,7 +19,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie3.html",
     "category": "hoodie",
     "name": "\"MOTOCROSS ADRENALINE\" PULLOVER HOODIE",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie3².jpg",
     "link": "/Hoodies/product-hoodie3.html"
   },
@@ -27,7 +27,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie4.html",
     "category": "hoodie",
     "name": "Monkey D. Luffy \"Gear 5 Sun God Nika\" Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie4².jpg",
     "link": "/Hoodies/product-hoodie4.html"
   },
@@ -35,7 +35,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie5.html",
     "category": "hoodie",
     "name": "\"BMX\" PULLOVER HOODIE",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie5².jpg",
     "link": "/Hoodies/product-hoodie5.html"
   },
@@ -43,7 +43,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie6.html",
     "category": "hoodie",
     "name": "\"Why Not Me?\" Emotional Manga Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie6².jpg",
     "link": "/Hoodies/product-hoodie6.html"
   },
@@ -51,7 +51,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie7.html",
     "category": "hoodie",
     "name": "Toji Fushiguro \"Left It All Behind\" Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie7².jpg",
     "link": "/Hoodies/product-hoodie7.html"
   },
@@ -59,7 +59,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie8.html",
     "category": "hoodie",
     "name": "\"NO BIKE NO LIFE\" PREMIUM HOODIE",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie8².jpg",
     "link": "/Hoodies/product-hoodie8.html"
   },
@@ -67,7 +67,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie9.html",
     "category": "hoodie",
     "name": "\"Mentality\" Dark Samurai Gothic Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie9².jpg",
     "link": "/Hoodies/product-hoodie9.html"
   },
@@ -75,7 +75,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie10.html",
     "category": "hoodie",
     "name": "Gojo Satoru \"Limitless\" Cyan Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie10².jpg",
     "link": "/Hoodies/product-hoodie10.html"
   },
@@ -83,7 +83,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie11.html",
     "category": "hoodie",
     "name": "\"Universal Money\" Skeleton Hand Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie11².jpg",
     "link": "/Hoodies/product-hoodie11².html"
   },
@@ -91,7 +91,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie12.html",
     "category": "hoodie",
     "name": "Gojo Satoru \"Purple Aura\" Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie12².jpg",
     "link": "/Hoodies/product-hoodie12.html"
   },
@@ -99,7 +99,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie13.html",
     "category": "hoodie",
     "name": "Classic Golf GTI Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie13².jpg",
     "link": "/Hoodies/product-hoodie13.html"
   },
@@ -107,7 +107,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie14.html",
     "category": "hoodie",
     "name": "Suzuki GSX-R Sportbike Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie14².jpg",
     "link": "/Hoodies/product-hoodie14.html"
   },
@@ -115,7 +115,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie15.html",
     "category": "hoodie",
     "name": "Yamaha MT-09 Graphic Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie15².jpg",
     "link": "/Hoodies/product-hoodie15.html"
   },
@@ -123,7 +123,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie16.html",
     "category": "hoodie",
     "name": "Mercedes Classic Automotive Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie16².jpg",
     "link": "/Hoodies/product-hoodie16.html"
   },
@@ -131,7 +131,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie17.html",
     "category": "hoodie",
     "name": "Apollo Evo Hypercar Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie17².jpg",
     "link": "/Hoodies/product-hoodie17.html"
   },
@@ -139,7 +139,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie18.html",
     "category": "hoodie",
     "name": "Keyvany Purosangue Luxury SUV Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie18.jpg",
     "link": "/Hoodies/product-hoodie18.html"
   },
@@ -147,7 +147,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie19.html",
     "category": "hoodie",
     "name": "BMW M5 CS Motorsport Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie19².jpg",
     "link": "/Hoodies/product-hoodie19.html"
   },
@@ -155,7 +155,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie20.html",
     "category": "hoodie",
     "name": "BMW F90 5 Series Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie20².jpg",
     "link": "/Hoodies/product-hoodie20.html"
   },
@@ -163,7 +163,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie21.html",
     "category": "hoodie",
     "name": "\"THE UNYIELDING WARRIOR\" HOODIE",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie21.jpg",
     "link": "/Hoodies/product-hoodie21.html"
   },
@@ -171,7 +171,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie22.html",
     "category": "hoodie",
     "name": "I Don't Care Typographic Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie22.jpg",
     "link": "/Hoodies/product-hoodie22.html"
   },
@@ -179,7 +179,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie23.html",
     "category": "hoodie",
     "name": "Gothic Thorn Tribal Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie23².jpg",
     "link": "/Hoodies/product-hoodie23.html"
   },
@@ -187,7 +187,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie24.html",
     "category": "hoodie",
     "name": "JDM Nissan Blueprint Custom Car Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie24².jpg",
     "link": "/Hoodies/product-hoodie24.html"
   },
@@ -195,7 +195,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie25.html",
     "category": "hoodie",
     "name": "Stronger Than You Think Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie25.jpg",
     "link": "/Hoodies/product-hoodie25.html"
   },
@@ -203,7 +203,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie26.html",
     "category": "hoodie",
     "name": "Gothic Sacred Art Heavy Metal Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie26².jpg",
     "link": "/Hoodies/product-hoodie26.html"
   },
@@ -211,7 +211,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie27.html",
     "category": "hoodie",
     "name": "Toji Fushiguro \"The Battle's Just Beginning\" Manga Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie27².jpg",
     "link": "/Hoodies/product-hoodie27.html"
   },
@@ -219,7 +219,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie28.html",
     "category": "hoodie",
     "name": "Japan Football Kanji Core Streetwear Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie28.jpg",
     "link": "/Hoodies/product-hoodie28.html"
   },
@@ -227,7 +227,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie29.html",
     "category": "hoodie",
     "name": "\"Raja Tega Terate\" Gothic Dark Art Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie29².jpg",
     "link": "/Hoodies/product-hoodie29.html"
   },
@@ -235,7 +235,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie30.html",
     "category": "hoodie",
     "name": "\"Death\" Cyber Punk Skull Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie30².jpg",
     "link": "/Hoodies/product-hoodie30.html"
   },
@@ -243,7 +243,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie31.html",
     "category": "hoodie",
     "name": "\"Demon Smile\" Minimalist Venom Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie31.jpg",
     "link": "/Hoodies/product-hoodie31.html"
   },
@@ -251,7 +251,7 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie32.html",
     "category": "hoodie",
     "name": "\"Brand of Sacrifice\" Berserker Armor Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie32².jpg",
     "link": "/Hoodies/product-hoodie32.html"
   },
@@ -259,9 +259,193 @@ const PRODUCT_CATALOG = [
     "id": "/Hoodies/product-hoodie33.html",
     "category": "hoodie",
     "name": "Ryomen Sukuna \"King of Curses\" Anime Graphic Hoodie",
-    "price": "39.99",
+    "price": "26.99",
     "image": "/Hoodies/Hoodie33².jpg",
     "link": "/Hoodies/product-hoodie33.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie34.html",
+    "category": "hoodie",
+    "name": "Wifey Triple Stacked Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie34.jpg",
+    "link": "/Hoodies/product-hoodie34.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie35.html",
+    "category": "hoodie",
+    "name": "Sniper Triple Stacked Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie35.jpg",
+    "link": "/Hoodies/product-hoodie34.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie36.html",
+    "category": "hoodie",
+    "name": "Amor Amor Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie36².jpg",
+    "link": "/Hoodies/product-hoodie36.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie37.html",
+    "category": "hoodie",
+    "name": "Spider-Man Vintage Comic Collage Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie37².jpg",
+    "link": "/Hoodies/product-hoodie37.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie38.html",
+    "category": "hoodie",
+    "name": "Spider-Gwen Comic Collage Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie38².jpg",
+    "link": "/Hoodies/product-hoodie38.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie39.html",
+    "category": "hoodie",
+    "name": ">Spider-Man Advanced Graphic Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie39².jpg",
+    "link": "/Hoodies/product-hoodie39.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie40.html",
+    "category": "hoodie",
+    "name": "Spider-Gwen Graphic Portrait Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie40².jpg",
+    "link": "/Hoodies/product-hoodie40.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie41.html",
+    "category": "hoodie",
+    "name": "\"THE BOSS\" Typography Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie41².jpg",
+    "link": "/Hoodies/product-hoodie41.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie42.html",
+    "category": "hoodie",
+    "name": "\"THE Real BOSS\" Typography Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie42².jpg",
+    "link": "/Hoodies/product-hoodie42.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie43.html",
+    "category": "hoodie",
+    "name": "Ryomen Sukuna Line Art Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie43².jpg",
+    "link": "/Hoodies/product-hoodie43.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie44.html",
+    "category": "hoodie",
+    "name": "\"We Stand With Palestine\" Graphic Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie44².jpg",
+    "link": "/Hoodies/product-hoodie44.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie45.html",
+    "category": "hoodie",
+    "name": "\"Only You\" Photo Collage Heavyweight Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie45².jpg",
+    "link": "/Hoodies/product-hoodie45.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie46.html",
+    "category": "hoodie",
+    "name": "\"PATIENCE\" Statue Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie46².jpg",
+    "link": "/Hoodies/product-hoodie46.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie47.html",
+    "category": "hoodie",
+    "name": "\"LESS TALK, MORE HUSTLE\" Statue Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie47².jpg",
+    "link": "/Hoodies/product-hoodie47.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie48.html",
+    "category": "hoodie",
+    "name": "\"Porsche 911 GT3 RS\" Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie48².jpg",
+    "link": "/Hoodies/product-hoodie48.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie49.html",
+    "category": "hoodie",
+    "name": "\"TRUST ISSUE\" Gothic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie49.jpg",
+    "link": "/Hoodies/product-hoodie49.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie50.html",
+    "category": "hoodie",
+    "name": "\"Sir Lewis 44\" F1 Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie50².jpg",
+    "link": "/Hoodies/product-hoodie50.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie51.html",
+    "category": "hoodie",
+    "name": "\"Neymar Jr 10\" Football Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie51².jpg",
+    "link": "/Hoodies/product-hoodie51.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie52.html",
+    "category": "hoodie",
+    "name": "\"STALINE\" Salgoat Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie52².jpg",
+    "link": "/Hoodies/product-hoodie52.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie53.html",
+    "category": "hoodie",
+    "name": "\"EL GRANDE TOTO\" Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie53².jpg",
+    "link": "/Hoodies/product-hoodie53.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie54.html",
+    "category": "hoodie",
+    "name": "\"RISK - PLAY TO WIN\" Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie54.jpg",
+    "link": "/Hoodies/product-hoodie54.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie55.html",
+    "category": "hoodie",
+    "name": "\"Red Bull Racing Verstappen\" F1 Graphic Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie55.jpg",
+    "link": "/Hoodies/product-hoodie55.html"
+  },
+  {
+    "id": "/Hoodies/product-hoodie56.html",
+    "category": "hoodie",
+    "name": "\"DRIVEN BY NIYYA\" Statement Oversized Hoodie",
+    "price": "26.99",
+    "image": "/Hoodies/Hoodie56².jpg",
+    "link": "/Hoodies/product-hoodie56.html"
   },
   {
     "id": "/Hoodies/product-hoodiecostume.html",
